@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+</head>
+<body>
+
+</body>
+</html>
+<!--
+        /*
+          函数
+          1.定义：完成某一功能的一组语句，他接收0或多个参数，然后执行函数体完成某个功能，最后返回处理结果
+          2.基础语法：function funname（参数）{
+                                        函数体
+                                        return结果
+          }
+          3.定义方式
+
+        */
+    -->
+<script>
+    //普通函数
+    //            function fun1(a,b){//a,b形参
+    ////                if(a>b){
+    ////                    return a;
+    ////
+    ////                }else{
+    ////                    return b
+    ////                }
+    //                var sum=a+b
+    //                return sum
+    //            }
+    //            //执行函数
+    //            var v1=fun1(2,3);//  2,3实参
+    //            alert(v1);
+    //匿名函数
+    //            document.getElementById().onclick=function(){}
+    //            var fun1=function(a,b){
+    //                return a+b;
+    //            }
+    //            alert(fun1(2,3))
+    //直接调用（function...）（参数）[立即执行，而且只执行一次]
+    //            (function(a,b){
+    //                var sum=a+b;
+    //                alert(sum)
+    //            })(2,3)
+    //函数对象创建
+    //              var fun1=new Function("a","b","sum=a+b;return sum")
+    //              alert(fun1(2,3))
+    //练习：输入三点坐标，求三条线的长度同时判断是否构成三角形，返回三角形周长，
+    // 否则给出提示非三角形，用四种函数创建方式实现
+    /*4.函数的返回值
+        函数的参数个数不限,但返回值只能有一个
+        (1)如多个返回值,可用数组传递
+        function fun02(a,b){
+        var arr1=[];
+        if(a>b){
+        arr1[0]=a;
+        arr1[1]=b;
+        }else{
+        arr1[0]=b;
+        arr1[1]=a;}
+        return arr1;
+        }
+        var v1= fun02(3,4);
+        alert("最大值:"+v1[0]+" 最小值:"+v1[1]);
+        (2)返回函数
+        function fun03(a,b){
+        var fun03_1=function(){
+        return a+b;
+        }
+        return fun03_1;
+        }
+        alert(fun03(2,3)());
+    * (3)返回函数自身var i=0;
+     function  fun5(){
+     i++;
+     return fun5;
+     }
+     fun5()()()()()()()()();
+     alert(i);
+      function f(){
+     return f();
+     function f(){
+     return n();
+     function n(){
+     return 5;
+     }
+     }
+     function n(){
+     return 2;
+     }
+     }
+     alert(f());//5
+     function fun5(a,b){
+     return a%b+ a++ - --b + a*b--;
+     }
+     alert(fun5(2,3));
+     alert(fun5(fun5(2,3),fun5(5,6)));
+     alert(fun5(fun5(fun5(6,7),8),fun5(5,6)));
+     //5.函数嵌套
+     function fun6(a,b){
+     function k(x,y){
+     return x+y;
+     }
+     return k(2,3)+a+b;
+     }
+     alert(fun6(5,6));
+     var j=5;
+     function fun6(a,b){
+     j=9;
+     var j=12;
+     j++;
+     function k(){
+     //省略var定义的变量,变量相当于全局变量
+     x=3;
+     //            j=10;
+     var y=4;
+     return x+y;
+     }//在函数体里
+     return k()+x+a+b+j;
+     }
+     alert(fun6(5,6));
+    * */
+function fun6(){
+//    var k;
+    var a=3;
+    var b=4;
+    alert(a++*b);
+}
+    fun6();
+//function fun04(a,b){
+//       function f04_1(){
+//           s=a*2;
+//           function f04_2(){
+//               return s+b;
+//           }
+//           return f04_2;
+//       }
+//    return f04_1;
+//}
+//    alert(fun04(3,4)()());
+    /**练习:1.利用数组方式,输入两个数,用一个函数实现他们的加减乘除,利用数组方式返回4个结果
+     *     2.在一个函数中实现:输入长宽高,计算立方体的体积,
+     *   function fun1(a,b){
+        var arr1= new Array;
+        if(b!=0){
+            arr1.push(a+b);
+            arr1.push(a-b);
+            arr1.push(a*b);
+            arr1.push(a/b);
+            return arr1;
+        }else{
+
+        }
+    }
+     function fun2(a,b,c,d,e){
+        var V= a*b*c;
+        function fun2_1(){
+            var sum= V+d+e;
+            return sum;
+        }
+        return fun2_1;
+    }
+     alert(fun2(3,3,3,1,2)());*/
+
+//  var x12=  Math.pow((x1-x2),2);
+//  var x13=  Math.pow((x1-x3),2);
+//  var x23=  Math.pow((x3-x2),2);
+//  var y12=  Math.pow((y1-y2),2);
+//  var y13=  Math.pow((y1-y3),2);
+//  var y23=  Math.pow((y3-y2),2);
+//  var a=   Math.sqrt(x12+y12);
+//  var b=   Math.sqrt(x13+y13);
+//  var c=   Math.sqrt(x23+y23);
+//    function fun1(a,b,c){
+//        var re_str="";
+//        if((a+ b>c)&&(a+c>b)&&(b+c>a)){
+//            return a+b+c;
+//        }else{
+//            return "不是三角形";
+//        }
+//        return re_str;
+//    }
+//    document.getElementById("but01").onclick=function(a,b,c){
+//        if((a+ b>c)&&(a+c>b)&&(b+c>a)){
+//            return a+b+c;
+//        }else{
+//            return "不是三角形";
+//        }
+//    }
+//                var fun1=function(a,b,c){
+//                    if((a+ b>c)&&(a+c>b)&&(b+c>a)){
+//                        return a+b+c;
+//                    }else{
+//                        return "不是三角形";
+//                    }
+//                }
+//                (function(a,b,c){
+//                    if((a+ b>c)&&(a+c>b)&&(b+c>a)){
+//                        return a+b+c;
+//                    }else{
+//                        return "不是三角形";
+//                    }
+//                })(a,b,c)
+</script>

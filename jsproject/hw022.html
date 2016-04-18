@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        function fun1(){
+            var vv="";
+            var v1=document.getElementById("inp01").value;
+            var v2= v1.split(".");
+            var v3= v2[0];
+            var v4= v3.length;
+            var n=parseInt(v4/3);
+            var v5= v3.substring(0,v4-3*n);
+
+            for(n;n>0;n--){
+               vv+=","+v3.substr(-3*n,3);
+            }
+
+            document.write(v5+vv+"."+v2[1]);
+        }
+    </script>
+</head>
+<body>
+<input type="text" id="inp01" value="1234567.89">
+<button onclick="fun1()">exchange</button>
+<div id="div01"></div>
+</body>
+<html>

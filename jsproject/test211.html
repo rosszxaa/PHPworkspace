@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>图书</title>
+</head>
+<style>
+    #div01{
+        width:810px;
+        height: 150px;
+        border: 1px solid green;
+    }
+    img{
+        width: 150px;
+        height: 150px;
+        /*background-color: greenyellow;*/
+        float:left;
+        /*background-repeat: no-repeat;*/
+        background-size: cover;
+        margin-left: 10px;
+    }
+    #div02{
+        top:200px;
+        left:500px;
+        position: absolute;
+        border:1px solid blue;
+        width: 200px;
+        height: 200px;
+    }
+</style>
+<body>
+
+    <img id="101"src="../image/101.jpg" ondragstart="fundrag(event)" ondragend="funend(event)" ondragenter="funenter(event)" ondragleave="funleave(event)" draggable="true"></div>
+    <img id="201"src="../image/201.jpg" ondragstart="fundrag(event)" ondragend="funend(event)" ondragenter="funenter(event)" ondragleave="funleave(event)"draggable="true"></div>
+    <img id="301"src="../image/301.jpg" ondragstart="fundrag(event)" ondragend="funend(event)" ondragenter="funenter(event)" ondragleave="funleave(event)" draggable="true"></div>
+    <img id="401"src="../image/401.jpg" ondragstart="fundrag(event)" ondragend="funend(event)" ondragenter="funenter(event)" ondragleave="funleave(event)" draggable="true"></div>
+    <img id="501"src="../image/501.jpg" ondragstart="fundrag(event)" ondragend="funend(event)" ondragenter="funenter(event)" ondragleave="funleave(event)" draggable="true"></div>
+    <div id="div00" style="top:200px;position:absolute;width: 150px;height: 100px;background-color: darkgrey"></div>
+    <div id="div01" style="top:200px;left:200px;position:absolute;width: 150px;height: 100px;background-color: darkgrey"></div>
+    <div id="div02"  ondrop="fundrop(event)"ondragover="funover(event)" ></div>
+    <table id="tab01" ></table>
+</body>
+</html>
+        <script>
+            var k="";//当前点击img
+            var l="";//移动经过img
+            function funover(event){
+                var e= event || window.event;
+                e.preventDefault();
+            }
+            function fundrag(event){
+                var e= event || window.event;
+                var src= e.srcElement|| e.target;
+//               alert(src.id);
+//               alert(src.getAttribute("id"));
+                var tf_id= e.dataTransfer.setData("tf_id",src.id);
+                k= src.getAttribute("src");
+                document.getElementById("div00").innerHTML= "起始地:"+"<br>"+k;
+            }
+            function funend(event){
+                var e= event || window.event;
+                var src= e.srcElement|| e.target;
+                var v=  document.images;
+                for(var i=0;i< v.length;i++){
+                    if(v[i].getAttribute("src")==l){
+                        v[i].setAttribute("src",k);
+                    }
+                }
+                src.setAttribute("src",l);
+            }
+            function funenter(event){
+                var e= event || window.event;
+                var src= e.srcElement|| e.target;
+                var tf_id= e.dataTransfer.getData("tf_id");
+                l=src.getAttribute("src");
+//                document.getElementById("div01").innerHTML= "目标地:"+"<br>"+tf_id;
+               document.getElementById("div01").innerHTML= "目标地:"+"<br>"+l;
+                src.setAttribute("src",k);
+            }
+            function funleave(event){
+                var e= event || window.event;
+                var src= e.srcElement|| e.target;
+                src.setAttribute("src",l);
+            }
+            function fundrop(event) {
+                var e = event || window.event;
+                var src = e.srcElement || e.target;
+                var v0 = src.children.length;
+                console.log("子元素个数" + v0);
+                if (v0) {
+                    alert(src.children[0]);
+                    var v1 = document.createElement("img");
+                    v1.setAttribute("src", k);
+                    src.appendChild(v1);
+//                var v2= src.children.length;
+//                console.log(v2);
+//               alert(src.children[0]);
+                    tab01.innerHTML = "<tr><td>编号</td><td>书名</td><td>数量</td><td>价钱</td><td>图片</td><td>操作</td></tr>";
+                    var tr01 = tab01.insertRow(1);//<tr></tr>
+                    var td01 = tr01.insertCell(0);//<td></td><td></td>
+                    td01.innerHTML = "1";
+                    var td02 = tr01.insertCell(1);
+                    td02.innerHTML = "大娃";
+                    var td03 = tr01.insertCell(2);
+                    td03.innerHTML = "2";
+                    var td04 = tr01.insertCell(3);
+                    td04.innerHTML = "33";
+                    var td05 = tr01.insertCell(4);
+                    td05.innerHTML = "";
+                }
+            }
+        </script>

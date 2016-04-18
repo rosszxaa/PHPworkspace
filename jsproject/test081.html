@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<script>
+    /*阻止事件传播
+     */
+     function fun1(){
+         alert("li");
+     }
+    function fun2(){
+        alert("ul");
+    }
+    function fun3(event){
+        alert("kaka");
+        var e=event ||window.event;
+        //阻止事件传播兼容性
+        if( e.stopPropagation()){
+            e.stopPropagation();
+        }else{
+            e.cancelBubble=true;
+        }
+
+    }
+</script>
+<body>
+<ul onclick="fun2()">
+    <li onclick="fun1()">dawa</li>
+    <li onclick="fun3()">erwa</li>
+</ul>
+</body>
+</html>

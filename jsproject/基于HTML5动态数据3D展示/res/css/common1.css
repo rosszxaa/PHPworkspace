@@ -1,0 +1,204 @@
+@charset "utf-8";
+/*重置浏览器默认样式*/
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote
+	{
+	margin: 0;
+	padding: 0;
+}
+
+fieldset,img {
+	border: 0;
+}
+
+th {
+	text-align: left;
+	font-style: normal;
+	font-weight: normal;
+}
+
+li {
+	list-style: none;
+}
+
+input,textarea,select {
+	font-family: inherit;
+	font-size: inherit;
+	font-weight: inherit;
+}
+
+input {
+	background: #fff;
+	border: 1px solid #b3bda5;
+	height: 22px;
+}
+
+* {
+	outline: none;
+}
+
+/*重置浏览器默认样式*/
+/*全局*/
+.clear_fix:after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+}
+
+.clear {
+	clear: both;
+	font-size: 0px;
+	height: 0px;
+}
+
+html,body {
+	font-size: 14px;
+	font-family: Microsoft YaHei, Arial;
+	color: #666666;
+	word-wrap:break-word;
+	display:block;
+}
+html{
+	direction:ltr;
+}
+
+
+a {
+	text-decoration: none;
+	color: #D2792A;
+}
+
+a:hover {
+	color: #FF881E;
+}
+
+
+.fl{
+	float:left;
+}
+.fr{
+	float:right;
+}
+.clearfix{*zoom:1}
+.clearfix:before,.clearfix:after{display:table;line-height:0;content:""}
+.clearfix:after{clear:both}
+.ml10{margin-left:10px;}
+.ml30{margin-left:30px;}
+.ml40{margin-left:40px;}
+
+.mb4{margin-bottom:4px;}
+.mb30{margin-bottom:30px;}
+.mr5{margin-right:5px;}
+.mr10{margin-right:10px;}
+
+.mt5{margin-top:5px;}
+.mt10{margin-top:10px;}
+.mt15{margin-top:15px;}
+.mt20{margin-top:20px;}
+.mt25{margin-top:25px;}
+.mt30{margin-top:30px;}
+.mt35{margin-top:35px;}
+.mt40{margin-top:40px;}
+.mt50{margin-top:50px;}
+.mt60{margin-top:60px;}
+
+.w20{width:20px;}
+.w40{width:40px;}
+.w70{width:70px;}
+.w80{width:80px;}
+.w90{width:90px;}
+.w100{width:100px;}
+.w130{width:130px;}
+.w140{width:140px;}
+.w150{width:150px;}
+.w180{width:180px;}
+.w200{width:200px;}
+.w240{width:240px;}
+.w250{width:250px;}
+.w400{width:400px;}
+.w300{width:300px;}
+.w600{width:600px;}
+.w650{width:650px;}
+.w700{width:700px;}
+.w800{width:800px;}
+.w900{width:900px;}
+.w1050{width:1050px;}
+
+/*
+*	metro风格的表格
+*/
+.metro-table-r{
+	padding-top:6px;
+	padding-bottom:6px;
+	border-left:0 none;
+	border-right:0 none;
+	position:relative;
+}
+.bordered{
+	border-top:3px solid #2489C5;
+	border-bottom:3px solid #2489C5;
+}
+.metro-table-col{
+	float:left;
+	padding:6px 10px 6px 10px;
+	background-color:#ffffff;
+}
+.text-color-sblue{
+	color:#2489C5;
+}
+.text-bold{
+	font-weight:bold;
+}
+.tr-split-line{border-bottom:1px dotted #ccc;}
+.text-color-lgray{color:#999999;}
+.fs14{font-size:14px;}
+
+.pl5{padding-left:5px;}
+.pl10{padding-left:10px;}
+.pl15{padding-left:15px;}
+.pl20{padding-left:20px;}
+.pl25{padding-left:25px;}
+
+.col-p-10{width:10%;}
+.col-p-15{width:15%;}
+.col-p-20{width:20%;}
+.col-p-23{width:23%;}
+.col-p-30{width:30%;}
+.col-p-38{width:38%;}
+.col-p-40{width:40%;}
+.col-p-50{width:50%;}
+.col-p-60{width:60%;}
+.col-p-70{width:70%;}
+.col-p-80{width:80%;}
+.col-p-90{width:90%;}
+
+
+.col-w-10{width:10px;}
+.col-w-20{width:20px;}
+.col-w-30{width:30px;}
+.col-w-40{width:40px;}
+.col-w-50{width:50px;}
+.col-w-60{width:60px;}
+.col-w-70{width:70px;}
+.col-w-80{width:80px;}
+.col-w-90{width:90px;}
+.col-w-100{width:100px;}
+.col-w-110{width:110px;}
+.col-w-120{width:120px;}
+.col-w-130{width:130px;}
+.col-w-140{width:140px;}
+.col-w-150{width:150px;}
+.col-w-160{width:160px;}
+.col-w-170{width:170px;}
+.col-w-180{width:180px;}
+.col-w-190{width:190px;}
+.col-w-200{width:200px;}
+.col-w-210{width:210px;}
+.col-w-220{width:220px;}
+.col-w-230{width:230px;}
+.col-w-240{width:240px;}
+.col-w-250{width:250px;}
+.col-w-260{width:260px;}
+.col-w-270{width:270px;}

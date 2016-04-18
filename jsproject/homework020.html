@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>大小写转化</title>
+</head>
+<style>
+    label{
+        color: red;
+        font-size: 15px;
+        font-weight: bolder;
+    }
+</style>
+<script>
+function fanzhuan(v1){
+    len= v1.length;
+    var v0="";
+    for(i=len-1;i>=0;i--){
+        v0+=v1.charAt(i);
+    }
+    return v0;
+}
+    function fun01(){
+        var num= new Array('0','1','2','3','4','5','6','7','8','9');//0-9
+        var big= new Array('零','壹','贰','叁','肆','伍','陆','柒','捌','九');//0-9
+        var quy= new Array('分','毛','块','拾','佰','仟','万','拾万','佰万','仟万','亿','拾亿');//0-11 0对2
+        var v1= document.getElementById("inp01").value;
+        var v2=v1.split(String.fromCharCode(46));
+        var v3=v2[0];
+
+        var n3= fanzhuan(v3);
+//        alert(n3);
+        var len3=n3.length;
+        var dps="";
+        var v4=v2[1];
+        var n4="";
+        var flag=0;
+//        if((v1.charCodeAt())&&){
+//            var v3=v2.length;//取整数部分位数
+
+        if((v2.length==2||v2.length==1)&&v3.length<=10){
+
+            for(i=0;i<v3.length;i++){
+                var v0 = v3.charAt(i);
+                var vv= v0.charCodeAt();
+                if((vv<=57&&vv>=48)){
+
+                }else{
+                    flag=1;
+                }
+            }
+            if(v2.length==2){
+                 n4= v4.substring(0,2);
+                for(i=0;i<v4.length;i++){
+                var v0 = v4.charAt(i);
+                var vv= v0.charCodeAt();
+                if((vv<=57&&vv>=48)){
+
+                }else{
+                    flag=1;
+                }
+            }}
+
+//            alert(flag);
+            if(flag==0){
+                //n3整数位倒排
+                //v4小数位
+                document.getElementById("lab01").innerHTML="";
+                for(i=0;i<len3;i++){
+                    var vv= n3.charAt(i);
+                    if(vv!='0'){
+                        for(j=0;j<=9;j++){
+                             if(vv==num[j]){
+                                 dps+= big[j]+quy[i+2]+".";
+                             }
+                        }
+                    }else{
+                        dps+= "K"+".";
+                    }
+
+                }
+                //从低位起获取完毕,反转
+                var x1= dps.split(".");
+                var jdps="";//??什么鬼
+                for(i=x1.length-1;i>=0;i--){
+                    jdps+= x1[i];
+                }
+                var x2= jdps.split("K");
+                var ndps="";
+                for(i=0;i<x2.length;i++){
+                    if(i!=x2.length-1){
+                        if(x2[i+1].charCodeAt()>=19968){
+                            ndps+= x2[i]+"零";
+                        }else{
+                            ndps+= x2[i];
+                        }
+
+                    }else{
+                        ndps+= x2[i];
+                    }
+
+                }
+                //(⊙o⊙)?对小数位判定 毛
+                for(j=0;j<=9;j++){
+                    var  vv = n4.charAt(0);
+                    if(vv==num[j]){
+                        if(j!=0){
+                            ndps+= big[j];
+                        }else{
+                        }
+                    }
+                }
+                //(⊙o⊙)?对小数位判定 分
+                for(j=0;j<=9;j++){
+                    var  vv = n4.charAt(1);
+                    if(vv==num[j]){
+                        if(j!=0){
+                            if(n4.charAt(0)==0){
+                                ndps+= "零"+big[j]+quy[0];
+                            }else{
+                                ndps+= quy[1]+big[j]+quy[0];
+                            }
+
+                        }else{
+
+                        }
+                    }
+                }
+                document.getElementById("div01").innerText=ndps;
+            }else{
+                document.getElementById("inp01").focus();
+                document.getElementById("lab01").innerHTML="输入格式错误!";
+            }
+
+        }else{
+            document.getElementById("inp01").focus();
+            document.getElementById("lab01").innerHTML="输入格式错误!";
+
+        }
+
+
+//        document.getElementById("div02").innerText=ndps+x2.length;
+    }
+</script>
+<body>
+<input type="text" id="inp01" value="200505.8" onkeyup="fun01()"><label id="lab01"></label>
+<div id="div01"></div>
+<div id="div02"></div>
+</body>
+</html>

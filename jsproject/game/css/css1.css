@@ -1,0 +1,112 @@
+progress {
+    display: inline-block;
+    width: 160px;
+    height: 21px;
+    border: 0px solid #0064B4;
+    background-color:#000000;
+    color: rgb(82,198,255); /*IE10*/
+}
+
+
+progress::-moz-progress-bar { background: transparent; }
+progress::-webkit-progress-bar { background: transparent; }
+progress::-webkit-progress-value  { background: rgb(82,198,255); }
+img{
+    float:left;
+}
+#game_xinyouxi_bj {
+    height: 660px;
+    position: absolute;
+    left: 50%;
+    margin-left: -670px;
+    /* border: 1px solid red;*/
+    overflow: hidden;
+}
+#bj{
+    -webkit-transform-style:preserve-3D;
+
+    animation:name1 40s infinite;
+    margin-top:0px;
+}
+@keyframes name1 {
+    100%{
+        margin-top: -5000px;
+    }
+}
+
+#div01{
+    width:130px;
+    height: 150px;
+    position: absolute;
+    left:300px;
+    top:0px;
+    background-color:transparent;
+    background-image: url(../image/rwr.png);
+    /*background-size: 100% ;*/
+
+}
+/*#div02{*/
+    /*width:130px;*/
+    /*height: 50px;*/
+    /*position: absolute;*/
+    /*left:950px;*/
+    /*top:0px;*/
+    /*background-color:#008000;*/
+    /*background-size: 100% ;*/
+
+/*}*/
+#div03{
+    width:80px;
+    height: 50px;
+    position: absolute;
+    left:808px;
+    top:150px;
+    visibility:inherit;
+    font-size: 50px;
+    font-family: Monaco;
+    background-color:#afa296;
+    color:#ffffff;
+    background-size: 100% ;
+
+}
+#d1{
+    width:30px;
+    height: 150px;
+    position: absolute;
+    left:170px;
+
+    top:850px;
+    background-image: url(../image/dd.png);
+}
+#d2{
+    width:30px;
+    height: 150px;
+    position: absolute;
+    left:300px;
+    top:850px;
+    background-image: url(../image/dd.png);
+}
+#d3{
+    width:30px;
+    height: 150px;
+    position: absolute;
+    left:430px;
+    top:850px;
+    background-image: url(../image/dd.png);
+}
+#d4{
+    width:30px;
+    height: 150px;
+    position: absolute;
+    left:560px;
+    top:850px;
+    background-image: url(../image/dd.png);
+}
+#d5{
+    width:30px;
+    height: 150px;
+    position: absolute;
+    left:690px;
+    top:850px;
+    background-image: url(../image/dd.png);
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<script>
+    function fun01(){
+        var v1 = document.getElementById("inp01").value;//车名
+        var v2 = document.getElementById("inp02").value;//价格
+        var n2 = "";
+        var v3 = document.getElementById("inp03").value;//厂家名
+        var flag= 0;
+        for (i = 0; i < v1.length; i++) {
+            var v0 = v1.charAt(i);
+
+           if ((v0.charCodeAt() == 22823) ||(v0.charCodeAt() ==24133)||(v0.charCodeAt() ==24230)
+                   ||(v0.charCodeAt() ==21457)||(v0.charCodeAt() ==36865)) {
+
+            } else {
+                flag = 1;
+                document.getElementById("inp01").focus();
+//                document.getElementById("lab01").innerText="只能是字母数字下划线!";
+            }
+        }
+        for (i = 0; i < v2.length; i++) {
+            var v0 = v2.charAt(i);
+            var vv= v0.charCodeAt();//用Number强转判断,字符和数字混合会出现NaN
+        if((48<=vv&&vv<=57)||vv==46){//判断数值
+            var v= v2.split(String.fromCharCode(46));
+            if(v.length==2){
+                n2= v[0]+"."+v[1].substring(0,2);
+            }else if(v.length==1){
+                n2= v[0];
+            }else{
+                flag = 1;
+                document.getElementById("inp02").focus();
+            }
+        }else{
+            flag = 1;
+            document.getElementById("inp02").focus();
+        }
+        }
+        for(i = 0; i < v3.length; i++){
+            var v0 = v3.charAt(i);
+            var vv= v0.charCodeAt();
+            if(19968<=vv&&vv<=40911){
+
+            }else{
+                flag = 1;
+                document.getElementById("inp03").focus();
+            }
+        }
+        if(flag==0){
+            document.getElementById("div01").innerHTML="汽车名称:"+v1+"<br>"+"汽车价格:"+n2+"<br>"+"厂家名称:"+v3;
+        }
+    }
+</script>
+<body>
+汽车名称:<input type="text" id="inp01" value="大幅度发送"><br><br>
+汽车价格:<input type="text" id="inp02" value="123.456"><br><br>
+厂家名称:<input type="text" id="inp03" value="啦啦啦"><br><br>
+<button id="but01" onclick="fun01()">确定</button>
+<div id="div01"></div>
+</body>
+</html>

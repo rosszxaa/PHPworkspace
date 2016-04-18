@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function fun1(){
+          i=2;//如省略var相当于全局变量
+        alert(i);//2
+    }
+    fun1();
+    alert(i);//2
+
+    var i=2;
+    function fun1(){
+        alert(i);//2 如内部未定义,则寻找全局变量
+    }
+    fun1();
+//js在预编译时,会对所有var变量进行创建,并给默认值undefined
+//在执行时才会真正赋值
+    function fun1(){
+        alert(i);//undefined
+        var i=2;
+        alert(i);//2
+    }
+    fun1();
+
+    var i=3;
+    function fun1(){
+        i=2;
+        alert(i);//2
+    }
+    alert(i);//3
+    fun1();
+    alert(i);//2
+
+    function fun1(){
+        alert(i);//undefined
+        var i=2;
+        i++;
+        alert(i);//3
+    }
+    fun1();
+    alert(i);//报错
+
+    var i=4;
+    function fun1(){
+        alert(i);//undefined
+        var i=2;
+        i++;
+        alert(i);//3
+    }
+    alert(i);//4
+    fun1();
+    alert(i);//4
+
+    var i=4;
+    function fun1(){
+        i++;//undefined+1
+        alert(i);//NaN
+        var i=2;
+        i++;
+        alert(i);//3
+    }
+    i++;
+    alert(i);//5
+    fun1();
+    alert(i);//5
+</script>

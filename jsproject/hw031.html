@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>数字模拟时钟</title>
+</head>
+<style>
+
+    div{
+        width: 16px;
+        height: 21px;
+        background-color: olive;
+        float: left;
+    }
+</style>
+<script>
+    function a(s){//替换图片
+        var pic= new Array("c0.gif","c1.gif","c2.gif","c3.gif",
+                "c4.gif","c5.gif","c6.gif",
+                "c7.gif","c8.gif","c9.gif");
+        var ss="";
+        for(i=0;i<10;i++){
+            if(i== s){
+                ss=pic[i];
+            }
+        }
+        return ss;
+
+    }
+    function b(s){//个位补位
+        if(s<10){
+            return s="0"+s;
+        }else{
+            return s;
+        }
+    }
+
+    function fun1(){
+
+        var d1=new Date();
+        var v1=   d1.getHours();
+        var v3=   d1.getSeconds();
+        var v2=   d1.getMinutes();
+        var h=b(v1);
+        var m=b(v2);
+        var s=b(v3);
+        var s1= s.toString().charAt(0);
+        var s2= s.toString().charAt(1);
+        var m1= m.toString().charAt(0);
+        var m2= m.toString().charAt(1);
+        var lala="cam.gif";
+        //12时制调整
+        if(h>12){
+            h=h-12;
+            lala="cpm.gif";
+        }
+        h=b(h);
+        var h1= h.toString().charAt(0);
+        var h2= h.toString().charAt(1);
+        var ss1=a(s1);
+        var ss2=a(s2);
+        var mm1=a(m1);
+        var mm2=a(m2);
+        var hh1=a(h1);
+        var hh2=a(h2);
+
+        document.getElementById("div01").style.backgroundImage="url(c/"+hh1+")";
+        document.getElementById("div02").style.backgroundImage="url(c/"+hh2+")";
+        document.getElementById("div03").style.backgroundImage="url(c/colon.gif)";
+        document.getElementById("div04").style.backgroundImage="url(c/"+mm1+")";
+        document.getElementById("div05").style.backgroundImage="url(c/"+mm2+")";
+        document.getElementById("div06").style.backgroundImage="url(c/colon.gif)";
+        document.getElementById("div07").style.backgroundImage="url(c/"+ss1+")";
+        document.getElementById("div08").style.backgroundImage="url(c/"+ss2+")";
+        document.getElementById("div09").style.backgroundImage="url(c/"+lala+")";
+        setTimeout("fun1()",1000);
+    }
+    window.onload=fun1;
+
+</script>
+<body>
+
+<div id="div01"></div>
+<div id="div02"></div>
+<div id="div03" style="width: 9px;"></div>
+<div id="div04"></div>
+<div id="div05"></div>
+<div id="div06" style="width: 9px;"></div>
+<div id="div07"></div>
+<div id="div08"></div>
+<div id="div09"></div>
+</body>
+</html>

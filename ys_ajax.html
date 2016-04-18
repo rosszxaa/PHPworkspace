@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <!--
+    ajax:asynchronous javascript and xml异步通信接口
+    工作原理:使用XMLHttpRequest对象获取服务器端的数据,再通过DOM将数据插入到页面中
+             实现"异步交互" "局部刷新"
+    核心技术:XMLHttpRequest对象
+             该对象提供了客户端与服务器端进行通信的协议
+             另:最早微软在ie中嵌入一个ActiveXObject组件,后来其他浏览器复制该技术,
+             再命名为XMLHttpRequest
+    get;简单方便,适合传递一些参数信息;缺点:传递信息量有限
+    post:传递信息量没有限制,不受字符编码限制,安全性好
+    -->
+</head>
+<body>
+用户名:<input type="text" id="uname"></br></br>
+密码:<input type="password" id="pwd"></br></br>
+<button id="btn01">Login</button></br>
+
+</body>
+</html>
+<script>
+    window.onload= function(){
+        document.getElementById("btn01").onclick= function(){
+            //Ajax
+            //创建XMLHttpRequest对象(考虑浏览器兼容性)
+            var XHRequest;
+            if(window.XMLHttpRequest){//目前高级浏览器
+                 XHRequest= new XMLHttpRequest();
+            }else if(window.ActiveXObject){//ie7以上及火狐低版本
+                try{
+                    XHRequest= new ActiveXObject("Msxml2.XMLHTTP");
+                }catch(e){
+                    XHRequest= new ActiveXObject("Microsoft.XMLHTTP");//ie5 ie6
+                }
+            }
+            //获取页面提交的数据
+            var v_name= document.getElementById("uname");
+            var v_pwd=  document.getElementById("pwd");
+            //get方式
+            var url= "ys_ajax.php?uname="+v_name+"&pwd="+v_pwd;
+            //XHRequest.open(请求方式,请求地址,是否异步);
+            //true--异步,发出请求后不需要等待服务器的响应,用户可继续进行其他操作
+            XHRequest.open("GET",url,true);
+            //回调写在发送前
+            XHRequest.onreadystatechange= function(){
+                alert(XHRequest.readyState);
+               /*0 Uninitialized
+                 初始化状态。XMLHttpRequest 对象已创建或已被 abort() 方法重置。
+                 1 Open
+                 open() 方法已调用，但是 send() 方法未调用。请求还没有被发送。
+                 2 Send
+                 Send() 方法已调用，HTTP 请求已发送到 Web 服务器。未接收到响应。
+                 3 Receiving
+                 所有响应头部都已经接收到。响应体开始接收但未完成。
+                 4 Loaded
+                 HTTP 响应已经完全接收。
+                * */
+                if(XHRequest.readyState==4 && XHRequest.status==200){
+                    /**响应数据类型:
+                     * text/html/json  全部用responseText接收
+                     * xml 类型用responseXML接收
+                     * responseStream 以文件流的形式返回响应信息
+                     */
+                    var v1=XHRequest.responseText;
+                    alert(v1);
+                }
+            }
+            XHRequest.send();//将Ajax内容发送出去
+
+            //post方式
+           var url="ys_ajax.php";
+            var arg_str= "uname="+v_name+"&pwd="+v_pwd;//提交参数
+            XHRequest.open("POST",url,true);
+            //设置传送内容的请求头
+            XHRequest.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+            XHRequest.onreadystatechange= function(){
+                if(XHRequest.readyState==4 && XHRequest.status==200){
+                    var v1=XHRequest.responseText;
+                    alert(v1);
+                }
+            }
+            XHRequest.send(arg_str);//post方式,send方法必须有参数,如没有输入null置空
+        };
+    }
+</script>

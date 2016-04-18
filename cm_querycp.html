@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>cm查找商品</title>
+    <script src="js/jquery-1.8.2.js"></script>
+    <script>
+        $(function(){
+            var bigImg='';
+            var bigImg1='';
+            $(".popup").click(function(){
+                $(".show").hide();
+                $(this).hide();
+            });
+            $(".center  img").live("click",function(){
+                $(".popup").show();
+                $(".show").show();
+                bigImg=$(this).attr("src");//获取点击图片的地址
+                //alert(bigImg);
+                $(".show img.big").attr("src",bigImg); //更换大图的图片地址
+//                _index=$(this).index();//保存图片的序列号
+                //alert(_index);
+            });
+//            $(".center div img").live(click(function(){
+//                $(".popup").show();
+//                $(".show").show();
+//                bigImg1=$(this).attr("src");//获取点击图片的地址
+//                //alert(bigImg);
+//                $(".show img.big").attr("src",bigImg1); //更换大图的图片地址
+////                _index=$(this).index();//保存图片的序列号
+//                //alert(_index);
+//            }));
+            $("#cpname").keyup(function(){
+                //ajax--post方式
+                var cpname=$("#cpname").val();
+
+//                $("#cp").text(cpname);
+                $.post("cm_querycpphp.php",{cp_name:cpname},function(data){
+//                        alert(data1[i].pwd);
+                    $(".center").text("");
+                    var data1=eval(data);//将数据解析为json或数组
+                    for(var i=0;i<data1.length;i++){
+
+//
+                        var v1=        "<div>"+
+                                       "<img src="+data1[i].cp_img+">"+
+                                       "<p class='jz'>"+
+                                       "<a style='color:#297338' href=cm_cpdetail.html?cp_id="+data1[i].cp_id+">"+
+                                       data1[i].cp_name+" "+data1[i].cp_model+"</a>"+" "+
+
+                                       "<a href = cm_cpdetail.html?uid="+data1[i].cp_id+">删除</a>"+
+                                       "</p>"+
+                                       "</div>";
+                        $(".center").append(v1);
+//                        "<td><a herf = deletephp.php?uid="+data[1].userid+">删除</a></td>";
+//                        $("#uid").text(data1[i].pwd);
+//                        $("table").append("<tr>"+"<td>"+data1[i].userid+"</td>"+"<td>"+data1[i].uname+"</td>"+"<td>"+data1[i].pwd+"</td>"+"</tr>");
+                    }
+
+                });
+            });
+
+
+        });
+
+    </script>
+    <link href="css/cmown.css" rel="stylesheet">
+</head>
+<style>
+    *{padding:0; margin:0; list-style:none;}
+
+    .center{ width:600px; height:450px; background:#999; margin:150px auto 0 auto;}
+    .center  span { float:left; width:150px; height:150px; }
+
+    .center  div { float:left; width:150px; height:150px; }
+    .center  div img { float:left; width:150px; height:133px; cursor:pointer;}
+    .center  span img { float:left; width:150px; height:133px; cursor:pointer;}
+    .jz{text-align:center ; background:white;}
+    .lab2{position:absolute; top:50px;left: 550px;}
+    .lab1{position:absolute; top:50px;left: 500px;}
+    .popup{ position:fixed; background:rgba(0,0,0,0.4); bottom:0; top:0;left:0;right:0; display:none;}
+    .show{ position:absolute; top:50px; left:50%; margin-left:-150px; margin-top:75px; display:none;}
+    .big{ width:300px; height:300px;}
+
+</style>
+<body>
+<!--<a href="image/dyjz.zip">下载</a>-->
+<audio src="image/dyjz.mp3" loop="loop" controls="controls" autoplay="autoplay"></audio>
+<div>
+    
+</div>
+<laber class="lab1">品牌</laber>
+<input type="text" id="cpname" class="lab2">
+<div id="cp" class="center">
+    <?php
+    header("Content-Type: text/html;charset=utf-8");
+    $link=mysql_connect("localhost","root","root") or die("数据库服务器连接失败".mysql_error());
+    //if($link){echo "数据库服务器连接成功<br>";}
+    $db=mysql_select_db("db38",$link) or die("数据库连接失败".mysql_error());
+    mysql_query("set names 'utf8'");
+    //if($db){echo "数据库服务器连接成功<br>";}
+
+    $sql="select * from cm_cp order by cp_id desc limit 9 ";
+    $result=mysql_query($sql,$link);
+
+    $arr_jh=array();
+    while($res=mysql_fetch_array($result)){
+    $a1=array("cp_id"=>$res['cp_id'],"cp_name"=>$res['cp_name'],"cp_model"=>$res['cp_model'],"cp_img"=>$res['cp_img']);
+    array_push($arr_jh,$a1);
+    }
+    for($v1=0;$v1<count($arr_jh);$v1++){
+
+    ?>
+    <span>
+        <img src="<?php echo $arr_jh[$v1]['cp_img']; ?> ">
+        <p class="jz">
+            <a style="color:#297338" href=cm_cpdetail.html?cp_id=<?php echo $arr_jh[$v1]['cp_id'];?>>
+            <?php
+              echo $arr_jh[$v1]["cp_name"];
+              echo " ";
+              echo $arr_jh[$v1]["cp_model"]; ?></a>
+
+            <a href = deletephp.php?uid=1>删除</a>
+        </p>
+
+    </span>
+    <?php
+    }
+    ?>
+
+</div>
+
+<div class="popup"></div>
+<div class="show">
+    <img class="big" src="images/101.jpg"/>
+</div>
+</body>
+</html>

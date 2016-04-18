@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>本地数据库</title>
+</head>
+<style>
+    .tab{
+        border:1px solid #afa296;
+        font-family: "楷体";
+        border-collapse: collapse;/*边框重叠*/
+    }
+    .tab caption{
+        padding-top: 3px;
+        padding-bottom: 2px;
+        font-weight: bolder;
+        font-size: 15px;
+        font-family: "幼圆";
+        border: 2px solid #429fff;
+    }
+    .tab th{
+        font-weight: bold;
+        text-align: center;
+    }
+    .tab td{
+        border: 1px solid silver;
+        text-align: right;
+        padding: 4px;
+    }
+</style>
+<body>
+姓名：<input  type="text" id="inp01"><br>
+性别：<input type="radio" name="sex" value="男" checked/> 男
+      <input type="radio" name="sex" value="女" /> 女<br>
+
+留言：<textarea id="ly01" style="width: 200px;height: 150px"></textarea>
+<button id="but01">留言</button>
+<table id="tab01" class="tab">
+
+</table>
+</body>
+</html>
+        <script>
+            window.onload=function(){
+                var last_id=0;
+                var inp01=document.getElementById("inp01");//姓名
+                var sex= document.getElementsByName("sex");//性别 单选框
+                var ly01=document.getElementById("ly01");//留言
+                var tab01=document.getElementById("tab01");//表格
+                var but01=document.getElementById("but01");
+                var v=0;
+                but01.addEventListener("click",fun1,false);
+                var mydb= openDatabase("testdb38","1.0","测试html5本地数据库",10241024);
+                funqueryall();
+                //插入数据
+                function fun1(){
+                    var id=funqueryall();
+//                alert(id);
+                    var xingbie;
+                    var time= new Date();
+                    for(var i = 0;i < sex.length;i++){
+                        if(sex[i].checked == true){
+                            xingbie= sex[i].value;
+                        }
+                    }
+                    mydb.transaction(function(ts){
+                        ts.executeSql("create table if not exists lyb(id integer unique, name varchar(10),sex varchar(4),time varchar(20),ly varchar(566))");
+                        ts.executeSql("insert into lyb(id,name,sex,time,ly) values(?,?,?,?,?)",[id+1,inp01.value,xingbie,time.toLocaleString(),ly01.value],function(){
+                                    alert("留言成功");},
+                                function(ts,error){
+                                    alert("添加失败，原因:"+error.message);
+                                }
+                        );
+                    });
+                    funqueryall();
+                }
+                //查询全部
+                function funqueryall(){
+                    v++;
+//                    alert("query:"+v);
+                    mydb.transaction(function(ts){
+                        ts.executeSql("select * from lyb",[],function(ts,resultset){
+                            tab01.innerHTML="<tr><td>编号</td><td>姓名</td><td>性别</td><td>留言内容</td><td>时间</td><td>操作</td></tr>";
+                            for(var i=0;i<resultset.rows.length;i++){
+                                var tr01=tab01.insertRow(1);//<tr></tr>
+                                var td01=tr01.insertCell(0);//<td></td><td></td>
+                                td01.innerHTML= resultset.rows.item(i).id;
+                                last_id= resultset.rows.item(i).id;
+                                var td02=tr01.insertCell(1);
+                                td02.innerHTML= resultset.rows.item(i).name;
+                                var td03=tr01.insertCell(2);
+                                td03.innerHTML=resultset.rows.item(i).sex;
+                                var td04=tr01.insertCell(3);
+                                td04.innerHTML=resultset.rows.item(i).time;
+                                var td05=tr01.insertCell(4);
+                                td05.innerHTML=resultset.rows.item(i).ly;
+                                var td06=tr01.insertCell(5);
+                                td06.innerHTML="<a href='' onclick='fundel("+resultset.rows.item(i).id+ ")'> 删除"+"</a>"+" "+
+                                "<a href='' onclick='funchange("+resultset.rows.item(i).id+ ")'> 修改"+"</a>";
+                            }
+                        });
+                    })
+                    return last_id;
+                }
+                //修改函数
+                function funchange(change_id){
+//                alert(123);
+                    mydb.transaction(function(ts){
+                        ts.executeSql("select * from lyb where id=?",[change_id],function(ts,resultset){
+                            for(var i=0 in tab01.rows){//查找到修改行
+                                var row= tab01.rows[i];
+                                if(change_id==row.cells[0].innerText){
+                                    alert(i);
+                                    tab01.deleteRow(0);
+//                                    row.cells[1].innerHTML= "<input type='text' value='"+resultset.rows.item(i).name+"'>";
+//                                    rows[2].innerText= "ll";
+//                                    row.cells[3].innerHTML= "22";
+//                                    row.cells[4].innerHTML= null;
+//                                    row.cells[5].innerHTML= null;
+//                                    alert(row.cells[5].innerHTML);
+                                }
+                            }
+
+                        });
+                    })
+                }
+//删除函数
+
+            }
+            function fundel(del_id){
+                var del=confirm("确定删除吗?");
+                if(del){
+                    mydb.transaction(function(ts){
+                        ts.executeSql("delete from lyb where id=?",[del_id],
+                                function(){
+//                                alert("删除成功");
+                                    funqueryall();
+                                },
+                                function (ts, error) {
+                                    alert("删除失败,原因:"+error.message);
+                                });
+                    })
+
+                }else{
+                    alert("未进行删除操作");
+
+                }
+
+            }
+        </script>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        function fun1(event){
+            var e=event || window.event;
+            var src= e.srcElement|| e.target;
+            alert(this.clientWidth);
+        }
+    </script>
+</head>
+<body>
+<div id="div01" style="width: 100px;height:100px;" onmouseover="fun1()">
+    <!--<img src="c/c0.gif">-->
+</div>
+</body>
+</html>

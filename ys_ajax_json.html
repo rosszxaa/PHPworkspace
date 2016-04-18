@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<button id="queryall">查询全部</button></br>
+<input type="text" id="inp01">
+</body>
+</html>
+<script>
+    document.getElementById("queryall").onclick=function(){
+            var inp01= document.getElementById("inp01").value;
+        alert(inp01);
+        var XHRequest;
+        if(window.XMLHttpRequest){//目前高级浏览器
+            XHRequest= new XMLHttpRequest();
+        }else if(window.ActiveXObject){//ie7以上及火狐低版本
+            try{
+                XHRequest= new ActiveXObject("Msxml2.XMLHTTP");
+            }catch(e){
+                XHRequest= new ActiveXObject("Microsoft.XMLHTTP");//ie5 ie6
+            }
+        }
+        var url= "cm_querycpphp.php?cp_name="+inp01;
+        XHRequest.open("GET",url,true);
+        //回调写在发送前
+        XHRequest.onreadystatechange= function(){
+            if(XHRequest.readyState==4 && XHRequest.status==200){
+                var v1=XHRequest.responseText;
+                var d= eval(v1);//解析json数据
+                alert(d[0].cp_model);
+            }
+        }
+        XHRequest.send();//将Ajax内容发送出去
+    }
+</script>

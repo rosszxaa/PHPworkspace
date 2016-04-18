@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/base.css">
+    <script src="js/jquery-1.8.2.js"></script>
+    <script>
+        $(function(){
+
+            var i;
+            var j;
+            var z;
+            j=$(document).width();
+            i=$(document).height();
+            $(".sfq li:odd").hide()
+                    .css({"background-color":""})
+//                    .css({width:j-280});
+            $(".sfq li").css({height:"400px"});
+            $(".sfq li:even").click(function(){
+                z=$(this).index();
+                $(".sfq li:odd").hide();
+                $(".sfq li:eq("+(z+1)+")").show(2000);
+                $(".sfq li:eq("+(z+1)+")").animate({width:"900px"},2000);
+
+            });
+            $("#b2").hover(function(){
+                $(".yunfu").css({
+                    display:"block"
+                })
+            }, function(){
+                        $(".yunfu").css({
+                            display:"none"
+                        })
+                    }
+            );
+            $("#b3").hover(function(){
+                        $(".haizi").css({
+                            display:"block"
+                        })
+                    }, function(){
+                        $(".haizi").css({
+                            display:"none"
+                        })
+                    }
+            );
+            $("#b4").hover(function(){
+                        $(".nvshi").css({
+                            display:"block"
+                        })
+                    }, function(){
+                        $(".nvshi").css({
+                            display:"none"
+                        })
+                    }
+            );
+
+        });
+
+    </script>
+    <script>
+        $(function(){
+        function fun1(){
+            var v1= $(".hzixun_main ul")
+            var li_h= $(".hzixun_main").find(" ul li:first").height();
+            v1.animate({
+                "marginTop":-li_h+"px"
+            },500,function(){
+                v1.css({"marginTop":0})
+                        .find("li:first")
+                        .appendTo(v1);
+            });
+        }
+        var timer=setInterval(fun1,500);
+
+        $(".hzixun_main").hover(function(){
+//                清除定时器
+            clearInterval(timer);
+        },function(){
+            timer=setInterval(fun1,500);
+        })
+        });
+    </script>
+    <style>
+        .form .text{
+            height:24px;
+        }
+        .hzhuti img{
+            width: 280px;
+            height: 400px;
+        }
+    </style>
+    <script src="js/jquery-1.8.2.js"></script>
+</head>
+<body>
+<div class="title_top">
+    <div class="title_topt">
+        <div class="title_topl">
+            送至：北京
+            <!--<i class="ci-right"><s>◇</s></i>-->
+            <div class="title_tab1">
+                <a href="#">北京</a>
+                <a href="#">上海</a>
+                <a href="#">天津</a>
+                <a href="#">重庆</a>
+                <a href="#">河北</a>
+                <a href="#">山西</a>
+                <a href="#">河南</a>
+                <a href="#">辽宁</a>
+                <a href="#">吉林</a>
+                <a href="#">黑龙江</a>
+                <a href="#">内蒙古</a>
+                <a href="#">江苏</a>
+                <a href="#">山东</a>
+                <a href="#">安徽</a>
+                <a href="#">浙江</a>
+                <a href="#">福建</a>
+                <a href="#">湖北</a>
+                <a href="#">湖南</a>
+                <a href="#">广东</a>
+                <a href="#">广西</a>
+                <a href="#">江西</a>
+                <a href="#">四川</a>
+                <a href="#">河南</a>
+                <a href="#">贵州</a>
+                <a href="#">云南</a>
+                <a href="#">西藏</a>
+                <a href="#">山西</a>
+                <a href="#">甘肃</a>
+                <a href="#">青海</a>
+                <a href="#">宁夏</a>
+                <a href="#">新疆</a>
+                <a href="#">台湾</a>
+                <a href="#">香港</a>
+                <a href="#">澳门</a>
+                <a href="#">钓鱼岛</a>
+                <a href="#">海外</a>
+            </div>
+        </div>
+        <div class="title_topr">
+            <ul>
+                <li><a href="#">你好，请登录</a>
+                    <a href="#">免费注册</a>
+                </li>
+                <li class="spacer"></li>
+                <li><a href="#">我的订单</a></li>
+                <li class="spacer"></li>
+                <li><a href="#">我的京东</a></li>
+                <li class="spacer"></li>
+                <li><a href="#">京东会员</a></li>
+                <li class="spacer"></li>
+                <li><a href="#">企业采购</a></li>
+                <li class="spacer"></li>
+                <li><a href="#">手机京东</a></li>
+                <li class="spacer"></li>
+                <li><a href="#">关注京东</a></li>
+                <li class="spacer"></li>
+                <li><a href="#">客户服务</a></li>
+                <li class="spacer"></li>
+                <li><a href="#">网站导航</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!--<div class="title_logo1">-->
+<!--<div class="title_logo">-->
+<!--<img src="images/titlt_ad.jpg">-->
+<!--</div>-->
+<!--</div>-->
+<div class="title_adw">
+    <div class="title_ad">
+        <img src="images/titlt_ad.jpg">
+    </div>
+</div>
+<div class="title">
+    <div class="logo_2016">
+        <a href="index.html" class="logo">京东</a>
+    </div>
+    <div class="search">
+        <div class="form">
+            <input type="text" class="text"><button>搜索</button>
+        </div>
+    </div>
+    <div class="shopping">
+        <img src="images/shopping.jpg">&nbsp;&nbsp;
+        <a href="购物车.html"><span>我的购物车&nbsp;&nbsp;&gt;</span></a>
+    </div>
+</div>
+<div class="hotword">
+    <a href="#" target="_blank" class="style_red">一元秒杀</a>
+    <a href="#" target="_blank">低至1折</a>
+    <a href="#" target="_blank">同城鲜花</a>
+    <a href="#" target="_blank">猴年吊坠</a>
+    <a href="#" target="_blank">买二免一</a>
+    <a href="#" target="_blank">露露</a>
+    <a href="#" target="_blank">皮裤女加绒</a>
+    <a href="#" target="_blank">黄金酒</a>
+    <a href="#" target="_blank">剑南春</a>
+    <span class="clr"></span>
+</div>
+<div class="hzhuti">
+    <div class="hzhutitilte">主题纷呈</div>
+    <ul class="sfq">
+        <li>商<br>品<br>展<br>示<br>区<br>1</li>
+        <li>
+          <a href="#"><img src="images/hzhuti1.jpg"> </a>
+            <a href="#"><img src="images/hzhuti2.jpg"> </a>
+            <a href="#"><img src="images/hzhuti3.jpg"> </a>
+        </li>
+
+        <li>商<br>品<br>展<br>示<br>区<br>2</li>
+        <li>
+            <a href="#"><img src="images/hzhuti2.jpg"> </a>
+            <a href="#"><img src="images/hzhuti4.jpg"> </a>
+            <a href="#"><img src="images/hzhuti3.jpg"> </a>
+        </li>
+
+        <li>商<br>品<br>展<br>示<br>区<br>3</li>
+        <li>
+            <a href="#"><img src="images/hzhuti3.jpg"> </a>
+            <a href="#"><img src="images/hzhuti2.jpg"> </a>
+            <a href="#"><img src="images/hzhuti1.jpg"> </a>
+        </li>
+
+        <li>商<br>品<br>展<br>示<br>区<br>4</li>
+        <li>
+            <a href="#"><img src="images/hzhuti4.jpg"> </a>
+            <a href="#"><img src="images/hzhuti2.jpg"> </a>
+            <a href="#"><img src="images/hzhuti3.jpg"> </a>
+        </li>
+
+        <li>商<br>品<br>展<br>示<br>区<br>5</li>
+        <li>
+            <a href="#"><img src="images/hzhuti1.jpg"> </a>
+            <a href="#"><img src="images/hzhuti2.jpg"> </a>
+            <a href="#"><img src="images/hzhuti4.jpg"> </a>
+        </li>
+
+    </ul>
+</div>
+<div class="hmianfei">
+    <a href="#"><img src="images/hmianfei1.jpg"></a>
+    <a href="#"><img src="images/hmianfei2.jpg"></a>
+    <a href="#"><img src="images/hmainfei3.jpg"></a>
+</div>
+<div class="hzixun">
+    <div class="hzixun_title">
+        咨询论坛
+    </div>
+    <div class="hzixun_main">
+        <div class="hzixun_mainl">
+            <ul>
+                <li><a href="#"> 注重用水健康 盘点高精度过滤的净水器</a></li>
+                <li>春节为父母健康保鲜 性价比超高冰箱奉</li>
+                <li>剁手有理 看水瓶座双鱼座必买家电推荐</li>
+                <li>选它超值 五款冬季超高性价比热水器</li>
+                <li></li>
+                <li>注重用水健康 盘点高精度过滤的净水器</li>
+                <li>注重用水健康 盘点高精度过滤的净水器</li>
+                <li>注重用水健康 盘点高精度过滤的净水器</li>
+                <li>注重用水健康 盘点高精度过滤的净水器</li>
+                <li>注重用水健康 盘点高精度过滤的净水器</li>
+                <li>注重用水健康 盘点高精度过滤的净水器</li>
+                <li>注重用水健康 盘点高精度过滤的净水器</li>
+                <li>注重用水健康 盘点高精度过滤的净水器</li>
+                <li>注重用水健康 盘点高精度过滤的净水器</li>
+                <li>注重用水健康 盘点高精度过滤的净水器</li>
+            </ul>
+            <img class="wenzilunbo" src="images/wenziluobo1.jpg">
+        </div>
+        <div class="hzixun_mainr">
+            <ul>
+                <li>注重用水健康 盘点高精度过滤的净水器</li>
+                <li>注重用水健康 盘点高精度过滤的净水器</li>
+                <li>注重用水健康 盘点高精度过滤的净水器</li>
+                <li>注重用水健康 盘点高精度过滤的净水器</li>
+                <li>注重用水健康 盘点高精度过滤的净水器</li>
+                <li>注重用水健康 盘点高精度过滤的净水器</li>
+                <li>注重用水健康 盘点高精度过滤的净水器</li>
+                <li>注重用水健康 盘点高精度过滤的净水器</li>
+                <li>注重用水健康 盘点高精度过滤的净水器</li>
+                <li>注重用水健康 盘点高精度过滤的净水器</li>
+                <li>注重用水健康 盘点高精度过滤的净水器</li>
+                <li>注重用水健康 盘点高精度过滤的净水器</li>
+                <li>注重用水健康 盘点高精度过滤的净水器</li>
+                <li>注重用水健康 盘点高精度过滤的净水器</li>
+                <li>注重用水健康 盘点高精度过滤的净水器</li>
+            </ul>
+            <img class="wenzilunbo1" src="images/wenziluobo2.jpg">
+        </div>
+    </div>
+</div>
+<div class="hqhb">
+    <a href="#"><img src="images/hqhb.jpg"></a>
+</div>
+<div class="hpp">
+    <div class="hpptitle">
+        品质生活
+    </div>
+    <div class="hppmain">
+        <div class="hppmainleft">
+            <a href="#"><img src="images/hpp1.jpg"></a>
+        </div>
+        <div class="hppmainright">
+            <a href="#"><img class="hpp2" src="images/hpp2.jpg"></a>
+            <a href="#"><img class="hpp3" src="images/hpp3.jpg"></a>
+            <a href="#"><img class="hpp4" src="images/hpp4.jpg"></a>
+            <a href="#"><img class="hpp5" src="images/hpp5.jpg"></a>
+            <a href="#"><img class="hpp6" src="images/hpp6.jpg"></a>
+            <a href="#"><img class="hpp7" src="images/hpp7.jpg"></a>
+            <div class="hppmainmain">
+                <div class="hppmainmaincon">
+                <img src="images/hppmain1.jpg">
+                <img src="images/hppmain2.jpg">
+                    <img src="images/hppmain3.jpg">
+                    <img src="images/hppmain4.jpg">
+                    <img src="images/hppmain5.jpg">
+                    <img src="images/hppmain6.jpg">
+                    <img src="images/hppmain7.jpg">
+                    <img src="images/hppmain8.jpg">
+                    <img src="images/hppmain9.jpg">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="hppmain111">
+<div class="hppmain1">
+    <div class="hppmainleft1">
+        <a href="#"><img src="images/hppp1.jpg"></a>
+    </div>
+    <div class="hppmainright1">
+        <a href="#"><img class="hppp2" src="images/hppp2.jpg"></a>
+        <a href="#"><img class="hppp3" src="images/hppp3.jpg"></a>
+        <a href="#"><img class="hppp4" src="images/hppp4.jpg"></a>
+        <a href="#"><img class="hppp5" src="images/hppp5.jpg"></a>
+        <a href="#"><img class="hppp6" src="images/hppp6.jpg"></a>
+        <a href="#"><img class="hppp7" src="images/hppp7.jpg"></a>
+        <div class="hppmainmain1">
+            <div class="hppmainmaincon">
+                <img src="images/hppmain1.jpg">
+                <img src="images/hppmain2.jpg">
+                <img src="images/hppmain3.jpg">
+                <img src="images/hppmain4.jpg">
+                <img src="images/hppmain5.jpg">
+                <img src="images/hppmain6.jpg">
+                <img src="images/hppmain7.jpg">
+                <img src="images/hppmain8.jpg">
+                <img src="images/hppmain9.jpg">
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<div class="hrenqun">
+    <div class="hrenquntitle">
+        人群推荐
+    </div>
+    <div class="hrenqunmain">
+    <a href="#"><img src="images/hrqs1.png"></a>
+    <a href="#"><img src="images/hrqs2.jpg"></a>
+    <a href="#"><img src="images/hrqs3.jpg"></a>
+    <a href="#"><img src="images/hrqs4.jpg"></a>
+    <a href="#"><img src="images/hrqs5.jpg"></a>
+</div>
+
+    <div class="yunfu">
+        <a href="#"><img src="images/yunfu1.jpg"></a>
+        <a href="#"><img src="images/yunfu2.jpg"></a>
+        <a href="#"><img src="images/yunfu3.jpg"></a>
+        <a href="#"><img src="images/yunfu4.jpg"></a>
+        <a href="#"><img src="images/yunfu5.jpg"></a>
+    </div>
+
+    <div class="haizi">
+        <a href="#"><img src="images/haizi1.jpg"></a>
+        <a href="#"><img src="images/haizi2.jpg"></a>
+        <a href="#"><img src="images/haizi3.jpg"></a>
+        <a href="#"><img src="images/haizi4.jpg"></a>
+        <a href="#"><img src="images/haizi5.jpg"></a>
+    </div>
+
+    <div class="nvshi">
+        <a href="#"><img src="images/nvshi.jpg"></a>
+        <a href="#"><img src="images/nvshi2.jpg"></a>
+        <a href="#"><img src="images/nvshi3.jpg"></a>
+        <a href="#"><img src="images/nvshi4.jpg"></a>
+        <a href="#"><img src="images/nvshi5.jpg"></a>
+    </div>
+    <div id="b1">老人</div>
+    <div id="b2">白领</div>
+    <div id="b3">孕妇</div>
+    <div id="b4">儿童</div>
+</div>
+
+
+
+
+<div class="shopping_znjjw">
+    <div class="shopping_znjj">
+    <span class="item fore1">
+        <b>多</b>
+        品类齐全 轻松购物
+    </span>
+    <span class="item fore2">
+        <b>快</b>
+        多仓直发 极速配送
+    </span>
+    <span class="item fore3">
+        <b>正</b>
+        正品行货 精致服务
+    </span>
+    <span class="item fore4">
+        <b>省</b>
+        天天低价 畅选无忧
+    </span>
+    </div>
+</div>
+<div class="shopping_zn">
+    <ul>
+        <li><span>购物指南</span>
+            <div class="link_list">
+                <div class="news_link">
+                    <a  class="letter1" href="#">购物流程</a>
+                    <a  class="letter1" href="#">会员介绍</a>
+                    <a  class="letter1" href="#">生活旅行/团购</a>
+                    <a  class="letter1" href="#">常见问题</a>
+                    <a  class="letter1" href="#">大家电</a>
+                    <a  class="letter1" href="#">联系客服</a>
+                </div>
+            </div>
+        </li>
+        <li><span>配送方式</span>
+            <div class="link_list1">
+                <div class="news_link1">
+                    <a  class="letter2" href="#">上门自提</a>
+                    <a  class="letter2" href="#">211限时达</a>
+                    <a  class="letter2" href="#">配送服务查询</a>
+                    <a  class="letter2" href="#">配送费收取标准</a>
+                    <a  class="letter2" href="#">海外配送</a>
+                </div>
+            </div>
+        </li>
+        <li><span>支付方式</span>
+            <div class="link_list2">
+                <div class="news_link2">
+                    <a  class="letter3" href="#">货到付款</a>
+                    <a  class="letter3" href="#">在线支付</a>
+                    <a  class="letter3" href="#">分期付款</a>
+                    <a  class="letter3" href="#">邮局汇款</a>
+                    <a  class="letter3" href="#">公司转账</a>
+                </div>
+            </div>
+        </li>
+        <li><span>售后服务</span>
+            <div class="link_list3">
+                <div class="news_link3">
+                    <a  class="letter4" href="#">售后政策</a>
+                    <a  class="letter4" href="#">价格保护</a>
+                    <a  class="letter4" href="#">退款说明</a>
+                    <a  class="letter4" href="#">返修/退换货</a>
+                    <a  class="letter4" href="#">取消订单</a>
+                </div>
+            </div>
+        </li>
+        <li><span>特色服务</span>
+            <div class="link_list4">
+                <div class="news_link4">
+                    <a  class="letter5" href="#">夺宝岛</a>
+                    <a  class="letter5" href="#">DIY装机</a>
+                    <a  class="letter5" href="#">延保服务</a>
+                    <a  class="letter5" href="#">京东E卡</a>
+                    <a  class="letter5" href="#">京东通信</a>
+                    <a  class="letter5" href="#">京东JD+</a>
+                </div>
+            </div>
+        </li>
+        <li><span>京东自营覆盖区县</span>
+            <div class="link_list5">
+                京东已向全国2385个区县提供自营配送服务，支持货到付款、POS机刷卡和售后上门服务。
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="footer"></div>
+</body>
+</html>

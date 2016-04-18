@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<iframe src="jsproject/test17.html" id="iframe01" name="ifm_name1" style="width:300px;height: 200px;border:2px solid red">
+    您当前浏览器不支持!
+</iframe>
+<iframe src="jsproject/test17.html" id="iframe02" name="ifm_name2" style="width:300px;height: 200px;border:2px solid red">
+    您当前浏览器不支持!
+</iframe>
+<button id="but01">change</button>
+<button id="but02">发送</button>
+<button id="but03">兄弟通信</button>
+<div id="father_div" style="width: 150px;height: 20px;background-color:silver"></div>
+<input type="text" id="inp01" value="会哭会闹还会吐火">
+</body>
+</html>
+<script>
+   /*
+   * 内联框架
+   * Uncaught SecurityError: Blocked a frame with origin "http://localhost:81" from accessing a frame with origin "http://169.254.94.239:81". Protocols, domains, and ports must match.fun2 @ test36.html:29
+   * */
+   var but01= document.getElementById("but01");
+   var but02= document.getElementById("but02");
+   var but03= document.getElementById("but03");
+   var inp01= document.getElementById("inp01");
+   var iframe01= document.getElementById("iframe01");
+   but01.addEventListener("click",fun1,false);
+   but02.addEventListener("click",fun2,false);
+//   but03.addEventListener("click",fun3,false);
+    function fun1(){
+        iframe01.setAttribute("src","http://169.254.94.239:81/test01.php");
+    }
+    function fun2(){
+        ifm_name1.document.getElementById("div01").innerText= inp01.value;
+//        alert(lala.document.tagName);
+    }
+
+</script>

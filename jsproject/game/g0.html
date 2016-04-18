@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+        html, body {margin:0; padding:0; background-color:#000;}
+        #divList {width:800px; height:525px; margin: 0px auto; overflow:hidden; position: relative;background: url("images/game_bg.png")}
+        #divList1 {width:800px; height:75px; margin: 0px auto; overflow:hidden; position: relative;background: url("images/game_bg.png") 0 84px}
+        .divText {position: absolute;}
+        .divText span {display:block; font-weight: bold; font-family:Courier New; }
+        #aj1{
+            position: absolute;
+            top: 12px;
+            left: 319px;
+        }
+        #aj2{
+            position: absolute;
+            top: 12px;
+            left: 364px;
+        }
+        #aj3{
+            position: absolute;
+            top: 12px;
+            left: 409px;
+        }
+        #aj4{
+            position: absolute;
+            top: 12px;
+            left: 454px;
+        }
+    </style>
+    <script src="js/jquery-1.8.2.js"></script>
+</head>
+<body>
+<!--<h1 style="text-align:center; color:gray;">黑客帝国文字下落 (<span id="spanCount">0</span>)</h1>-->
+<div id="divList"></div>
+<div id="divList1">
+    <div id="aj1"><img src="images/anjian_g.png"></div>
+    <div id="aj2"><img src="images/anjian_b.png"></div>
+    <div id="aj3"><img src="images/anjian_b.png"></div>
+    <div id="aj4"><img src="images/anjian_g.png"></div>
+</div>
+<script>
+    function rand(min, max)
+    {
+        return min + Math.round(Math.random() * (max - min));
+    }
+    function add()
+    {
+        var x = rand( 1 , 4 ) * 46+270;
+        var html = '<div class="divText" style="left:' + x + 'px; bottom:500px;">';
+        var color = [];
+        for (var i=1; i<17; i++)
+        {
+            var f = i.toString(16);
+            color.push('0' + f + '0');
+        }
+        var fontSize = rand(9, 24);
+        var i =15
+        var c = rand(33, 127);
+        var c = String.fromCharCode(c);
+        html += '<span class="s' + i + '" style="color:#' + color[i-1] + '; font-size:' + fontSize + 'px; text-shadow:0px 0px 10px #' + color[i-1] + ';">' + c + '</span>';
+        html += '</div>';
+        $('#divList').append(html);
+        window.setTimeout(add,500)
+    }
+    add();
+    function run() {
+        $('.divText').each(function(){
+            var y = $(this).css('bottom');
+            y = parseInt(y);
+            y -= $(this).find('span').eq(0).height();
+            $(this).css('bottom', '' + y + 'px');
+            if (y + $(this).height() <= 0)
+            {
+                $(this).remove();
+                return;
+            }
+            $(this).find('span').each(function(){
+                var c = "<img src='images/dianluo.png'>"
+                $(this).html(c);
+            });
+        });
+
+        window.setTimeout(run, 100);
+    }
+    run();
+
+    var v1 = document.getElementById("aj1");
+    var v2 = document.getElementById("aj2");
+    var v3 = document.getElementById("aj3");
+    var v4 = document.getElementById("aj4");
+    window.document.onkeydown = function () {
+        var e;
+        e = event || window.event;
+        if (e.keyCode == 68) {
+            // v1.style.left=v1.offsetLeft+60+"px";
+            v1.style.top = v1.offsetTop + (-12) + "px";
+        }
+        if (e.keyCode == 70) {
+            v2.style.top = v1.offsetTop + (-12) + "px";
+        }
+        if (e.keyCode == 74) {
+//                    v1.innerHTML='<img src="images/3.png">'
+            v3.style.top = v1.offsetTop + (-12) + "px";
+        }
+        if (e.keyCode == 75) {
+            v4.style.top = v1.offsetTop + (-12) + "px";
+        }
+    }
+    window.document.onkeyup = function () {
+        var e;
+        e = event || window.event;
+        if (e.keyCode == 68) {
+            // v1.style.left=v1.offsetLeft+60+"px";
+            v1.style.top = v1.offsetTop + (12) + "px";
+        }
+        if (e.keyCode == 70) {
+            v2.style.top = v1.offsetTop + (0) + "px";
+        }
+        if (e.keyCode == 74) {
+//                    v1.innerHTML='<img src="images/3.png">'
+            v3.style.top = v1.offsetTop + (0) + "px";
+        }
+        if (e.keyCode == 75) {
+            v4.style.top = v1.offsetTop + (0) + "px";
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<style>
+
+</style>
+<script>
+    var flag= 0;
+    function fun1(){
+        var d1= new Date();
+        var k1= d1.toTimeString();
+        var k0= k1.substring(0,9);
+        var k2= d1.toLocaleTimeString();
+        if(flag==0){
+            document.getElementById("div01").innerText= k0;
+            flag=1;
+        }else{
+            document.getElementById("div01").innerText= k2;
+            flag=0;
+        }
+
+    }
+    window.onload=fun1;
+</script>
+<body>
+<div id="div01"></div>
+<input type="button" id="but01" onclick="fun1()" value="switch">
+
+</body>
+</html>

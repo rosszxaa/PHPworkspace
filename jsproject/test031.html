@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <!--
+    js操作符
+    1.算数操作符
+    + - * / % ++ --
+a++//先运算后加减
+++a//先加减后运算
+2.算数赋值操作符
++= -= *= /= %=
+算数赋值运算优先级低于加减
+  var a=13,b=5;
+//    a/b;//结果为2.6 除运算与java不同
+    var c=a++ + ++a + a++;
+    alert(a);
+     var a=13,b=5;
+//    a/b;//2.6 与java不同
+     a+=--a;
+    alert(a);//输出25 a=13+12;
+    var a=11,b=4;
+    var e=++a - 4*b-- + a%b;12-4*3 +12%3
+    var e1=a++ -4*b-- + a%b;11-4*4 +12%3
+    var f=b-- + a++ * (a-=3 + ++b - a--) - a%(b+=(a%3));4+11*(12+(3+4-12)*(-1))-17%(4+(17%3))
+    3.比较运算符
+    == ! = > < <= >= ===恒等于  !==恒不等于
+    ==与===区别
+    (1)同类型比较时,直接进行值得比较结果一样
+    (2)不同类型比较时,==会将其转化为同类型后再看值是否相等
+                      ===类型不同结果不同
+    两个等号只比较值,三个等号除了要比较值外还要比较类型
+    4.逻辑运算符
+    && || ! 与或非
+    &&:js依次获取每个操作数 将其转换为boolean变量
+       如果是false则中断后面的处理,否则继续处理下一个操作数
+       此逻辑判断也被称为短路机制
+    &:所有操作数全部判断//位运算
+    ||原理同&&一个是正确就不继续进行
+    var b=false||""||'12';//12
+    var a=200;
+    var b=100;
+    if(a==100&&b++){
+    alert("y");
+    }else{
+    alert("n");
+    }//b为100
+    两个&&第一个为false 则第二个不执行
+    var c= !true||null;
+    alert(c);//结果为null
+    5.逗号,表达式 即连起的多个表达式的组合
+    var a,b,c,d;
+    d=(a=1,b=a+2,c=b+3,0);//a=1,b=3,c=6,d=0 取最后一个表达式的值
+    //异或 加密
+    var v1="吃";
+    var key="桶";//密钥
+    var v2=v1.charCodeAt() ^ key.charCodeAt()
+    var jm_v=String.fromCharCode(v2);//unicode的十进制转成汉字
+    -->
+</head>
+<script>
+    var v1=-23;
+    Math.abs(v1);//绝对值23
+    var v2=23.57;
+    Math.floor(v2);//向下取整23
+    Math.round(v2);//四舍五入24
+
+    var v3= 23.4756;
+    v3.toFixed(2);//截取位数,并四舍五入
+
+
+    var v4=12345678;
+    //将数字转为科学计数法,指定保留的小数位数同时四舍五入
+    v4.toExponential(2);//1.23e+7
+    v4.toExponential(4);//1.2346e+7
+     //保留的是有效的数字位数
+    v4.toPrecision(2);//1.2e+7
+    v4.toPrecision(4);//1.235e+7
+
+    Math.pow(2,5);//x的y次幂
+    Math.sqrt(5);//开方
+    Math.sin(12);
+    Math.cos(12);
+    Math.min(21,34,7,45);//7
+    Math.max(21,34,7,45);//45
+    //随机数
+   
+</script>
+<body>
+<div id="div01"></div>
+</body>
+</html>

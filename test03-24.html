@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="div01">这是一个跨域测试用例</div>
+<div id="div02"></div>
+</body>
+</html>
+        <script>
+            var div01= document.getElementById("div01");
+            var div02= document.getElementById("div02");
+            window.addEventListener("message",chain,false);
+            function chain(e){
+                var data1=  e.data;
+                div01.innerHTML= data1;
+                var v1= data1.split("|");
+                var XHRequest;
+                if(window.XMLHttpRequest){//目前高级浏览器
+                    XHRequest= new XMLHttpRequest();
+                }else if(window.ActiveXObject){//ie7以上及火狐低版本
+                    try{
+                        XHRequest= new ActiveXObject("Msxml2.XMLHTTP");
+                    }catch(e){
+                        XHRequest= new ActiveXObject("Microsoft.XMLHTTP");//ie5 ie6
+                    }
+                }
+                var v_name= v1[0];
+                var v_pwd=  v1[1];
+//get方式
+                var url= "../ys_ajax_php.php?uname="+v_name+"&pwd="+v_pwd;
+//XHRequest.open(请求方式,请求地址,是否异步);
+                //true--异步,发出请求后不需要等待服务器的响应,用户可继续进行其他操作
+                XHRequest.open("GET",url,true);
+//回调写在发送前
+                XHRequest.onreadystatechange= function(){
+                    if(XHRequest.readyState==4 && XHRequest.status==200){
+                        var v2=XHRequest.responseText;
+                        div02.innerHTML= v2;
+                        e.source.postMessage("欢迎您:"+v2,e.origin);
+                    }
+                }
+                XHRequest.send();//将Ajax内容发送出去
+
+            }
+        </script>

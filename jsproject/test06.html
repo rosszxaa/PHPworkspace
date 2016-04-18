@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html >
+<head lang="en" >
+    <meta charset="UTF-8">
+    <title></title>
+    <!--
+    事件处理
+    1.事件的传播过程
+      事件传播过程
+      (1)冒泡事件流:事件由下至上传播 (传递过程像水泡一样不断上升到顶端) 由底往上
+         捕获事件流W3C(万维网联盟)与冒泡事件流相反事件由上到下传播(开发人员指定)
+         由捕获到目标对象再冒泡
+         注意:(1)默认情况:冒泡事件流
+              (2)js的事件传播过程
+                 ie8及7以下只支持冒泡事件
+                 ie9及以上和其他高级浏览器同时支持冒泡和捕获事件
+    2.事件模型
+       DOM(document object model)
+       DOM0--DOM1--DOM2
+       (1)DOM0级事件
+         [1]<div id="id01" onclick="alert('水娃');alert('火娃');">
+         [2] 实现结构与行为分离document.getElementById("id01").onclick=function(){
+            alert('水娃');alert('火娃');}
+    -->
+    <script>
+        function fun1(){
+               alert("二娃");
+        }
+        function fun2(){
+            alert("三娃");
+        }
+        function fun0(){
+            alert("大娃");
+        }
+        function fun3(){
+            alert("老爷爷");
+        }
+
+
+
+
+    </script>
+</head>
+<body >
+<div id="id01" >
+    test method!!!
+</div>
+</body>
+</html>

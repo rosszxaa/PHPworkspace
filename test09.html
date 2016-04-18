@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        table{
+            border:3px solid #F60;
+        }
+        caption{
+            font-size:36px;
+        }
+        th,td{
+            border:1px solid #F90;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <title>这是个模板</title>
+    <script src="jquery-1.9.1.js"></script>
+    <script>
+        $(function(){
+            $("#querybut").click(function(){
+                //ajax--post方式
+//                alert("123");
+                var start=$("#start").val();
+                var end=$("#end").val();
+//                alert(start  + "  " + end);
+                $.post("test09_php.php",{start:start,end:end},function(data){
+
+                    var data1=eval(data);//将数据解析为json或数组
+                    for(var i=0;i<data1.length;i++){
+//                        alert(data1[i].pwd);
+//                        var v1="<tr><td>data1[]</td><td></td><td></td><>"
+                        "<td><a herf = deletephp.php?uid="+data[1].userid+">删除</a></td>";
+                        $("#uid").text(data1[i].pwd);
+                        $("table").append("<tr>"+"<td>"+data1[i].userid+"</td>"+"<td>"+data1[i].uname+"</td>"+"<td>"+data1[i].pwd+"</td>"+"</tr>");
+                    }
+                });
+            });
+        });
+        //完善练习：输入用户id范围，查询数据，并显示到表格中
+    </script>
+</head>
+<body>
+<!--<label for="username">用户名</label>-->
+<!--<input type="text" id="username" /><br><br>-->
+<!--<label for="password">密&nbsp码</label>-->
+<!--<input type="password" id="password" /><br><br>-->
+<label for="username" style="font-variant:small-caps" >Did</label>
+<input type="text" id="start" />
+<label for="password">开始&nbsp结束</label>
+<input type="text" id="end" /><br><br>
+<!--<input type="submit"  value="登陆"/><br><br>-->
+<input type="button" id="querybut" value="查询"/><br><br>
+<!--<button id="querybut">查询全部</button>-->
+<table>
+<tr>
+    <th>用户ID</th>
+    <th>用户名</th>
+    <th>密&nbsp码</th>
+</tr>
+</table>
+<!--<div id="uid"></div>-->
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/jquery-1.8.2.js"></script>
+    <script>
+        $(function(){
+            queryallfun();
+//            $("#querybut").click(function(){
+//                queryallfun();
+//            });
+        });
+        //查询全部
+        function queryallfun(){
+            //ajax--post方式
+            $.post("test09_php.php",function(data){
+                $("#show").text("");
+                var data1=eval(data);//将数据解析为json或数组
+                for(var i=0;i<data1.length;i++){
+                    var v1="<tr>" +
+                            "<td>"+data1[i].userid+"</td>" +
+                            "<td>"+data1[i].uname+"</td>" +
+                            "<td>"+data1[i].pwd+"</td>" +
+                            "<td><button onclick=delfun("+data1[i].userid+")>删除</button></td>" +
+                            "</tr>";
+                    $("#show").append(v1);
+                }
+            });
+        }
+        //删除函数
+        function delfun(a1){
+            //提示消息框
+            var v_del=confirm("确定要删除吗？");
+            if(v_del){
+                $.ajax({
+                    type: "GET",
+                    url: "deletephp.php",
+                    data: "uid="+a1,
+                    success: function(data){
+//                    alert(data);
+                        queryallfun();
+                    }
+
+                });
+            }
+
+        }
+
+        //完善练习：输入用户id范围，查询数据，并显示到表格中
+    </script>
+</head>
+<body>
+<button id="querybut">查询全部</button>
+<table id="show" >
+
+
+</table>
+</body>
+</html>
+
+于瑞彬 10:01:40 (多人发送)
+<?php
+header("Content-Type: text/html;charset=utf-8");
+$link=mysql_connect("localhost","root","root") or die("数据库服务器连接失败".mysql_error());
+$db=mysql_select_db("db38",$link) or die("数据库连接失败".mysql_error());
+mysql_query("set names 'utf8'");
+
+ //$uid=$_REQUEST['uid'];
+ $uname=$_REQUEST['uname'];
+ $pwd= $_REQUEST['pwd'];
+ $sql="select * from t_user a where a.uname=$uname";
+ //$sql="delete from t_user where uid=$uid";
+
+ $result=mysql_query($sql,$link) or die("查询失败".mysql_error());;
+ $res=mysql_fetch_row($result)；
+ $a1=array("userid"=>$res['uid'],"uname"=>$res['uname'],"pwd"=>$res['pwd']);
+ if(!empty($result)){
+    echo json_encode($al);
+ };
+
+?>

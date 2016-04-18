@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <!--
+    navigator 浏览器内核
+     浏览器内核:也叫排版引擎,渲染引擎 主要功能是取得网页的内容,
+     包括html\xml\图像等 整理信息(加入Css),计算网页的显示方式,输出到显示器或打印机上
+       alert()navigator.appCodeName;//Mozilla浏览器代码名称
+//        navigator.appName//浏览器名称
+//        navigator.appVersion//浏览器版本号
+//        navigator.platform//操作系统平台
+        document.write(navigator.userAgent);//用户代理(包括appCodeName、appName属性)
+     1.Trident--只有ie使用 专有内核
+       Js引擎:低版本 JScript
+              高版本 chakra 查克拉
+       html引擎:Trident
+     2.Gecko/20100101 火狐内核/内核版本号 --ff内核  Firefox/43.0 火狐浏览器/版本号
+       Js引擎:低版本 SpiderMonkey
+              高版本 JagerMonkey
+       html引擎:Gecko
+     3.webkit --苹果的开源内核 chrome safari
+       基于该内核浏览器主要都应用在移动端
+       Js引擎: safari 低版本 javascript core
+                      高版本 Nitro
+              chrome V8引擎
+       html引擎:KHTML
+     4.presto --opera早期内核
+     5.Blink  --webkit的一个分支,早期版本的chrome内核
+   location
+     它既是window对象属性也是document对象属性,即
+     window.location与document.location引用的是同一个对象(等价的)
+     1.跳转页面
+     location.href="";
+     window.location.href="";
+     document.location.href="";
+     window.location="";
+     location.assign("");
+    -->
+    <script>
+//        alert(navigator.appCodeName);
+//        alert()navigator.appCodeName;//Mozilla浏览器代码名称
+//        navigator.appName//浏览器名称
+//        navigator.appVersion//浏览器版本号
+//        navigator.platform//操作系统平台
+           win --window操作系统
+           mac --苹果操作系统 macintonsh
+           linux --linux系统
+           xll --unix系统
+         document.write(navigator.userAgent);//用户代理(包括appCodeName、appName属性)
+         navigator.mimeTypes //获取浏览器的资源媒体(一般指插件),返回数组
+         navigator.mimeTypes[i].type//媒体类型
+         navigator.mimeTypes[i].description//媒体描述
+         navigator.mimeTypes[i].suffixes//扩展名
+         navigator.mimeTypes[i].enabledPlugin.name//对该类型配置好的plugin对象的引用
+//Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.82 Safari/537.36//chrome
+//Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.80 Safari/537.36 QQBrowser/9.3.6581.400//qq
+//Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; rv:11.0) like Gecko//ie
+        compatible:兼容模式(早期版本,主要兼容网景)
+        MSIE 8.0 : ie版本号 10以上都是9.0
+        Trident/4.0 : 浏览器内核/11内核版本号
+        var v1=navigator.userAgent;
+        if(v1.indexOf("Trident")>-1){
+            alert("当前为ie浏览器");
+        }
+if(v1.indexOf("Gecko")>-1&&v1.indexOf("Firefox")>-1){
+    alert("当前为火狐浏览器");
+}
+if(v1.indexOf("Chrome")>-1&&v1.indexOf("Version")==-1&&v1.indexOf("OPR")==1){
+    alert("当前为Chrome浏览器");
+}
+if(v1.indexOf("Chrome")>-1&&v1.indexOf("Version")>-1){
+    alert("当前为Safari浏览器");
+}
+if(v1.indexOf("QQBrowser")>-1){
+    alert("当前为QQ浏览器");
+}
+if(v1.indexOf("OPR")>-1){
+    alert("当前为Opera浏览器");
+}
+var v2=navigator.platform;//判断操作系统
+if(v2.indexOf("Win")>-1){
+    alert("当前为windows操作系统");
+}
+if(v2.indexOf("mac")>-1){
+    alert("当前为苹果操作系统");
+}
+if(v2.indexOf("linux")>-1){
+    alert("当前为linux操作系统");
+}
+if(v2.indexOf("xll")>-1){
+    alert("当前为Unix操作系统");
+}
+        var v3= navigator.mimeTypes;//判断用户是否安装了flash插件(--swf flash)如没有
+        var flag= false;              // 让用户选择是否安装flash插件,confirm
+        for(var i in v3){             // 如确定,则指向flash官方地址(location.href="")
+            if(v3[i].suffixes=="swf"){
+                flag= true;
+            }
+        }
+        if(!flag){
+            if(confirm("是否安装flash插件")){
+                location.href="test083.html";
+            }
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

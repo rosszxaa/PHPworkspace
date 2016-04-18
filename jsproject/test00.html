@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>HTML5时钟</title>
+    <!--<script type="text/javascript" src="js/mymethod.js"></script>-->
+    <script  src="game/js/jquery-1.11.1.js"></script>
+    <script  src="game/js/backbone.js"></script>
+    <script  src="game/js/underscore.js"></script>
+</head>
+
+<script>
+    $(function(){
+        //定义模型类
+        window.Test=Backbone.Model.extend({
+            default:{
+                content:''
+            }
+        });
+        //创建集合添加数据
+        window.TestList=Backbone.Collection.extend({
+            model:Test
+        });
+        var data=new TestList({
+            content:'hello backbone!'
+        })
+        //创建view对象
+        window.TestView=Backbone.View.extend({
+            el:$("body"),
+            initialize:function(){
+                $("#divtip")
+                        .html(data.models[0].get("content"));
+            }
+        });
+        //实例化view对象
+        window.App=new TestView;
+    });
+</script>
+</head>
+<body>
+<div id="divtip"></div>
+</body>
+</html>

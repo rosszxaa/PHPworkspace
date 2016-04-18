@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <!--
+    键盘事件 /*event事件对象*/
+    onkeydown键盘按下某个键时触发    字母键都会以大写方式显示
+    onkeyup释放某个建时触发          同onkeydown
+    onkeypress按下摸个键并释放时触发 字母键大小写显示
+    event.keycode:获取当前按下键盘键的编码即ascii码
+         //兼容性处理
+            var e;
+            e= event || window.event;
+            alert(e.keyCode);
+    -->
+</head>
+<script>
+    var v1=1;
+    var v2=0;
+    window.onload= function(){
+        window.document.onkeydown=function(event){
+//            alert(event.keyCode);
+
+            var e;
+            e= event;
+
+            var v_div = document.getElementById("id01");
+            //e.ctrlKey;
+//            e.altKey;alt除第一次外要按两次触发
+//            e.shiftKey;
+            if(e.keyCode==39){
+                v1++;
+                if(v1<=5){
+                    var v0= "0"+v1+".png";
+                    v_div.style.backgroundImage="url(p/"+v0+")";
+                    v_div.style.left=169*(v1-1)+"px";
+                    v_div.style.left
+                    if(v1==5){
+                        v1=0;
+                    }
+                }
+
+            }
+            if(e.keyCode==37){
+                v1--;
+                if(v1<=5){
+                    var v0= "0"+v1+".png";
+                    v_div.style.backgroundImage="url(p/"+v0+")";
+                    v_div.style.left=169*(v1-1)+"px";
+                    if(v1==5){
+                        v1=0;
+                    }
+                }
+
+            }
+            if(e.ctrlKey){
+                if(e.keyCode==39){
+                  v_div.style.width= 338+"px";
+                    v_div.style.height= 440+"px";
+                }
+            }else if(e.altKey){
+                if(e.keyCode==38){
+                    v_div.style.width= 85+"px";
+                    v_div.style.height= 110+"px";
+                }else if(e.keyCode==16){
+                    v_div.style.top=0+"px";
+                }else {
+                    v_div.style.top=50+"px";
+                }
+
+            }else{
+                v_div.style.width= 169+"px";
+                v_div.style.height= 220+"px";
+            }
+
+
+        }
+    }
+</script>
+<body >
+<!--<input type="text" id="inp01">-->
+
+<div id="id01" style="width:169px;height:220px;top:50px;position: absolute;background-color: olive;background-size:cover;background-image: url(p/01.png)
+  " >
+
+</div>
+<div id="id02"></div>
+<div id="id03"></div>
+</body>
+</html>

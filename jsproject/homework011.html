@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<style>
+    p{
+        text-align: center;
+        width: 300px;
+        height: 30px;
+    }
+</style>
+<script>
+//    作业：4
+//    *
+//    * *
+//    * * *
+//    * * * *
+//    * * * * *
+//
+//    * * * * *
+//    * * * *
+//    * * *
+//    * *
+//    *
+//
+
+
+for( v1=1;v1<=5;v1++){
+    for(v2=v1;v2>=1;v2--){
+        document.write("*"+" ");
+    }
+
+    document.write("<br>");
+}
+document.write("<br>");
+    for( v1=5;v1>=1;v1--){
+       for(v2=v1;v2>=1;v2--){
+        document.write("*"+" ");
+    }
+
+    document.write("<br>");
+    }
+document.write("<br>");
+function alll(){
+    for( v1=1;v1<=5;v1++){
+    var v0="";
+    for(v2=v1;v2>=1;v2--){
+        v0+="*"+" "+" ";
+    }
+    document.getElementById("p"+v1).innerHTML=v0;
+
+}}
+
+for(var i=1;i<=5;i++){
+    for(var j=1;j<=10/2-i;j++){
+        document.write("&emsp;");}
+    for(j=1;j<=i;j++){
+
+        document.write("*");
+        document.write("&emsp; ");
+
+    }
+    document.write("<br>");
+}
+
+
+//作业5
+for(v1=1;v1<=9;v1++){
+    for(v2=1;v2<=v1;v2++){
+        document.write(v1+"*"+v2+"="+v1*v2+" ");
+    }
+    document.write("<br>");
+}
+//作业6
+//练习：用户分别输入起始数据与终止数据
+//*      再输入运算方式，
+//*      如运算方式为“A”：则利用while求起始数据到终止数据的累加和
+//*      如运算方式为“B”：则利用do-while求起始数据到终止数据的平方和
+//*      如运算方式为“c”：则利用for求起始数据到终止数据之间所有奇数累加和
+//   var v1= Number(prompt("起始数据:","1"));
+//   var v2= Number(prompt("终止数据:","10")) ;
+//   var v3= prompt("运算方式:","C");
+//   var v4=Number(0);
+//    switch(v3){
+//        case "A":
+//            while(v2>=v1){
+//                v4+=v1;
+//                v1++;
+//            }
+//            document.write(v4);
+//            break;
+//        case "B":
+//            do{
+//                v4+=v1*v1;
+//                v1++;
+//            }while(v1<=v2);
+//            document.write(v4);
+//            break;
+//        case "C":
+//            for(v1;v1<=v2;v1++){
+//                if(v1%2==1){
+//                    v4+=v1;
+//                }
+//            }
+//            document.write(v4);
+//            break;
+//    }
+//作业7
+//算法：舍汗王的赏赐
+//*      第一个格子上放1粒米
+//*         2          2
+//*         3          4
+//*         4          8
+//*         5          16
+//*    国际象棋棋盘共64个格子
+//假设：25380粒米为1公斤，共要多少公斤米？
+var v2=0;
+    for(v1=0;v1<=63;v1++){
+        v2+= Math.pow(2,v1);
+    }
+ var v3=  parseFloat(v2/25380);
+    document.write(v3);
+</script>
+<body>
+<!--<button onclick="alll()">搞不明白了</button>-->
+<!--<p id="p1"></p>-->
+<!--<p id="p2"></p>-->
+<!--<p id="p3"></p>-->
+<!--<p id="p4"></p>-->
+<!--<p id="p5"></p>-->
+</body>
+</html>

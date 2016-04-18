@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #canvas01{
+            background-color: #ff3f17;
+        }
+    </style>
+</head>
+<body>
+<canvas id="canvas01" width="600" height="600"></canvas>
+</body>
+</html>
+<script>
+    var v_canvas= document.getElementById("canvas01");
+    var context=v_canvas.getContext("2d");
+    //绘制矩形
+    //设置填充样式
+//    context.fillStyle="black";
+//    context.fillRect(20,20,100,100);
+    //擦除指定矩形
+//    context.clearRect(30,30,50,50);
+    //设置填充边框的样式
+//    context.strokeStyle="yellow";
+    //设置线宽
+//    context.lineWidth=3;
+    //绘制边框
+//    context.strokeRect(20,20,100,100);
+
+    //圆
+    //创建开始路径
+    context.beginPath();
+//    context.arc(圆心横坐标,圆心纵坐标,半径,开始角度,结束角度,是否为顺时针(true-顺时针));
+    context.arc(40,40,40,0,Math.PI*2,false);
+//    关闭路径
+    context.closePath();
+//    context.strokeStyle= "yellow";
+//    context.lineWidth=3;
+//    context.stroke();//绘制边框
+//    context.fillStyle="green";
+//    context.fill();//填充
+    var i=40;
+    function fun1(){
+        var r=100;
+
+
+            context.beginPath();
+//    context.arc(圆心横坐标,圆心纵坐标,半径,开始角度,结束角度,是否为顺时针(true-顺时针));
+            var k=Math.PI*0.05*i;
+
+
+                context.arc(300+r*Math.sin(k),300-r*Math.cos(k),30,0,Math.PI*2,false);
+
+            //    关闭路径
+            context.closePath();
+            context.strokeStyle= "yellow";
+            context.lineWidth=3;
+            context.stroke();//绘制边框
+            context.fillStyle="rgba(0,255,0,"+0.2+")";
+            context.fill();//填充
+            i++;
+            setTimeout(fun1,300);
+
+
+
+    }
+    fun1();
+</script>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>移动</title>
+    <!--<link rel="stylesheet" href="css/css1.css">-->
+    <!--<link rel="stylesheet" href="css/base.css">-->
+</head>
+<style>
+    #game {
+        height: 660px;
+        position: absolute;
+        left: 50%;
+        margin-left: -670px;
+        /* border: 1px solid red;*/
+        overflow: hidden;
+    }
+    #bj{
+        -webkit-transform-style:preserve-3D;
+
+        animation:name1 40s infinite;
+        margin-top:0px;
+    }
+    @keyframes name1 {
+        100%{
+            margin-top: -5000px;
+        }
+    }
+
+    #div01{
+        width:130px;
+        height: 150px;
+        position: absolute;
+        left:300px;
+        top:50px;
+        background-color:transparent;
+        background-image: url(image/rwr.png);
+        /*background-size: 100% ;*/
+
+    }
+</style>
+<script src="js/eventutil.js"></script>
+<script src="js/szsz.js"></script>
+<!--<script src="js/base.js"></script>-->
+<script>
+    var v0 = "rwr.png";//非触发人物图片
+    var v1 = "xrwr.png";//触发推进器图片
+//    var bj= document.getElementById("bj");
+    window.onload= function() {
+        window.document.onkeydown = function (event) {
+            var e = event;
+            var v_div = document.getElementById("div01");
+            var v_left = v_div.offsetLeft;
+            var v_top = v_div.offsetTop;
+
+
+            if (e.keyCode == 39) {//->右
+
+                if (v_left < 620) {
+                    v_div.style.backgroundImage = "url(image/" + v0 + ")";
+                    v_div.style.left = 65 + v_left + "px";
+
+                }
+
+            }
+            else if (e.keyCode == 37) {//->左
+
+                if (v_left < 710 && v_left > 50) {
+
+                    v_div.style.backgroundImage = "url(image/" + v0 + ")";
+                    v_div.style.left = v_left - 65 + "px";
+                }
+
+            }
+            else if (e.keyCode == 40) {
+                if (v_top < 500) {
+                    v_div.style.top = v_top + 50 + "px";
+
+//                    bj.style.animation="name1 100s infinite";
+//                    setTimeout(huanyuan_bj,500);
+
+                }
+            }
+            else if (e.keyCode == 88) {
+                v_div.style.backgroundImage = "url(image/" + v1 + ")";
+                bj.style.animation= "name1 10s infinite";
+                setTimeout(function(){
+                    v_div.style.backgroundImage = "url(image/" + v0 + ")";
+//                           bj.style.animation= "name1 10s infinite";
+                },5000);
+            }
+        }
+
+    }
+
+    //        window.document.onkeyup = function (event) {
+    //            var e;
+    //            e = event;
+    //            var v_div = document.getElementById("div01");
+    //            if (e.keyCode == 88) {
+    //                if (flag) {
+    //                    v_div.style.backgroundImage = "url(image/" + v1 + ")";
+    //                    v_div.style.top = v_top - 50 + "px";
+    //
+    //                } else {
+    //                    v_div.style.backgroundImage = "url(image/" + v0 + ")";
+    //                    v_div.style.top = v_top - 50 + "px";
+    //                }
+    //            }}
+
+</script>
+<body>
+<div id="game"><img id= "bj" src="image/bj.png"></div>
+<div id="div01" ></div>
+<progress max="1" min="0" id="progress00" style="left:220px;top:500px;width:300px;position: absolute"></progress>
+</body>
+</html>

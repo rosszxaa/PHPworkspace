@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>购物车</title>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/base.css">
+    <style>
+        .original_main_tittle_1{
+
+            margin-left: 70px;
+            margin-top: 40px;
+            font: 25px "Open Sans", sans-serif;
+            color: #f86f3d;
+        }
+        .original_xhx{
+            border: 1px double lightgray;
+            width: 90%;
+            margin-left: 70px;
+            margin-top: 10px;
+
+        }
+        .original_xhx2{
+            border: 1px double #4eff0c;
+            margin-left: 70px;
+            width: 120px;
+        }
+        .original_ul ul{
+            /*position: absolute;*/
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            width: 700px;
+            margin-left: 70px;
+            margin-top: 10px;
+            height: 30px;
+            line-height: 30px;
+
+        }
+        .original_ul ul li{
+            float: left;
+            width:130px;
+            line-height: 30px;
+            height: 30px;
+            font: 18px "Open Sans", sans-serif;
+            color: #73736f;
+        }
+
+
+        .original_change_1{
+            position: relative;
+
+            width: 1000px;
+            height: 500px;
+            margin-top: 0px;
+            margin-left: 50px;
+            overflow: hidden;
+            /*border: 1px solid #000000;*/
+        }
+
+        .original_change_wap{
+            position: absolute;
+            width: 4000px;
+            height: 500px;
+            left: 0;
+            top: 0;
+        }
+
+
+        .wap_1{
+            width: 992px;
+            height: 500px;
+            float: left;
+
+        }
+        .wap_1 div{
+            width: 300px;
+            height: 200px;
+            /*border-right: 1px dashed #b6b6a5;*/
+            float: left;
+            margin-left: 25px;
+            margin-top: 20px;
+            border: 1px solid #f133bf;
+        }
+        .wap_1 div img{
+            float: left;
+            margin-left: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            width: 120px;
+            height: 120px;
+
+        }
+        .wap_1_p1,.wap_1_p2{
+            float: right;
+            margin-right: 30px;
+        }
+        .wap_1_p1{
+            font:16px "Helvetica Neue", "Helvetica";
+            color: #db3622;
+        }
+        .wap_1_p2{
+            font:15px "Helvetica Neue", "Helvetica";
+            color: #f1a43c;
+        }
+        .wap_1_p3{
+            float: right;
+            width: 240px;
+            margin-right: 30px;
+            font:15px "Helvetica Neue", "Helvetica";
+            color: #4e4e4e;
+            margin-left: 10px;
+            margin-top: 15px;
+        }
+
+        .houzi{
+            position: absolute;
+            width: 300px;
+            height: 400px;
+            top:620px;
+            left: 1100px;
+        }
+    </style>
+    <script type="text/javascript" src="js/script.js"></script>
+    <script src="js/jquery-1.8.2.js"></script>
+    <script>
+        $(function(){
+            $(".original_ul ul li").hover(function(){
+                var r1=$(this).index();
+                $(".original_ul ul li:eq("+r1+")").css({color:"#63ff2c" })
+                        .siblings().css({color:"gray"});
+                $(".original_change_wap").animate({left:-992*r1});
+                r1++;
+
+
+            });
+            $(".original_ul2 ul li").hover(function(){
+                var r1=$(this).index();
+                $(".original_ul2 ul li:eq("+r1+")").css({color:"#63ff2c" })
+                        .siblings().css({color:"gray"});
+                $(".original_change_wap2").animate({left:-992*r1});
+                r1++;
+
+
+            });
+
+        });
+
+    </script>
+</head>
+<body>
+<div class="title_top">
+    <div class="title_topt">
+        <div class="title_topl">
+            送至：北京
+            <!--<i class="ci-right"><s>◇</s></i>-->
+            <div class="title_tab1">
+                <a href="#">北京</a>
+                <a href="#">上海</a>
+                <a href="#">天津</a>
+                <a href="#">重庆</a>
+                <a href="#">河北</a>
+                <a href="#">山西</a>
+                <a href="#">河南</a>
+                <a href="#">辽宁</a>
+                <a href="#">吉林</a>
+                <a href="#">黑龙江</a>
+                <a href="#">内蒙古</a>
+                <a href="#">江苏</a>
+                <a href="#">山东</a>
+                <a href="#">安徽</a>
+                <a href="#">浙江</a>
+                <a href="#">福建</a>
+                <a href="#">湖北</a>
+                <a href="#">湖南</a>
+                <a href="#">广东</a>
+                <a href="#">广西</a>
+                <a href="#">江西</a>
+                <a href="#">四川</a>
+                <a href="#">河南</a>
+                <a href="#">贵州</a>
+                <a href="#">云南</a>
+                <a href="#">西藏</a>
+                <a href="#">山西</a>
+                <a href="#">甘肃</a>
+                <a href="#">青海</a>
+                <a href="#">宁夏</a>
+                <a href="#">新疆</a>
+                <a href="#">台湾</a>
+                <a href="#">香港</a>
+                <a href="#">澳门</a>
+                <a href="#">钓鱼岛</a>
+                <a href="#">海外</a>
+            </div>
+        </div>
+        <div class="title_topr">
+            <ul>
+                <li><a href="#">你好，请登录</a>
+                    <a href="#">免费注册</a>
+                </li>
+                <li class="spacer"></li>
+                <li><a href="#">我的订单</a></li>
+                <li class="spacer"></li>
+                <li><a href="#">我的京东</a></li>
+                <li class="spacer"></li>
+                <li><a href="#">京东会员</a></li>
+                <li class="spacer"></li>
+                <li><a href="#">企业采购</a></li>
+                <li class="spacer"></li>
+                <li><a href="#">手机京东</a></li>
+                <li class="spacer"></li>
+                <li><a href="#">关注京东</a></li>
+                <li class="spacer"></li>
+                <li><a href="#">客户服务</a></li>
+                <li class="spacer"></li>
+                <li><a href="#">网站导航</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+<table id="cartTable">
+    <thead>
+        <tr>
+            <th><label><input class="check-all check" type="checkbox"/>&nbsp;全选</label></th>
+            <th>商品</th>
+            <th>单价</th>
+            <th>数量</th>
+            <th>小计</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="checkbox"><input class="check-one check" type="checkbox"/></td>
+            <td class="goods"><img src="images/1.jpg" alt=""/><span>Casio/卡西欧 EX-TR350</span></td>
+            <td class="price">5999.88</td>
+            <td class="count">
+                <span class="reduce"></span>
+                <input class="count-input" type="text" value="1"/>
+                <span class="add">+</span></td>
+            <td class="subtotal">5999.88</td>
+            <td class="operation"><span class="delete">删除</span></td>
+        </tr>
+        <tr>
+            <td class="checkbox"><input class="check-one check" type="checkbox"/></td>
+            <td class="goods"><img src="images/2.jpg" alt=""/><span>Canon/佳能 PowerShot SX50 HS</span></td>
+            <td class="price">3888.50</td>
+            <td class="count"><span class="reduce"></span><input class="count-input" type="text" value="1"/><span class="add">+</span></td>
+            <td class="subtotal">3888.50</td>
+            <td class="operation"><span class="delete">删除</span></td>
+        </tr>
+        <tr>
+            <td class="checkbox"><input class="check-one check" type="checkbox"/></td>
+            <td class="goods"><img src="images/3.jpg" alt=""/><span>Sony/索尼 DSC-WX300</span></td>
+            <td class="price">1428.50</td>
+            <td class="count"><span class="reduce"></span><input class="count-input" type="text" value="1"/><span class="add">+</span></td>
+            <td class="subtotal">1428.50</td>
+            <td class="operation"><span class="delete">删除</span></td>
+        </tr>
+        <tr>
+            <td class="checkbox"><input class="check-one check" type="checkbox"/></td>
+            <td class="goods"><img src="images/4.jpg" alt=""/><span>Fujifilm/富士 instax mini 25</span></td>
+            <td class="price">640.60</td>
+            <td class="count"><span class="reduce"></span><input class="count-input" type="text" value="1"/><span class="add">+</span></td>
+            <td class="subtotal">640.60</td>
+            <td class="operation"><span class="delete">删除</span></td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="foot" id="foot">
+    <label class="fl select-all"><input type="checkbox" class="check-all check"/>&nbsp;全选</label>
+    <a class="fl delete" id="deleteAll" href="javascript:;">删除</a>
+    <div class="fr closing">结 算</div>
+    <div class="fr total">合计：￥<span id="priceTotal">0.00</span></div>
+    <div class="fr selected" id="selected">已选商品
+        <span id="selectedTotal">0</span>件
+        <span class="arrow up">︽</span>
+        <span class="arrow down">︾</span>
+    </div>
+    <div class="selected-view">
+        <div id="selectedViewList" class="clearfix">
+            <!--<div><img src="images/1.jpg"><span>取消选择</span></div>-->
+        </div>
+        <span class="arrow">◆<span>◆</span></span>
+    </div>
+</div>
+
+<div class="original_main_tittle_1">数码推荐</div>
+<div class="original_xhx"></div>
+<div class="original_xhx2"></div>
+<div class="original_ul">
+    <ul>
+        <li>数码相机</li>
+        <li>微单相机</li>
+        <li>专业镜头</li>
+        <li>专业单反</li>
+
+    </ul>
+</div>
+
+<div class="original_change_1">
+    <div class="original_change_wap">
+        <div class="wap_1">
+            <div>
+                <img src="images/shuxiangji1.jpg" ><p class="wap_1_p1">价格：5298元</p><p class="wap_1_p2">总销量：876个</p>
+                <p class="wap_1_p3">尼康（Nikon）COOLPIX P610s 数码相机 （1605万有效像素 3英寸旋转屏 60倍光变) </p>
+            </div>
+            <div>
+                <img src="images/shuxiangji2.jpg"><p class="wap_1_p1">价格：5298元</p><p class="wap_1_p2">总销量：986个</p>
+                <p class="wap_1_p3">尼康（Nikon）COOLPIX P610s 数码相机 （1605万有效像素 3英寸旋转屏 60倍光变) </p>
+            </div>
+            <div>
+                <img src="images/shuxiangji3.jpg"><p class="wap_1_p1">价格：5298元</p><p class="wap_1_p2">总销量：986个</p>
+                <p class="wap_1_p3">尼康（Nikon）COOLPIX P610s 数码相机 （1605万有效像素 3英寸旋转屏 60倍光变) </p>
+            </div>
+            <div>
+                <img src="images/shuxiangji4.jpg"><p class="wap_1_p1">价格：5298元</p><p class="wap_1_p2">总销量：976个</p>
+                <p class="wap_1_p3">尼康（Nikon）COOLPIX P610s 数码相机 （1605万有效像素 3英寸旋转屏 60倍光变) </p>
+            </div>
+            <div>
+                <img src="images/shuxiangji5.jpg"><p class="wap_1_p1">价格：5298元</p><p class="wap_1_p2">总销量：987个</p>
+                <p class="wap_1_p3">尼康（Nikon）COOLPIX P610s 数码相机 （1605万有效像素 3英寸旋转屏 60倍光变) </p>
+            </div>
+            <div>
+                <img src="images/shuxiangji6.jpg"><p class="wap_1_p1">价格：2598元</p><p class="wap_1_p2">总销量：876个</p>
+                <p class="wap_1_p3">尼康（Nikon）COOLPIX P610s 数码相机 （1605万有效像素 3英寸旋转屏 60倍光变) </p>
+            </div>
+        </div>
+
+
+        <div class="wap_1">
+            <div>
+                <img src="images/shuxiangji7.jpg" ><p class="wap_1_p1">价格：5298元</p><p class="wap_1_p2">总销量：876个</p>
+                <p class="wap_1_p3">尼康（Nikon）COOLPIX P610s 数码相机 （1605万有效像素 3英寸旋转屏 60倍光变) </p>
+            </div>
+            <div>
+                <img src="images/shuxiangji8.jpg"><p class="wap_1_p1">价格：2598元</p><p class="wap_1_p2">总销量：986个</p>
+                <p class="wap_1_p3">尼康（Nikon）COOLPIX P610s 数码相机 （1605万有效像素 3英寸旋转屏 60倍光变) </p>
+            </div>
+            <div>
+                <img src="images/shuxiangji9.jpg"><p class="wap_1_p1">价格：5298元</p><p class="wap_1_p2">总销量：976个</p>
+                <p class="wap_1_p3">尼康（Nikon）COOLPIX P610s 数码相机 （1605万有效像素 3英寸旋转屏 60倍光变) </p>
+            </div>
+            <div>
+                <img src="images/shuxiangji10.jpg"><p class="wap_1_p1">价格：2598元</p><p class="wap_1_p2">总销量：876个</p>
+                <p class="wap_1_p3">尼康（Nikon）COOLPIX P610s 数码相机 （1605万有效像素 3英寸旋转屏 60倍光变) </p>
+            </div>
+            <div>
+                <img src="images/shuxiangji11.jpg"><p class="wap_1_p1">价格：5298元</p><p class="wap_1_p2">总销量：876个</p>
+                <p class="wap_1_p3">尼康（Nikon）COOLPIX P610s 数码相机 （1605万有效像素 3英寸旋转屏 60倍光变) </p>
+            </div>
+            <div>
+                <img src="images/shuxiangji12.jpg"><p class="wap_1_p1">价格：2598元</p><p class="wap_1_p2">总销量：986个</p>
+                <p class="wap_1_p3">尼康（Nikon）COOLPIX P610s 数码相机 （1605万有效像素 3英寸旋转屏 60倍光变) </p>
+            </div>
+        </div>
+
+        <div class="wap_1">
+            <div>
+                <img src="images/shuxiangji13.jpg" ><p class="wap_1_p1">价格：2598元</p><p class="wap_1_p2">总销量：876个</p>
+                <p class="wap_1_p3">尼康（Nikon）COOLPIX P610s 数码相机 （1605万有效像素 3英寸旋转屏 60倍光变) </p>
+            </div>
+            <div>
+                <img src="images/shuxiangji14.jpg"><p class="wap_1_p1">价格：2985元</p><p class="wap_1_p2">总销量：986个</p>
+                <p class="wap_1_p3">尼康（Nikon）COOLPIX P610s 数码相机 （1605万有效像素 3英寸旋转屏 60倍光变) </p>
+            </div>
+            <div>
+                <img src="images/shuxiangji15.jpg"><p class="wap_1_p1">价格：2598元</p><p class="wap_1_p2">总销量：876个</p>
+                <p class="wap_1_p3">尼康（Nikon）COOLPIX P610s 数码相机 （1605万有效像素 3英寸旋转屏 60倍光变) </p>
+            </div>
+            <div>
+                <img src="images/shuxiangji16.jpg"><p class="wap_1_p1">价格：2985元</p><p class="wap_1_p2">总销量：986个</p>
+                <p class="wap_1_p3">尼康（Nikon）COOLPIX P610s 数码相机 （1605万有效像素 3英寸旋转屏 60倍光变) </p>
+            </div>
+            <div>
+                <img src="images/shuxiangji17.jpg"><p class="wap_1_p1">价格：2985元</p><p class="wap_1_p2">总销量：986个</p>
+                <p class="wap_1_p3">尼康（Nikon）COOLPIX P610s 数码相机 （1605万有效像素 3英寸旋转屏 60倍光变) </p>
+            </div>
+            <div>
+                <img src="images/shuxiangji18.jpg"><p class="wap_1_p1">价格：2598元</p><p class="wap_1_p2">总销量：986个</p>
+                <p class="wap_1_p3">尼康（Nikon）COOLPIX P610s 数码相机 （1605万有效像素 3英寸旋转屏 60倍光变) </p>
+            </div>
+        </div>
+
+        <div class="wap_1">
+            <div>
+                <img src="images/shuxiangji19.jpg" ><p class="wap_1_p1">价格：2598元</p><p class="wap_1_p2">总销量：876个</p>
+                <p class="wap_1_p3">尼康（Nikon）COOLPIX P610s 数码相机 （1605万有效像素 3英寸旋转屏 60倍光变) </p>
+            </div>
+            <div>
+                <img src="images/shuxiangji20.jpg"><p class="wap_1_p1">价格：2985元</p><p class="wap_1_p2">总销量：986个</p>
+                <p class="wap_1_p3">尼康（Nikon）COOLPIX P610s 数码相机 （1605万有效像素 3英寸旋转屏 60倍光变) </p>
+            </div>
+            <div>
+                <img src="images/shuxiangji21.jpg"><p class="wap_1_p1">价格：298元</p><p class="wap_1_p2">总销量：987个</p>
+                <p class="wap_1_p3">尼康（Nikon）COOLPIX P610s 数码相机 （1605万有效像素 3英寸旋转屏 60倍光变) </p>
+            </div>
+            <div>
+                <img src="images/shuxiangji22.jpg"><p class="wap_1_p1">价格：5298元</p><p class="wap_1_p2">总销量：876个</p>
+                <p class="wap_1_p3">尼康（Nikon）COOLPIX P610s 数码相机 （1605万有效像素 3英寸旋转屏 60倍光变) </p>
+            </div>
+            <div>
+                <img src="images/shuxiangji23.jpg"><p class="wap_1_p1">价格：5298元</p><p class="wap_1_p2">总销量：876个</p>
+                <p class="wap_1_p3">尼康（Nikon）COOLPIX P610s 数码相机 （1605万有效像素 3英寸旋转屏 60倍光变) </p>
+            </div>
+
+</div></div></div>
+<img class="houzi"  src="images/houzi.jpg">
+</body>
+</html>

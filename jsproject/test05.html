@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <!--
+    数组
+    1.下标由0开始
+    2.数组的定义
+        （1）数组的直接量
+                var arr1=[23,23,4,1]
+                //  var arr2=[];
+//        arr2[0]='a';
+//        arr2[6]='b';//其他未定义的为undefined
+//        alert(arr2.length);
+ var arr3=['a','b',];//高级版本输出为a,b;ie低版本输出为a,b,undefined
+        var arr4=[,,,,,];//高级输出来5个undefined;ie低版本输出为6个undefined
+       （2）构造函数方式
+           1.如果赋值的长度大于指定的长度,则以赋值长度为准
+           2.如果赋值的长度小于指定的长度,则以指定长度为准
+               此时用for循环输出时未定义内容输出undefined,for in 循环只输出定义内容,未定义内容不输出
+               var arr1=[23,34,'str',true,4,2];//数组中的内容可以为任意类型
+    3.多维数组
+    省市级联
+    var s= ['黑龙江','辽宁','',''];
+    var city=[[],[],[],[]];
+pop()增加数组元素
+push()删除数组元素
+    4.数组方法
+    (1)sort()对数组元素进行排序
+        ——sort方法中可放置函数参数,
+        该函数具有两个参数,如a,b
+        如a<b,排序后的数组中a应出现在b之前
+          a>b以此类推
+        ——如对字母排序则根据字母在字符编码表中的顺序进行排序
+        ——如数组元素不是字符串sort方法会将元素都转换为字符串再进行排序
+        ——sort方法是在原数组的基础上进行操作不会创建新的数组
+        ——''会排列在数组最前面;null,undefined会排列在数组末尾并且不输出任何内容
+        ——对中文排序--拼音排序return a.localeCompare(b);
+    -->
+    <script>
+//        var arr1= [[1,2,3],[2,3,4],[4,5,6]];//二维数组
+//        for(i=0;i<arr1.length;i++){
+//            for(j=0;j<arr1[i].length;j++){
+//                alert(arr1[i][j]);//arr1[0][2]
+//            }
+//        }
+//        for(i in arr1){
+//            for(j in arr1[i]){
+//                alert(arr1[i][j]);
+//            }
+//        }
+//        var arr1= new Array();
+//        for(var i=0;i<3;i++){
+//            var arr2=new Array();
+//            for(var j=0;j<4;j++){
+//                arr2[j]= "a"+j;
+//            }
+//            //arr2=[a0,a1,a2,a3]
+//            arr1[i]= arr2;
+//        }
+
+//        var arr3=   new Array();
+//        arr3[0]= 'a';
+//        arr3[1]= 'b';
+//        alert(arr3[i]);
+//        var arr1= new Array(3);//指定长度 实际数组长度大于定义长度按实际数组输出
+//        arr1[0]= 'a';
+//        arr1[1]= 'a1';
+//        arr1[2]= 'a2';
+//        arr1[3]= 'a3';
+//        for(i=0;i<arr1.length;i++){
+//            document.write(arr1[i]);
+//        }
+//        //for..in
+//        for(var i in arr1){
+//            alert(arr1[i]);
+//        }
+        /*练习1
+         */
+//var vv1= ["黑龙江","吉林"];
+//var vv2= [["哈尔滨","齐齐哈尔"],["大连","沈阳"]];
+//
+//       function fun1(){
+//             var v0="";
+//             for(i in vv1){
+//                 v0+= "<option>"+vv1[i]+"</option>";
+//             }
+//         document.getElementById("sel_pro").innerHTML= v0;
+//         }
+//function sea(v2){
+//    for(i in vv1){
+//        if(v2==vv1[i]){
+//            return i;
+//        }
+//    }
+//}
+//function fun2(){
+//    var v2 = document.getElementById("sel_pro").value;
+//    var i;
+//    var v0="";
+//    j=sea(v2);
+//    for(i in vv2[j]){
+//        v0+= "<option>"+vv2[j][i]+"</option>";
+//    }
+//    document.getElementById("sel_city").innerHTML= v0;
+//}
+//        window.onload=fun1;
+//对数组进行奇偶排序
+//        var arr1= [23,1,5,67,8,9,90,68];
+//        arr1.sort(fun1);
+//        alert(arr1);
+//        function fun1(a,b){
+//            return a-b;//升序
+//            return b-a;//降序
+//            var v1= a%2;
+//            var v2= b%2;
+//            if(v1==1&&v2==0) {
+//                return -1;
+//            }else if(v2==1&&v1==0) {
+//                return 1;
+//            }else{
+//                return 0;
+//            }
+//        }
+        function fun1(a,b){
+//            var a1 = a.toUpperCase();
+//            var b1 = b.toUpperCase();
+//          if(a1<b1){
+//              return 1;
+//          }else{
+//              return 0;
+//          }
+            return a.localeCompare(b);
+        }
+        var arr2=['a','aaa','kol','Bac','bbb','ccc','C'];
+//对中文排序--拼音排序return a.localeCompare(b);
+var arr3=["地方","密码","啊啊"];
+        arr2.sort(fun1);
+        alert("c"-"b");
+    </script>
+</head>
+<body>
+<!--省:<select id="sel_pro" onchange="fun2()">-->
+<!--<option>1</option>-->
+<!--</select>-->
+<!--市:<select id="sel_city">-->
+    <!--<option>哈尔滨</option>-->
+    <!--<option>齐齐哈尔</option>-->
+<!--</select>-->
+
+</body>
+</html>

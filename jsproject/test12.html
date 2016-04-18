@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+       /**DOM编程
+        * 1.document object Model文档对象模型
+        *   是一组用来描述脚本怎样与结构化文档进行交互和访问的web标准
+        *   w3c制定DOM规范有多个版本,各版本包括不同的规范和模块
+        * 2.结点
+        *  (1)子结点
+        *  每一个结点元素都有一个childNodes集合属性,是数组对象,表示该结点的所有子结点的集合
+        *  element.children  集合:忽略空格及文本结点只返回元素结点
+        *  element.childNodes集合:会将空格作为文本结点
+        *  element.firstChild第一个子结点 会将空格作为文本结点
+        *  element.lastChild最后一个子结点,会将空格作为文本结点
+        *      等价于element.childNodes[element.childNodes.length-1]
+        * (2)父结点
+        * element.parentNode
+        * (3)兄弟结点
+        * element.nextSibling 当前结点的下一个结点等价于element.parentNode.childNodes[index+1]
+        * element.previousSibling当前结点的上一个结点element.parentNode.childNodes[index-1]
+        * 3.结点信息
+        *   element.nodeName  获取结点的名称
+        *   element.nodeValue 获取结点值
+        *   元素结点:返回null
+        *   文本结点:返回文本内容
+        *   element.nodeType  结点类型
+        *   元素结点:返回1
+        *   文本结点:返回3
+        * **/
+/*DOM 查找元素
+document.getElementByID()按id属性查找某个元素
+ document.getElementsByTagName()按指定标签查找所有元素,返回数组
+ document.getElementsByClassName("d1")[0]按指定的class查找所有元素返回数组
+ document.getElementsByName("inp01")[0]按指定的name查找所有元素,返回数组
+ 特殊集合:
+ document.images返回所有img元素,以数组形式
+ document.forms返回所有form
+ document.anchors返回所有带name属性的<a>元素,以数组形式
+ document.link返回所有带href属性的<a>元素,以数组形式
+ document.all返回所有html元素,以数组形式
+ document.body
+
+ 内容管理
+ innerText 覆盖元素中的文本
+ innerHTML
+
+ outerText 覆盖元素及文本
+ outerHTML
+ 1.创建元素(结点)
+ createElement
+ 2.创建文本结点
+ createTextNode
+
+ 3.追加元素
+ appendChild 将结点插入到所有子结点之后
+ v1.insertBefore(v2,v3) 将v2插入到v3的前面,v1-父结点,v2-新结点,v3-旧结点
+4.删除元素
+document.getElementById("ul01").children[0];
+document.getElementById("ul01").removeChild(li_del);
+
+js表格操作
+ 1.rows 所有行信息
+   rows.length 行数
+ 2.cells 所有列信息
+ 3.insertRow(i)插入行,下标由0开始
+   insertCell(i)插入列,下标由0开始
+ 4.deleteRow(i)删除行
+   deleteCell(i)删除列
+ 5.rowIndex行的索引值
+ <div title="aaa">hello</div>
+ var v1= document.createElement("div");
+ var v1_text=document.createTextNode("hello")
+ v1.appendChild(v1_text);
+ v1.setAttribute("title","aaa");
+ document.body.appendChild(v1);
+ */
+window.onload=function(){
+//    document.childNodes[0];
+//    document.childNodes[0].childNodes[1];
+//   var ul= document.childNodes[1].childNodes[2].childNodes[1]
+//    ul.children[0].firstChild.style.backgroundColor="red";
+//    var v1= document.getElementById("widget");
+//    alert(v1.children.length);
+//
+//    alert(v1.children[3].children[1].nextSibling.nextSibling);
+//    v1.children[3].children[1].nextSibling.nextSibling.children[0].style.border=1+"px";
+//    v1.children[3].children[1].nextSibling.nextSibling.children[0].style.fontSize="larger";
+//    document.getElementsByTagName("div")[2].style.color="red";
+//    document.getElementsByClassName("d1")[0].style.color="blue";
+//    document.getElementsByName("inp01")[0]
+//    var v1= document.images;
+//    for(var i=0;i<v1.length;i++){
+//
+//    }
+//    document.images.style.border="1px solid red";
+//    document.getElementsByClassName("d1")[0].outerText= "dddd";
+//
+//    document.getElementById("but01").addEventListener("click",function(){
+//        var v_li= document.createElement("li");//<li></li>
+//        var v_litext= document.createTextNode("a2");
+//        v_li.appendChild(v_litext);
+//        document.getElementById("ul01").appendChild(v_li);
+//    },false);
+
+
+}
+</script>
+</head>
+<body>
+<!--<div id="ul01">a1</div>-->
+<button id="but01" onclick="addtr()">ddd</button>
+<table id="tab01" style="border:3px solid red" ondblclick="deltr()">
+</table>
+<!--<div class="d1">a2</div>-->
+<!--<div class="d1">a3</div>-->
+<!--<div>a4</div>-->
+<!--<div id="widget">-->
+    <!--<p >本文隶属于专栏</p>-->
+    <!--<h4><a href="https://segmentfault.com/blog/jinzeming999">public</a></h4>-->
+    <!--<p >WEB前端开发</p>-->
+    <!--<div >-->
+        <!--<a href="https://segmentfault.com/u/public_55f79293404e8">-->
+            <!--<img >-->
+            <!--<span>public</span>-->
+        <!--</a>-->
+        <!--<span >作者</span>-->
+        <!--<div style="margin-top: 20px;">-->
+            <!--<button >关注专栏   </button>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+
+
+<!--<ul id="ul01">-->
+    <!--<li>aa1-->
+    <!--<div>ddd1</div>-->
+        <!--<div>-->
+            <!--ddd2-->
+        <!--</div><div>-->
+            <!--ddd3-->
+        <!--</div>-->
+
+    <!--</li>-->
+<!--</ul>-->
+<!--<div style="width:300px;height: 200px;background-color:red" id="id01"></div>-->
+</body>
+</html>
+<script>
+    var v1= document.getElementById("tab01");
+
+    function addtr(){
+        var v_tr= document.createElement("tr");
+        var v_td= document.createElement("td");
+        var v_td1= document.createElement("td");
+        var v_td2= document.createElement("td");
+        v_tr.appendChild(v_td);
+        v_tr.appendChild(v_td1);
+        v_tr.appendChild(v_td2);
+        v1.appendChild(v_tr);
+        var tr01= v1.insertRow(0);//<tr></tr>
+        var td_1= tr01.insertCell(0);//<tr><td></td><tr>
+        td_1.innerText= "td111";
+        var td_2= tr01.insertCell(1);
+        td_2.innerText= "td222"
+    }
+    function deltr(event){
+        var e= event||window.event;
+        var src= e.srcElement || e.target;
+
+alert();
+        v1.removeChild(src);
+
+    }
+</script>

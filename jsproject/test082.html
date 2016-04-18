@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        //跨浏览器(兼容性)事件处理程序封装
+        var EventUtil= {
+            //事件对象
+            getEvent:function(event){return event || window.event;},
+            //事件源
+            getSrc:function(event){ return  event.srcElement || event.target;},
+            //阻止事件传播
+            getStop:function(event){
+                if( event.stopPropagation()){
+                    event.stopPropagation();
+            }else{
+                    event.cancelBubble=true;
+            }
+            },
+            //阻止默认行为
+            getDefault:function(event){
+                if(event.preventDefault){
+                    event.preventDefault();
+                }else{
+                    return false;//event.returnvalue=false;
+                }
+            },
+            //element元素,type事件类型,handler执行函数
+            addHandle:function(element,type,handler){
+                if(element.addEventListener){//支持DOM2事件模型
+                    element.addEventListener(type,handler,false);
+                }else if(element.attachEvent){//支持ie事件模型
+                    element.attachEvent("on"+type,handler);
+                }else{
+                    element['on'+type]= handler;//既可以用.调用也可以用[]
+                }
+         },
+            //移除事件
+            removeHandle:function(element,type,handler){
+                if(element.removeEventListener){//支持DOM2事件模型
+                    element.removeEventListener(type,handler,false);
+                }else if(element.detachEvent){//支持ie事件模型
+                    element.detachEvent("on"+type,handler);
+                }else{
+                    element['on'+type]= null;//既可以用.调用也可以用[]
+                }
+        }
+        };
+        window.onload= function(){
+//            document.getElementById("id01").onclick= function(event) {
+//                var e= EventUtil.getEvent(event);
+//                var src= EventUtil.getSrc(e);
+//            }
+            var v1= document.getElementById("id01");
+            function fun1(){
+                alert("ddd");
+            }
+            EventUtil.addHandle(v1,"click",fun1);
+        }
+
+//        function fun1(){
+//            alert("li");
+//        }
+//        function fun2(){
+//            alert("ul");
+//        }
+//        function fun3(event){
+//            alert("kaka");
+//            var e=EventUtil.getEvent(event);
+//            //阻止事件传播兼容性
+//            EventUtil.stopPrev(e);
+//
+//        }
+//        function fun4(event){
+//             alert("大娃");
+//             var e=EventUtil.getEvent(event);
+//             EventUtil.stopProp(e);
+//            }
+
+    </script>
+</head>
+<body>
+ <ul id="id01">
+     <!--<li onclick="fun1()">dawa</li>-->
+     <!--<li onclick="fun3()">erwa</li>-->
+     <!--<a href="hw071.html" onclick="fun4()">链接</a>-->
+     adfasdf
+ </ul>
+</body>
+</html>

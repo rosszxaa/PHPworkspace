@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+</head>
+<script>
+    function fun1(){
+        var v1=document.getElementById("inp1").value;
+        var v2=document.getElementById("inp2").value;
+        var r=parseFloat(v1);
+        var h=parseFloat(v2);
+        var s1=2*r*h*Math.PI+2* r*r*Math.PI;
+        var l=Math.sqrt(r*r+h*h);
+        var s2=Math.PI*r*l+r*r*Math.PI;
+        alert(s1);
+        alert(s2);
+    }
+
+    function fun2(){
+        var v1=document.getElementById("inp1").value;
+        var v2=document.getElementById("inp2").value;
+        var r=parseFloat(v1);
+        var h=parseFloat(v2);
+        var s1=2*r*h*Math.PI+2* r*r*Math.PI;
+        var l=Math.sqrt(r*r+h*h);
+        var s2=Math.PI*r*l+r*r*Math.PI;
+        s3=r*r*Math.PI;
+        var v=s3*h;
+        var v1=1/3*h*s3;
+        alert(v);
+        alert(v1);
+    }
+</script>
+<body>
+半径：<input type="text" id="inp1"> <br><br>
+高度：<input type="text" id="inp2"> <br><br>
+<button onclick="fun1()">计算面积</button>
+<button onclick="fun2()">计算体积</button>
+
+</body>
+

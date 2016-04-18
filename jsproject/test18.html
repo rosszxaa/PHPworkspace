@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>用户登录</title>
+</head>
+<body>
+用户名:<input type="text" id="uname"><br><br>
+密&nbsp码:<input type="password" id="pwd"><br><br>
+<input type="checkbox" name="check01" value="">记住用户名密码<br><br>
+保存时间<select name="select01">
+    <option>不保存</option>
+    <option>1天</option>
+    <option>3天</option>
+    <option>7天</option>
+</select><br><br>
+<button id="but01">Login</button><br><br>
+<button id="but02">查询全部留言</button><br><br>
+
+</body>
+</html>
+<script>
+    var uname= document.getElementById("uname");
+    var pwd= document.getElementById("pwd");
+    var check01= document.getElementsByName("check01");
+    var select01= document.getElementsByName("select01");
+    var but01= document.getElementById("but01");
+    var but02= document.getElementById("but02");
+    check01[0].addEventListener("click",fun3,false);
+    select01[0].addEventListener("change",fun4,false);
+    but01.addEventListener("click",fun1,false);
+    but02.addEventListener("click",fun2,false);
+    var str_json= sessionStorage.getItem("user")||document.cookie||null;
+    var data1= JSON.parse(str_json);
+    uname.value= data1.name||null;
+    pwd.value=   data1.password||null;
+//    alert(document.cookie);
+    function fun3(){
+        if(check01[0].checked== true){
+            select01[0].value="不保存";
+        }
+    }
+    function fun4(){
+        if(select01[0].value!="不保存"){
+            check01[0].checked=null;
+        }
+    }
+    function fun1(){
+        var user= new Object();
+        user.name= uname.value;
+        user.password= pwd.value;
+        var user_json= JSON.stringify(user);
+        if(check01[0].checked== true){
+             localStorage.setItem("user",user_json);
+             var win = window.open("test17.html");
+            alert(localStorage.getItem("user"));
+        }
+        if(select01[0].value!="不保存"){
+            var d= new Date();
+            d.setTime(d.getTime()+24*3600*1000*parseInt(select01[0].value));
+            document.cookie= user_json+";expires="+ d.toGMTString();
+        }
+
+//        var v2= document.cookie;//uname=admin;pwd=123
+//        var v0= v2.split(";");
+//        var v1=[];
+//        for(i in v0){
+//            v1[i]= v0[i].split("=");
+//        }
+        var user_json2= localStorage.getItem("user")||document.cookie;
+        if(user_json2.length>15){
+            sessionStorage.setItem("user",user_json2);
+        }
+    }
+
+    function fun2(){
+         var str_json= localStorage.getItem("a1");
+         var data1= JSON.parse(str_json);
+         alert(str_json.length);
+    }
+    function cookie_change(str){
+        var v1= str.split("=");
+        return v1[v1.length-1];
+    }
+</script>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title id="tit01"></title>
+    <!--
+    BOM:browser object model浏览器对象模型
+    window-/-navigator
+           |-frames
+           |-history
+          |-location
+          |-screen
+          |-document
+    一.window对象
+    1.(1)window对象代表当前打开的浏览器窗口
+      (2)window对象是客户端最高层对象
+      (3)window对象下的方法和属性不需要创建即可使用,即可以省略window
+    2.状态栏
+    window.status
+    3.间歇调用与超时调用
+    setInterval():间歇调用,会按照指定的时间间隔重复调用代码,知道间歇调用被取消或页面被卸载
+    clearInterval 清除定时器
+    onload()页面加载
+    onunload()页面卸载
+    间歇调用问题:有时候后一个间歇调用可能会在前一个间歇调用结束之前就被启用
+    解决办法用settimeout代替
+    settimeout():超时调用,指定时间过后执行代码
+      cleartimeout():只要指定时间未到,调用该方法就可取消超时调用
+    4.对话框
+    alert 消息提示框
+    prompt 消息输入框
+    confirm 消息确认框
+        点击确定,返回true
+        否则返回false
+    5.打开新窗口
+     window.open(地址,新窗口标题,参数)
+     参数:width
+          height
+          screenX调整窗口位置
+          screenY
+          resizeable 设置为no不可调整窗口大小 默认yes
+          status
+          titlebar标题栏
+          toolbar工具栏
+          scrollbars=yes no
+          //如何判断弹出窗口被拦截?
+    var win=window.open("test01.html","新窗口","resizeable=no,titlebar,toolbar,width=300px,heigth=300px");
+            if(win==null){
+                alert("弹出窗口被拦截");
+            }
+            父子窗口数据传递
+            var win=window.open("test10.html");
+            //父窗口向子窗口传递数据需要点击事件触发
+            win.document.getElementById("subdiv").innerText="大娃";
+            //子窗口向父窗口传递数据
+             window.opener.document.getElementById("parentdiv").innerText=v1;
+             window.opener为打开子窗口的父窗口
+    6.调整窗口大小
+      resizeTo()调整窗口大小        获取屏幕窗口大小screen.availWidth
+      resizeBy()对当前窗口调整到+-                    screen.availHeight
+                                 浏览器有效窗口大小    window.innerWidth//各浏览器都支持
+                                  document.body.clientWidth
+    7.移动窗口
+      window.moveTo()移动窗口位置
+      window.moveBy()调整移动
+    8.窗口滚动
+      window.scrollTo();
+      window.scrollBy();
+      document.body.scrollTop
+
+
+    -->
+</head>
+<script>
+//    window.moveTo(50,50);
+//    function fun2(){
+//            window.moveBy(50,50);
+//        window.scrollTo(0,20);
+//    }
+//      window.resizeTo(300,300);
+////    var win1=window.open("test10.html","新窗口","width=300px,heigth=300px");
+////    win1.document.getElementById("subdiv").innerText="erwa";
+////    setTimeout(win.close(),2000);//关闭子窗口
+////   var kk= win1.document;
+//window.onload= function(){
+////    win1.document.getElementById("subdiv").innerText="onload触发";
+//    document.getElementById("but01").onclick=function(){
+//        win1.document.getElementById("subdiv").innerText="点击按钮触发";
+//    }
+//    }
+
+//}
+
+//var win;
+//var i=0;
+//    function fun1(){
+//         window.open("test01.html","新窗口","screenX=300px;screenY=300px,width=300px,heigth=300px");
+//        var timer=setTimeout(fun1,300);
+//        i++;
+//        if(i==5){
+//            clearTimeout(timer);
+//        }
+//    }
+//    function fun2(){
+//        win.close();
+//    }
+//    setTimeout(fun1,1000);
+//    setTimeout(fun2,19000);
+
+//    function fun1(){
+//        var d1= new Date();
+//        var time= d1.toLocaleTimeString();
+//        document.getElementById("tit01").innerText=time;
+//        document.getElementById("tit01").style.backgroundImage="url(../c/c0.gif)";
+//        if(i==5){
+//            clearInterval(timer);
+//        }
+//    }
+//      timer= setInterval(fun1,1000);
+//       function fun1(){
+//           i++;
+//           alert(i);
+//           timer= setTimeout(fun1,1000);
+//           if(i==5){
+//               clearTimeout(timer);
+//           }
+//
+//       }
+//    window.onload=fun1;
+var timer;
+var i=0;
+    function fun1(){
+        window.scrollBy(0,200);
+        i++;
+        timer=setTimeout(fun1,100);
+        if(i==10){
+            clearTimeout(timer);
+            i=0;
+        }
+    }
+function fun2(){
+    window.scrollBy(0,200);
+    i++;
+    timer=setTimeout(fun2,100);
+    if(i==20){
+        clearTimeout(timer);
+        i=0;
+    }
+}
+//    timer=setInterval(fun1,1000);
+//    alert(window.innerWidth);
+</script>
+<body>
+<button onclick="fun1()">red</button>
+<button onclick="fun2()">green</button>
+<button onclick="fun3()" style="left: 20px;top:20px;float: inherit;position: relative">top</button>
+<div id="div00" style="width: 200px;height: 2000px;background-color: olive"></div>
+<div id="div01" style="width: 200px;height: 2000px;background-color: red"></div>
+<div id="div02" style="width:200px;height: 2000px;background-color: #008000"></div>
+<!--<input id="lala" type="text" value="我是父窗口的text">-->
+<!--<button id="but01">确定</button>-->
+</body>
+</html>

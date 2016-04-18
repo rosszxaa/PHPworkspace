@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <!--
+    二、数据类型
+      (1)强类型语言中不同变量类型声明的关键字不同,且其类型不能改变只能存储相应类型的数据如Java
+         js属于弱类型语言 变量类型由其包含的数据决定 且其变量类型也可变
+      (2)九种数据类型:String number boolean undefined null object  引用reference\列表list 完成completion 这三种类型仅作为js运行时中间结果的数据类型不能在代码中使用
+      (3)typeof--作业
+      1、数值型number
+       用来表示数据的类型不区分整形与浮点型
+       类型转换
+       (1)隐式类型转换:自动将数据从一种数据类型转换成另一种数据类型的过程
+       (2)显式类型转换:需要手动转换到目标类型
+    Number("")将字符串转换成数字
+    parseInt("")将字符串转换成整型
+       NaN:not a number 非数值 表示一个本来要返回数值的操作数而没有返回数值的情况
+       isFinite() 判断是否为正负无穷; infinity正无穷 finite有限的
+       isNaN()    判断是否为"不是数值"
+    -->
+</head>
+<script>
+    var v1='';
+    if(isFinite(v1)){
+
+    }
+parseInt(12); 12
+parseInt('23');23
+parseInt(12.5);12 12.5
+parseInt(12.9);12 12.9
+parseInt(0.12);0 0.12
+parseInt(-12);-12 -12
+parseInt('hello');NaN NaN
+parseInt(23aa);报错
+parseInt('23aa');23 23
+parseInt(true);NaN NaN
+parseInt(false);NaN NaN
+parseInt("");NaN NaN
+parseInt('');NaN NaN
+parseInt(0x56); 86 86
+parseInt("0x56");86 0
+parseInt(076);62 62
+parseInt('076');76 76
+parseInt(000123);83 83
+parseInt('000123');123 123
+parseInt(30e5);3000000 3000000
+parseInt('30e5');30 3000000
+parseInt(0.2e-5);0 0.000002
+parseInt('0.2e-5');0 0.000002
+parseInt('aa23');NaN NaN
+parseInt('25',16); 37 25
+parseInt(25,16); 37 25
+parseInt('25',8);21 25
+parseInt(25,8);21 25
+parseInt('1001',2);9 1001
+parseInt(1001,2);9 1001
+parseInt(25,10);25 25
+parseInt('25',10);25 25
+
+
+
+
+
+
+
+
+
+
+alert(null+'5');
+
+</script>
+<body>
+
+</body>
+</html>

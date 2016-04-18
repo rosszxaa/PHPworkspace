@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+//    window.onload= function(){
+////        document.getElementById("but01").onclick= function(){
+////            var v1= document.getElementById("inp01").value;
+////            window.opener.document.getElementById("parentdiv").innerText=v1;
+////            var v2=window.opener.document.getElementById("inp01").value;
+////        }
+//        var v2=window.opener.document.getElementById("lala").value;
+//        document.getElementById("subdiv").innerHTML=v2;
+//    }
+//var v3= navigator.mimeTypes;//判断用户是否安装了flash插件(--swf flash)如没有
+//var flag= false;
+//for(var i in v3){
+//    if(v3[i].suffixes=="swf"){
+//        flag= true;
+//    }
+//}                                           // 让用户选择是否安装flash插件,confirm
+//if(!flag){
+//    confirm("是否安装flash插件");
+//
+//}else{
+//
+//    if(confirm("lala")){
+//        location.href="test083.html";
+//    }
+//}
+//location.assign("test083.html");
+//navigator.mimeType[i].type
+//navigator.mimeType[i].description
+//navigator.mimeType[i].suffixes
+//navigator.mimeType[i].enabledPlugin.name
+window.onload= function(){
+    document.getElementById("form1").onsubmit= function(){
+//        location.host      服务器名称及端口号
+//        location.hostname  服务器名localhost
+//        location.port      端口号81
+//        location.protocol  协议 http:
+//        location.pathname  路径 /jsproject/test10.html
+//        location.search    ?inp01=rrr&inp02=kkk&inp03=uuu获取的是当前界面若未传参则不显示
+        alert(location.search);
+    }
+}
+
+    </script>
+</head>
+<body>
+<!--<div id="subdiv" style="width:200px;height:100px;background-color: red"></div>-->
+<!--<input type="text" id="inp01">-->
+<!--<button id="but01">确定</button>-->
+<form action="test083.html" id="form1">
+    <input type="text" name="inp01">
+    <input type="submit">
+</form>
+
+</body>
+</html>

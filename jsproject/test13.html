@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<table id="tab01" style="border: 1px">
+
+</table>
+<button id="btn01">insert</button>
+<button id="btn02">delete</button>
+</body>
+</html>
+<script>
+    var table01= document.getElementById("tab01");
+
+//    var tr01=table01.insertRow(0);//<tr></tr>
+//    var td01=tr01.insertCell(0);//<td></td><td></td>
+//    td01.innerText="11111";
+//    var td02=tr01.insertCell(1);
+//    td02.innerText="22222";
+//    var td03=tr01.insertCell(2);
+//    td03.innerText="33333";
+//
+//    var tr02=table01.insertRow(1);
+//    var td01=tr02.insertCell(0);//<td></td><td></td>
+//    td01.innerText="11111";
+//    var td02=tr02.insertCell(1);
+//    td02.innerText="22222";
+//    var td03=tr02.insertCell(2);
+//    td03.innerText="33333";
+
+    document.getElementById("btn01").addEventListener("click",function(){
+
+        for(var i=0;i<10;i++){
+            var tr01=table01.insertRow(0);//<tr></tr>
+            var td01=tr01.insertCell(0);//<td></td><td></td>
+            td01.innerHTML="<input type='checkbox' name='book' >";
+            var td02=tr01.insertCell(1);
+            td02.innerText= i;
+            var td03=tr01.insertCell(2);
+            td03.innerText=i*10;
+        }
+    },false);
+    document.getElementById("btn02").addEventListener("click",function(){
+        var rObj = document.getElementsByName("book");
+
+
+//            for(var i = 0;i < rObj.length;i++){
+//                if(rObj[i].checked == true){
+//
+//                    table01.deleteRow(i);
+//                }
+//            }
+            var v0=[];
+        var j= 0,k= 0;
+            for(var i= 0;i < rObj.length;i++){
+
+                if(rObj[i].checked == true){
+                 v0[j]=i-j;
+                    j++
+                }
+            }
+//        alert(v0);
+           for(i in v0){
+               table01.deleteRow(v0[k]);
+               k++;
+           }
+
+
+
+
+    },false);
+    document.getElementById("tab01").addEventListener(
+            "click",function(event){
+                var e=event||window.event;
+                var src=  e.srcElement|| e.target;
+                var del=src.parentNode;
+//                table01.deleteRow(del.rowIndex);//this.rowIndex
+//                for(var i=0;i<table01.rows.length;i++){
+//                    for(var j in table01.rows[i].cells){
+//                        alert(table01.rows[i].cells[j].innerText);
+//                    }
+//                }
+//             alert(table01.rows[del.rowIndex].cells[1   ].innerText);
+            },false
+    )
+
+</script>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <!--
+    一.基础语法
+    1.type="text/javascript" 默认属性
+      type="application/javascript"非ie下应用
+    2.js区分大小写 如VName与vname
+      jquery区分大小写
+      html,css标签不区分大小写,但id与class中的值要区分
+    3.js版本
+    js核心为ECMAScript,现ECMAScript常用为5.0(ES5),目前大多数浏览器解析还采用该版本
+    ECMAScript6.0已出
+    完整的JavaScript实现是由以下3个不同部分组成:ECMAScript、文档对象模型DOM、浏览器对象模型BOM
+    4.分号 (var可以省略)
+     (1)多条语句在一行时必须写分号,但最后一条语句的分号可以省略
+     (2)每条语句都在独立行时,分号可以省略
+     注意:最好养成写分号的习惯
+    5.js代码块可在html中的任意位置
+    6.变量
+      在程序中经常要保留一些临时值,此时需要一些空间来存储便于以后使用和修改,完成这一功能就是变量
+      var定义变量 可以省略
+      命名规则
+      必须以字母或下划线开头(不能以数字开头),中间可以有字母数字下划线或$,不可以使用js的关键字作为变量 如alert document window
+
+    7.常量
+      const
+      ie低版本不支持const
+      常量不允许修改 再次赋值
+    -->
+
+</head>
+<script >
+//    var v1=parseFloat(prompt("头:",""));
+//    var v2=parseFloat(prompt("脚:",""));
+//   var v3= (v2-v1*2)/2;
+//    if(((v2-v1*2)%2==0)&&2*v1<=v2&&v2<=4*v1){
+//        alert("鸡:"+(v1-v3)+"兔:"+v3);
+//    }else{
+//        alert("wrong");
+//    }
+//document.write ("typeof(\"123\"): "+typeof("123")+"<br>");
+    function jttl(){
+        //获取输入控件内容
+       var v1= document.getElementById("p1").value;
+        var v0=document.getElementById("j1").value;
+        var v2=parseFloat(document.getElementById("j1").value) ;//单价
+        var l1=v0.length;
+        var v5=v0.substr(l1-1,l1);//单位
+        var v3= parseFloat(document.getElementById("d1").value);
+        var v4= document.getElementById("p2").value;
+        var l0=document.getElementById("j2").value;
+        var v7=parseFloat(document.getElementById("j2").value) ;//单价
+        var l2=l0.length;
+        var v8=l0.substr(l2-1,l2);//单位
+        var v6= parseFloat(document.getElementById("d2").value);
+
+       var len="<table style='border:1px solid orange ;'>"+"<tr>"+"<th>"+"品种"+"</th>"+"<th>"+"单价(元)"+"</th>"+"<th>"+"单位"+"</th>"+"<th>"+"数量"+"</th>"+"</tr>"+
+               "<tr>"+"<td>"+v1+"</td>"+"<td>"+v2+"</td>"+"<td>"+v5+"</td>"+"<td>"+v3+"</td>"+"</tr>"+
+               "<tr>"+"<td>"+v4+"</td>"+"<td>"+v7+"</td>"+"<td>"+v8+"</td>"+"<td>"+v6+"</td>"+"</tr>"+
+               "<tr >"+"<td>"+"合计"+"</td>"+"<td colspan='3'>"+(v2*v3+v7*v6)+" 元"+"</td>"+"</tr>"+"</table>";
+        document.write(len);
+    }
+</script>
+<body>
+<input type="text" id="p1" value="苹果">
+<input type="text" id="j1" value="3.4元/斤">
+<input type="text" id="d1" value="10斤"><br><br>
+<input type="text" id="p2" value="Orange">
+<input type="text" id="j2" value="6元/斤">
+<input type="text" id="d2" value="10斤">
+<input type="button" id="jttl" onclick="jttl()" value="确定">
+<!--<table id="t1">-->
+    <!--<th>-->
+        <!--<td>品种</td>-->
+        <!--<td>价格(元)</td>-->
+        <!--<td>单位</td>-->
+        <!--<td>数量</td>-->
+    <!--</th>-->
+<!--</table>-->
+</body>
+
+</html>

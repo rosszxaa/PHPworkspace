@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+市场:<input type="checkbox" name="market_no" value="1" onclick="func(event)">一级
+      <input type="checkbox" name="market_no" value="2" onclick="funb(obj)">二级
+交易工具：<input type="checkbox" name="trade_tool" value="11" checked>即期
+<input type="checkbox" name="trade_tool" value="12" checked>远期
+<input type="checkbox" name="trade_tool" value="16" checked>货币互换
+<xml id="xtd">
+
+</xml>
+<xml id="xqp">
+
+</xml>
+<xml id="transxml">
+    <?xml version="1.0" encoding="GB2312"?>
+    <rowset>
+        <row>
+            <type_code>check_market_no</type_code>
+            <const_code>1</const_code>
+            <const_value>一级</const_value>
+        </row>
+    </rowset>
+</xml>
+</body>
+</html>
+        <script>
+            function funb(){
+                alert(this.value);
+            }
+            function func(event){
+                var src= event.srcElement ;
+                alert(src.name);
+            }
+            var where =" 1=1 ";
+            var temp= [];
+            where.toUpperCase()
+            where.charCodeAt()
+            var tmp=document.getElementsByName("market_no");
+            alert(tmp.value);
+            temp= fun1(document.getElementsByName("market_no"));
+            if(temp.length!=0){
+               fun2(temp,"market_no");
+            }
+            temp= fun1(document.getElementsByName("trade_tool"));
+            if(temp.length!=0){
+                fun2(temp,"trade_tool");
+            }
+         function fun1(cB){
+             var cBV= [];
+             for(i in cB){
+                 if(cB[i].checked){
+                     cBV.push(cB[i].value);
+                 }
+             }
+             return cBV;
+         }
+            function fun2(temp,listname){
+                for(i in temp){
+                    if(temp.length>1){
+                        if(i==0){
+                            where += " and ("+listname+"='"+temp[i]+"'";
+
+                        }else if(i==temp.length-1){
+                            where += " or " +listname+ "='"+temp[i]+"')";
+                        }else{
+                            where += " or "+listname+"='"+temp[i]+"'";
+                        }
+                    }else if(temp.length==1){
+                        where += " and "+listname+"='"+temp[i]+"'";
+                    }
+
+                }
+            }
+//            alert(where);
+//            <%
+//                String s= "select variety_en_name,variety_en_name from cw_variety";
+//                v= es.SqlReturnVector(s);
+//                if(v!= null && v.size()>0){
+//                    for(int i=0;i< v.size();i++){
+//                        String [] va= (String[])  v.get(1);
+//                        out.println("<input type='checkbox' name='currency_pair' value='"+va[0].trim()+"' "+(i==0?"":"")+" checked>"+va[1]);
+//                    }
+//                }
+//            %>
+        </script>

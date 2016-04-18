@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>事件模型</title>
+    <script type="text/javascript" src="game/js/mymethod.js"></script>
+    <script>
+        //原型封装
+//      var arr1=[1,2,3,4,5];
+//      var arr2=["a","b"];
+//        arr2.myzj(arr1,3,2);
+//        alert(arr2);
+//        window.onload=function(){
+            //同一个元素对多个事件监听
+
+//            document.getElementById("id01").addEventListener("click", function () {
+//                alert("aa");
+//            },false)
+//            document.getElementById("id01").addEventListener("click", function () {
+//                alert("bb");
+//            },false)
+//            document.getElementById("id01").removeEventListener("click", function () {
+//                alert("aa");
+//            },false)
+//            document.getElementById("id01").attachEvent("onclick",function () {
+//                alert("bb");
+//            })
+//        }
+function fun2(event){
+    var v1= document.getElementById("inp01").value;
+    if(v1.length==0){
+        alert("大娃");
+//        ;
+//        return false;
+//        alert("lala");
+        //阻止默认事件兼容性处理
+        if(event.preventDefault){
+            event.preventDefault();
+        }else{
+            return false;//event.returnvalue=false;
+        }
+    }
+}
+        window.onload=function(){
+            document.oncontextmenu= function(){return false;}
+                  document.onpaste=function(){return false;}
+//        document.oncopy=function(){return false;}
+//            document.oncut=function(){return false;}
+        document.onmousewheel=function(){return false;}
+//        document.onselectstart=function(){return false;}
+        }
+        document.oncontextmenu= function(){return false;}//禁止右键菜单
+        document.onpaste=function(){return false;}//禁止粘贴
+        document.oncopy=function(){return false;}//禁止拷贝
+        document.oncut=function(){return false;}//禁止剪切
+        document.onmousewheel=function(){return false;}//禁止鼠标滚轮
+        document.onselectstart=function(){return false;}//禁止选择
+        window.onload= function(){
+            document.getElementById("id01").onmouseover=function(event){
+                //事件对象兼容性 event
+                //(1)当事件发生时,事件消息就会以event对象的方式在文档结构中传播
+                //(2)ie低版本及火狐等个别浏览器在事件发生时会把事件对象event存储在window对象中
+//               alert("ddd");
+                var e= event||window.event;
+                //事件源兼容性e.target火狐FF事件源
+                var src= e.srcElement||e.target;
+
+                //对于获取DOM元素值兼容性,FF采用textContent
+                var v1= src.innerText||src.textContent;
+                //当前事件的相邻结点兼容性 e.fromElement ie浏览器
+                var v2= e.relatedTarget|| e.fromElement;//相邻节点
+
+                alert(v2.innerText);
+            }
+        }
+
+    </script>
+</head>
+<body>
+<!--<form action="" style="width: 10000px;height: 1000px">-->
+    <!--<input type="text" id="inp01" value="">afdasdf-->
+    <!--<input type="submit" value="lalala" onclick="return fun2(event);">-->
+<!--</form>-->
+<div id="id01">
+    test method!!!
+</div>
+<a href="test01.html" onclick="fun2()">kkk</a>
+</body>
+</html>

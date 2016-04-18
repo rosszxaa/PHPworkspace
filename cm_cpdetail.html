@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>显示详细信息</title>
+    <script src="js/jquery-1.8.2.js"></script>
+
+    <style>
+        #pic img{
+            position: absolute;
+            top:150px;
+            left:150px;
+            weight:200px;
+            height:200px;
+        }
+        #cool{
+            position:absolute;
+            top:180px;
+            left:800px;
+        }
+        .bg{
+            position: absolute;
+            top:100px;
+            left: 550px;
+        }
+        .bg input[type="text"]{
+
+            border:0px;
+
+
+        }
+    .button {
+    font-size: 75%; *
+    overflow: visible;
+    padding: .5em 1.5em;
+    color: #ffffff;
+    border: 1px solid #fff;
+    border: 0 rgba(0, 0, 0, 0);
+    background-color: #afa296;
+    text-decoration: none;
+    border-radius: 2px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-transition: .1s linear -webkit-box-shadow;
+    -moz-transition: .1s linear -moz-box-shadow;
+    -ms-transition: .1s linear box-shadow;
+    -o-transition: .1s linear box-shadow;
+    transition: .1s linear box-shadow;
+    margin-top: 0px;
+        cursor:pointer;
+
+    }
+    .button1 {
+            font-size: 75%; *
+        overflow: visible;
+            padding: .5em 1.5em;
+            color:olivedrab;
+            border: 1px solid #fff;
+            border: 0 rgba(0, 0, 0, 0);
+            background-color: #afa296;
+            text-decoration: none;
+            border-radius: 2px;
+            -webkit-font-smoothing: antialiased;
+            -webkit-transition: .1s linear -webkit-box-shadow;
+            -moz-transition: .1s linear -moz-box-shadow;
+            -ms-transition: .1s linear box-shadow;
+            -o-transition: .1s linear box-shadow;
+            transition: .1s linear box-shadow;
+            margin-top: 0px;
+        cursor:pointer;
+        }
+    </style>
+</head>
+<body>
+
+<?php
+header("Content-Type: text/html;charset=utf-8");
+$link=mysql_connect("localhost","root","root") or die("数据库服务器连接失败".mysql_error());
+//if($link){echo "数据库服务器连接成功<br>";}
+$db=mysql_select_db("db38",$link) or die("数据库连接失败".mysql_error());
+mysql_query("set names 'utf8'");
+//if($db){echo "数据库服务器连接成功<br>";}
+$cp_id=$_REQUEST['cp_id'];//不区分接收方式
+
+$sql="select * from cm_cp where cp_id =$cp_id";
+$result=mysql_query($sql,$link);
+//echo $cpname;
+$arr_jh=array();
+while($res=mysql_fetch_array($result)){
+$a1=array("cp_id"=>$res['cp_id'],"cp_name"=>$res['cp_name'],"cp_model"=>$res['cp_model'],"cp_img"=>$res['cp_img'],
+          "cp_cpu"=>$res['cp_cpu'],"cp_sata"=>$res['cp_sata'],"cp_memory"=>$res['cp_memory'],
+          "cp_graphics"=>$res['cp_graphics'],"cp_size"=>$res['cp_size'],"cp_price"=>$res['cp_price']);
+array_push($arr_jh,$a1);
+}
+//json_encode  对变量进行json格式编码
+
+?>
+
+<audio src="image/xsy.mp3" loop="loop" controls="controls" autoplay="autoplay"></audio>
+<div>
+    <div id="pic">
+
+        <img src= "<?php echo $arr_jh[0]['cp_img']; ?>">
+        </div>
+    <div class="bg">
+
+        品牌名:      <input type = "text" name="cp_name"value="<?php echo $arr_jh[0]['cp_name'];?>" id= "cp_name"><br><br>
+        型&nbsp号:   <input type = "text" name="cp_model" value="<?php echo $arr_jh[0]['cp_model'];?>"id="cp_model"><br><br>
+
+        <form id="form" enctype="multipart/form-data" > <!--php必须 不可改-->
+            图&nbsp片:   <input type = "file" name="cp_img"                      id = "cp_img">
+            <input type="submit" name="do" id="do" value="上传" /><br><br>
+        </form>
+        处理器:      <input type = "text" value="<?php echo $arr_jh[0]['cp_cpu'];?>" id = "cp_cpu"><br><br>
+        硬&nbsp盘:   <input type = "text" value="<?php echo $arr_jh[0]['cp_sata'];?>" id = "cp_sata"><br><br>
+        内&nbsp存:   <input type = "text" value="<?php echo $arr_jh[0]['cp_memory'];?>"  id = "cp_memory"><br><br>
+        显&nbsp卡:   <input type = "text" value="<?php echo $arr_jh[0]['cp_graphics'];?>" id = "cp_graphics"><br><br>
+        显示器:      <input type = "text" value="<?php echo $arr_jh[0]['cp_size'];?>" id = "cp_size"><br><br>
+        价&nbsp格:   <input type = "text" value="<?php echo $arr_jh[0]['cp_price'];?>"  id = "cp_price"><br><br>
+        <input class ="button"  type = "button"  id="change" value="修改" >
+        <input class ="button"  type = "button"  id="cz" value="重置" >
+        <input class ="button1"  type = "button"  id="delete" value="删除" >
+
+        <div id = "cool"></div>
+    </div>
+    </div>
+    <script>
+        $("#change").click(function(){
+            $.post("cm_querycpphp.php",{cp_name:cpname},function(data){
+//                        alert(data1[i].pwd);
+                $(".center").text("");
+                var data1=eval(data);//将数据解析为json或数组
+                for(var i=0;i<data1.length;i++) {
+
+//
+                    var v1 = "<div>" +
+                            "<img src=" + data1[i].cp_img + ">" +
+                            "<p class='jz'>" +
+                            "<a style='color:#297338' href=cm_cpdetail.html?cp_id=" + data1[i].cp_id + ">" +
+                            data1[i].cp_name + " " + data1[i].cp_model + "</a>" + " " +
+
+                            "<a href = cm_cpdetail.html?uid=" + data1[i].cp_id + ">删除</a>" +
+                            "</p>" +
+                            "</div>";
+                    $(".center").append(v1);
+                }
+        })
+            })
+    $("form").submit(function(e) {
+        e.preventDefault();
+
+        //空对象然后添加
+        var fd = new FormData();
+        fd.append("cp_img", document.getElementById("cp_img"));
+        //fd.append("file", $(":file")[0].files[0]); //jQuery 方式
+        fd.append("do", "submit");
+
+        //通过表单对象创建 FormData
+        var fd = new FormData(document.getElementById("form"));
+        //var fd = new FormData($("form:eq(0)")[0]); //jquery 方式
+        var va1 = "";
+        $.ajax({
+            type: "post",
+            url: "cm_cpdetailphp.php",
+            data: fd,
+            processData: false,
+            contentType: false
+        }).done(function (res) {
+            $("#cool").append("<img src='101.jpg'>");
+
+        })
+    });
+</script>
+</body>,l
+</html>

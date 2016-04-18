@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>比较大小</title>
+</head>
+<script>
+    function splitk(str,p){
+        var v0;
+        v0=str.split(p);
+        return v0;
+    }
+    var v=new Array();
+    v[0]= prompt("first","徐耀,88");
+    v[1]=prompt("second","耀爷,77");
+    v[2]=prompt("third","xuyao,99");
+    v[3]=prompt("fourth","yaoye,66");
+    v[4]=prompt("fifth","yy,70");
+    var arr1=new Array();
+    var arr2=new Array();
+    var arr3=new Array();
+    var str= "";
+    for(i=0;i< v.length;i++){
+        arr1[i]=splitk(v[i],",")[0];
+        arr2[i]=splitk(v[i],",")[1];
+        if(arr2[i]>=90){
+            arr3[i]="优秀";
+        }else if(arr2[i]<70){
+            arr3[i]="一般";
+        }else{
+            arr3[i]="良好";
+        }
+        str+= arr1[i]+" "+arr2[i]+" " +arr3[i]+"\n";
+    }
+
+    alert(str);
+
+
+    function asc(a,b){
+      return a-b;
+    }
+    function desc(a,b){
+        return b-a;
+    }
+    var v1= [12,23,5,6,5,23];
+    var v2=new Array();
+    v2=v1.sort(asc);
+    alert(v2);
+</script>
+<body>
+var v1=[];
+var str="";
+for(i=0;i<=8;i++){
+var arr2=new Array();
+for(var j=1;j<=i;j++){
+var arr3=new Array();
+for(k=0;k<i;k++){
+arr3[k]=j;
+
+}
+arr2[j]= arr3;
+
+}
+v1[i]= arr2;
+
+}
+for(i in v1){
+str+=v1[i]+"\n";
+}
+alert(str);
+</body>
+</html>

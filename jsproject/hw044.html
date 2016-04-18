@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>36选5</title>
+</head>
+<script>
+    function rod(k){
+        var ran= parseInt(Math.random()*k);
+        return ran;
+    }
+    function isRepeat(arr){
+        var hash= {};
+        for(var i in arr){
+            if(hash[arr[i]]){
+                return true;
+            }
+            //不存在该元素,赋值为true
+            hash[arr[i]]= true;
+        }
+        return false;
+    }
+    function fun1(){
+        var arr1= new Array;
+        var str= "";
+     do{
+         for(i=0;i<2;i++){
+         arr1[i]=rod(36)+1;
+     }
+     }while(isRepeat(arr1));
+        for(i=0;i<2;i++){
+            str+= arr1[i]+" ";
+        }
+        document.getElementById("div01").innerText=str;
+        setTimeout("fun1()",1000);
+    }
+    window.onload=fun1;
+</script>
+<body>
+<div id="div01"></div>
+</body>
+</html>

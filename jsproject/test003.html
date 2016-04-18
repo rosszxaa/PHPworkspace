@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        window.onload=function(){
+            var v1=document.getElementById("game_xinyouxi_feiji");
+            window.document.onkeydown=function(event){
+                var e;
+                e= event || window.event;
+                if(e.keyCode==39 ){
+                    v1.style.left=v1.offsetLeft+30+"px";
+                }else if(e.keyCode==37){
+                    v1.style.left=v1.offsetLeft+10+"px";
+                }else if(e.keyCode==38){
+                    v1.style.top=v1.offsetTop-5+"px";
+                }else if(e.keyCode==40){
+                    v1.style.top=v1.offsetTop+5+"px";
+                }
+
+                var v2=v1.offsetLeft;
+                var v3=v1.offsetTop;
+                var v4=document.getElementById("game_xinyouxi_zidan");
+                v4.innerHTML='<img id="game_zidankongzhi" src="images/game_xinyouxi_zidan1.png"' +
+                ' style="position:absolute;left:200px;top:400px;margin-left:15px; ' +
+                ' -webkit-transform-style:preserve-3D;animation:name2 1s infinite;">'
+                document.getElementById("game_zidankongzhi").style.left=+v2+"px";
+                document.getElementById("game_zidankongzhi").style.top=+v3+"px";
+            }
+        }
+    </script>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+        #game_xinyouxi_bj{
+            height: 702px;
+            position: absolute;
+            left: 50%;
+            margin-left: -360px;
+            /* border: 1px solid red;*/
+            overflow: hidden;
+        }
+        #game_xinyouxi_bj img{
+            -webkit-transform-style:preserve-3D;
+            animation:name1 30s infinite;
+            margin-top:-577px;
+        }
+        @keyframes name1 {
+            100%{
+                margin-top: 0px;
+            }
+        }
+        @keyframes name2 {
+
+            100%{top:0px}
+        }
+        #game_xinyouxi_guding1 {
+            position: fixed;
+            left: 323px;
+            top: 420px;
+        }
+        #game_xinyouxi_guding2 {
+            position: fixed;
+            left: 603px;
+            top: 611px;
+        }
+        #game_xinyouxi_zantingjian{
+            position: fixed;
+            left: 953px;
+            top: 634px;
+            width: 40px;
+            height: 40px;
+            border-radius:20px;
+            background-color: #59144f;
+        }
+        #feiji_sbk {
+
+            width: 718px;
+            height: 602px;
+            /*border: 1px solid darkmagenta;*/
+            position: absolute;
+            left: 50%;
+            margin-left: -360px;
+
+        }
+        #game_xinyouxi_feiji {
+            width: 80px ;
+            height: 120px ;
+            background: url("images/game_xinyouxi_feiji.jpg");
+            position: absolute;
+            left: 50%;
+            margin-left: -20px;
+            top: 500px;
+        }
+    </style>
+</head>
+<body>
+<div id="game_xinyouxi_bj"><img src="images/game_xinyouxi_bj1.jpg"></div>
+<div id="game_xinyouxi_guding1"><img src="images/game_xinyouxi_guding1.png"></div>
+<div id="game_xinyouxi_guding2"><img src="images/game_xinyouxi_guding2.png"></div>
+<div id="game_xinyouxi_zantingjian"></div>
+<div id="feiji_sbk">
+    <div id="game_xinyouxi_feiji" ></div>
+    <div id="game_xinyouxi_zidan"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<button id="id01">a</button>
+</body>
+</html>
+<script>
+    function Office(name,price,number){
+        this.name= name;
+        this.price= price;
+        this.number= number;
+        if(!Office.flag){
+            Office.prototype.say= function (){
+                alert("我是:"+this.name+"我值:"+this.price+"我有:"+this.number);
+            };
+        }
+        Office.flag=true;
+    }
+
+var of1= new Office();
+    of1.say();
+    alert(of1.flag);
+</script>

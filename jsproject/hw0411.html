@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        window.onload=function(){
+            function fun1(){
+                var v1=parseInt(Math.random()*256);
+                var v2=parseInt(Math.random()*256);
+                var v3=parseInt(Math.random()*256);
+                document.getElementById("d1").style.color="rgb("+v1+","+v2+","+v3+")";
+            }
+            setInterval(fun1,1000);}
+
+
+    </script>
+</head>
+<body>
+<div id="d1">简单颜色变色</div>
+</body>
+</html>

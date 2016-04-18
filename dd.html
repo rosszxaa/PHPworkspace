@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/jquery-1.8.2.js"></script>
+    <script>
+        $(function(){
+            $("#Login").click(function(){
+                //ajax--post方式
+                var uname=$("#uname").val();
+                var pwd=$("#pwd").val();
+//                alert(start  + "  " + end);
+                $.post("login.php",{uname:uname,pwd:pwd},function(data){
+
+                    var data1=eval(data);//将数据解析为json或数组
+                    for(var i=0;i<data1.length;i++){
+//                        alert(data1[i].pwd);
+//                        var v1="<tr><td>data1[]</td><td></td><td></td><>"
+//                        "<td><a herf = deletephp.php?uid="+data[1].userid+">删除</a></td>";
+//                        $("#uid").text(data1[i].pwd);
+//                        $("table").append("<tr>"+"<td>"+data1[i].userid+"</td>"+"<td>"+data1[i].uname+"</td>"+"<td>"+data1[i].pwd+"</td>"+"</tr>");
+                    }
+                    if(datal.pwd == uname)
+                    {
+                        $("#show").text("Login Success！");
+                    }
+                    else{
+                        $("#show").text("Username or Password is wrong！");
+                    }
+                });
+            });
+        });
+        //查询全部
+
+        //完善练习：输入用户id范围，查询数据，并显示到表格中
+    </script>
+</head>
+<body>
+<br><br>
+<input type="text" id="uname">
+<input type="password" id="pwd">
+<button id="Login">Login</button>
+<div id="uid"></div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<style>
+    .sp1{
+       font-size: 30px;
+        color: red;
+    }
+    .sp2{
+        font-weight: bolder;
+        font-style: italic;
+    }
+    .sp3{
+        text-decoration: underline;
+    }
+</style>
+<script>
+    var arr1=new Array("红",'豆','生','南国',',','春来','发几','枝','。','愿','君','多采撷','，','此物','最','相思','。');
+    var str1=new Array("","","","");
+    var v1=0;
+
+    window.onload=function(){
+        for(var i= 0;i<arr1.length;i++){
+            str1[v1]+=arr1[i];
+//            alert(str1[v1]);
+            if((str1[v1]).length>=6){
+                if(v1==0){
+                    document.getElementById("div"+v1.toString()).innerHTML= "<span class='sp1'>"+str1[v1].substring(0,2)+
+                    "</span>"+"<span>"+str1[v1].substring(2,7)+"</span>";
+                }else{
+                    document.getElementById("div"+v1.toString()).innerHTML= "<span class='sp2'>"+str1[v1].substring(0,1)+
+                    "</span>"+"<span>"+str1[v1].substring(1,3)+"</span>"+"<span class='sp3'>"+str1[v1].substring(3,5)+"</span>"
+                    +"<span>"+str1[v1].substring(5,7)+"</span>";
+                }
+                v1++;
+            }
+        }
+    }
+
+
+</script>
+<body>
+<div id="div0"></div>
+<div id="div1"></div>
+<div id="div2"></div>
+<div id="div3"></div>
+<div id="div4"></div>
+</body>
+</html>

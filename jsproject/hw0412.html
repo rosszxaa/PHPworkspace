@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        window.onload=function(){
+            function fun1(){
+                var v1=parseInt(Math.random()*256);
+                var v2=parseInt(Math.random()*256);
+                var v3=parseInt(Math.random()*256);
+                document.getElementById("d1").style.color="rgb("+v1+","+v2+","+v3+")";
+                var arr1=["Asp","Java","Jsp","c","VB","net"];
+                var str="";
+                for(var i=0;i<1;i++){
+                    var m= Math.floor(Math.random()*arr1.length);
+                    str+=arr1[m];
+                }
+                document.getElementById("d1").innerText=""+str+"图书";
+            }[]
+            setInterval(fun1,1000);
+
+
+        }
+
+
+    </script>
+</head>
+<body>
+<div id="d1"></div>
+</body>
+</html>

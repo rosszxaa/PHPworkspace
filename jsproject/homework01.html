@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="game/js/jquery-1.8.2.js"></script>
+</head>
+
+<script>
+//    作业：2
+//    输入年龄，判断等于20，输出“年轻人”
+//    判断等于40，输出“中年人”
+//    判断等于60，输出“老年人”
+//    否则，输出“小孩”
+//   var v1=  Number(prompt("年龄:","20"));
+//    if(v1>=20){
+//        if(v1>=40){
+//            if(v1>=60){
+//               alert("老年人");
+//            }
+//            else{
+//                alert("中年人");
+//            }
+//        }else{
+//            alert("年轻人");}
+//
+//    }else{
+//alert("小孩");
+//    }
+//作业：3
+//通过input控件分别输入“数学”“语文”“英文”三科成绩
+//分别对每科成绩作如下判断：
+//判断如>90 ,输出优秀
+//判断如>80 ,输出良好
+//判断如>70 ,输出中等
+//判断如>60 ,输出及格
+//判断如<60 ,输出差
+//并输出“总成绩”
+    function fps(subject0,p0){
+        var v1= document.getElementById(subject0).value;
+
+        if(v1>60){
+            if(v1>70){
+                if(v1>80){
+                    if(v1>90){
+                      document.getElementById(p0).innerHTML="优秀";
+                        document.getElementById(p0).style.color="green";
+//                        alert("优秀");
+                    }else{
+                        document.getElementById(p0).innerHTML="良好";
+                        document.getElementById(p0).style.color="blue";
+                    }
+                }else{
+                    document.getElementById(p0).innerHTML="中等";
+                    document.getElementById(p0).style.color="orange";
+                }
+            }else{
+                document.getElementById(p0).innerHTML="及格";
+                document.getElementById(p0).style.color="yellow";
+            }
+        }else{
+            document.getElementById(p0).innerHTML="不及格";
+            document.getElementById(p0).style.color="red";
+        }
+
+    }
+
+function dps(t1,t2,t3,div0){
+    var v1= document.getElementById(t1).value;
+   var v2= document.getElementById(t2).value;
+   var v3= document.getElementById(t3).value;
+    v4=Number(v1)+Number(v2)+Number(v3);
+    document.getElementById(div0).innerHTML="总分:"+v4;
+    document.getElementById(div0).style.color="olive";
+}
+</script>
+<body>
+<audio src="../image/dl.mp3" loop="loop" controls="controls" autoplay="autoplay"></audio><br>
+数学<input type="text" id="Math" value="99" ><p id="p1"></p>
+语文<input type="text" id="Chinese" value="99" onfocus="fps('Math','p1')"><p id="p2"></p>
+英文<input type="text" id="English" value="" onfocus="fps('Chinese','p2')"
+            onchange="fps('English','p3')" onkeyup="dps('Math','Chinese','English','div1')"><p id="p3"></p><br><br>
+
+<div id="div1"></div>
+</body>
+</html>

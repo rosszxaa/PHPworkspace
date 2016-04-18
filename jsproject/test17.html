@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+</head>
+<body>
+<div id="div01"></div>
+<button onclick="fun1()">向父窗口传递数据</button>
+<button onclick="fun2()">向brother窗口传递数据</button>
+</body>
+</html>
+        <script>
+            function fun1(){
+             //子向父传递
+             window.parent.window.document.getElementById("father_div").innerText= document.getElementById("div01").innerText;
+             }
+            function fun2(){
+                window.parent.ifm_name2.document.getElementById("div01").innerText= document.getElementById("div01").innerText;
+            }
+
+        </script>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<style>
+    .ll{
+        color: olivedrab;
+    }
+    .lk{
+        foncolor: orangered;
+    }
+</style>
+<script>
+
+function fun1(){
+    var d1= new Date();
+        var d= d1.toTimeString();
+    var time1= d.substring(0,2);
+    document.getElementById("div02").innerText=d;
+    if      (time1=="08"||time1=="09")    {
+        document.getElementById("div01").innerText="早上好";
+//    document.getElementById("div01").style.;
+    }
+    else if(time1=="10"||time1=="11")    {
+        document.getElementById("div01").innerText="上午好";}
+    else if(time1=="12"||time1=="13")    {
+        document.getElementById("div01").innerText="中午好";}
+    else if(time1=="14"||time1=="15")    {
+        document.getElementById("div01").innerText="下午好";}
+    else if(time1=="16"||time1=="17")    {
+        document.getElementById("div01").innerText="傍晚好";}
+    else{
+        document.getElementById("div01").innerText="啦啦啦";
+    }
+
+}
+
+   window.onload= function(){
+       fun1();
+   }
+
+</script>
+<body>
+<div id="div02"></div>
+<div id="div01"></div>
+</body>
+</html>

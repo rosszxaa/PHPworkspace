@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/index.css" type="text/css">
+    <link rel="stylesheet" href="css/base.css" type="text/css">
+    <script src="js/jquery-1.8.2.js"></script>
+    <script src="js/jquery.jqzoom1.0.1.js"></script>
+    <script src="js/jqzoom.pack.1.0.1.js"></script>
+    <script>
+        $(function(){
+//            $(".aa").jqzoom();
+            $("#pro_1big_img").attr("src","images/pro_1big1.jpg");
+            $("#pro_1small img").hover(function(){
+                $(".pro_1mb").show();
+                var v1=$(this).index();
+                $("#pro_1big_img").attr("src","images/pro_1big"+v1+".jpg");
+            });
+            $(".no1_color:eq(2)").click(function(){
+                $(this).css({"border":"1px"});
+            });
+
+
+            function fun1(){
+                var v1= $(".scrollnews ul");
+                var li_h= $(".scrollnews").find(" ul li:first").height();
+                v1.animate({
+                    "marginTop":-li_h+"px"
+                },1000,function(){
+                    v1.css({"marginTop":0})
+                            .find("li:first")
+                            .appendTo(v1);
+                });
+            }
+            var timer=setInterval(fun1,1000);
+
+            $(".scrollnews").hover(function(){
+//                清除定时器
+                clearInterval(timer);
+            },function(){
+                timer=setInterval(fun1,1000);
+            })
+
+        });
+    </script>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            position: relative;
+        }
+
+    </style>
+</head>
+<body>
+<div id="header_no1">
+    <div class="nav_no1">
+        <img src="images/nav.jpg">
+        <ul>
+            <li>首页</li>
+            <li>所有宝贝</li>
+            <li>热卖尖货</li>
+            <li>多功能包</li>
+            <li>双肩包</li>
+            <li>钱包</li>
+            <li>会员专享</li>
+        </ul>
+    </div>
+</div>
+<div id="pro_1small">
+    <img src="images/pro_1small0.jpg" >
+    <img src="images/pro_1small1.jpg">
+    <img src="images/pro_1small2.jpg">
+    <img src="images/pro_1small3.jpg" >
+    <img src="images/pro_1small4.jpg">
+</div>
+<div class="pro_1mb">
+    <img id="pro_1big_img" src="">
+</div>
+<img src="images/jt1.jpg" class="pro_1jt1">
+<img src="images/jt2.jpg" class="pro_1jt2">
+<div class="pro_1number">数量：<input type="text" class="inp01_no1"> <span>件</span> <span>库存125件</span></div>
+<img src="images/jt3.jpg" class="pro_1jt3">
+<a href="order_pro_1.html"><button class="pro_1bt1">立即购买</button></a>
+<button class="pro_1bt2">加入购物车</button>
+<img src="images/jt44.jpg" class="pro_1jt44">
+<img src="images/gt55.jpg" class="pro_1jt55">
+<div class="no1_footer">
+    <div class="no1_main_tittle_1">商品评价</div>
+    <div class="no1_xhx"></div>
+    <div class="no1_xhx2"></div>
+    <div class="no1_ul">
+        <ul>
+            <li><input type="radio" name="pj">全部评价</li>
+            <li><input type="radio" name="pj">有内容</li>
+            <li><input type="radio" name="pj">有图片</li>
+            <li><input type="radio" name="pj">追评</li>
+        </ul>
+    </div>
+    <div class="scrollnews">
+        <ul>
+            <li>商品：好的很，开心的不得了。哪个都好，还送了胸针，手机没电了，没有补别的照片。背包，个性、帅气，酷酷地，酷酷地。大包，真是好，星座图案，潮爆了，包袋都很上档次。胸包，也很好。就是太鼓了，对象说不习惯，不过材料还是很好滴！棒棒滴，可以入！贵有贵的价值。</li>
+            <li>超级爱，去健身房的时候可以装很多东西，重点是也很好看</li>
+            <li>发货很快，包包也很漂亮已经不在买了几个阿札的包包了，一如既往的喜欢，这款包包去健身房运动的时候背背也很好，客服服务态度也很好，总之是很愉快的购物</li>
+            <li>特别惊喜，运动包大小刚好，黑色太酷了，包底是皮的，包身上太空棉性质的，包包里面是荧光色，赠送的包袋也很酷，太空棉的，整个包包质量特别好，是aza的老顾客了，一直很信赖，希望以后能给老会员多一些优惠和礼品</li>
+            <li>同系列包包买了两个，旅行时用的，很方便，也够装！老公一个手提的，我背一个双肩的！类似太空棉的面料伸缩性大，装的东西蛮多的！很喜欢上面星座的图案！反光条也非常的棒！活动的时候买的，还是超级划算的！实物和图片一致哈！亲们可以放心哈</li>
+            <li>包包很漂亮，质量很棒，是我想要的那种！！</li>
+            <li>手提包颜色配的很美，上面的星座也很别致，很大，运动健身就靠它了。背的那个小袋，收紧了就是一小背包，做工也很好。 享受了客服小天小布的服务，很客气周到，表扬个</li>
+            <li>???AZA家第六只包包了吧～这只好大！！！！本来要带个20寸行李箱去旅行的…现在突然感觉好像一只包就足够了的样纸………哈哈哈。日常背有点难度啊…</li>
+            <li>超棒！！比想象中的还要大～很适合出游啊运动之类的～喜欢～哈哈哈哈蒙蒙的服务也超级棒～给了我超多建议～对于一个有选择恐惧症的人来讲～真的是超棒的服务！！亲亲</li>
+            <li>挺好的，与商家所描述的一致，无色差，好看！满意。</li>
+            <li>太大了，想当普通包用帅气一把都不行，只能当行李包·····</li>
+            <li>这个包还没用 下次旅游用 正好</li>
+            <li>期待已久的包包啊！果然够大，颜色也很酷爽！耳机孔真的很贴心，</li>
+            <li>不错，大的小的包都喜欢，虽然买之前感觉价格稍微有点偏贵，收到后没让人失望就好，适合单人短途旅行用</li>
+            <li>很好，很大容量的包包</li>
+            <li>用了几天了，很喜欢，觉得很好搭衣服！因为看到之前发的图少了几张，今天追评再加上去！</li>
+            <li>很好看很好看很好看！重要的事情说三遍！！！送的东西也很多！包包质量很好！珠子很漂亮！然后我以为只有一根带子，其实是有两根带子</li>
+            <li>双11拍的，12号就收到货，真心谢谢卖家和快递员，你们辛苦了，包包质量特别好，非常满意，包装的很好，卖家还送了小礼物，谢谢，祝生意兴隆，下次买包就你家了</li>
+            <li>这款包包真的很赞，下次就锁定你家包包了，包装都很让人放心呢！店铺客服态度很好，祝老板生意兴隆</li>
+            <li>物流很快，记得是双十二0点付款，心水这款包包很久了，第一次买aza家收到货完全惊喜，赠送了一个蓝色整理箱，还有星空本子，那本子好精致，完全不舍的用啊，像钻石一样闪亮，</li>
+            <li>服务：颖儿客服一直很好，买了这么多包包，一直都是她接待，语气脾气都很好滴。</li>
+        </ul>
+    </div>
+
+</div>
+</body>
+</html>

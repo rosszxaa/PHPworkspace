@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>鼠标点击拖拽//添加moveout注销</title>
+    <script>
+        window.onload=function(){
+
+
+            var v1=document.getElementById("id01");
+            var pagex_o,pagey_o,o_left,o_top,pagex_n,pagey_n;
+
+            function fun1_move(event){
+                var e= event || window.event;
+                pagex_n=e.pageX;
+                pagey_n=e.pageY;
+
+                //随鼠标移动定位元素
+                var src= e.srcElement || e.target;
+                src.style.left=pagex_n-(pagex_o-o_left)+"px";
+                src.style.top=pagey_n-(pagey_o-o_top)+"px";
+            }
+
+            function fun1_up(event){
+                var e= event || window.event;
+                var src= e.srcElement || e.target;
+//             src.onmousedown=null;
+                src.onmousemove=null;
+            }
+
+            v1.onmousedown=function(event){
+                var e= event || window.event;
+                pagex_o=e.pageX;
+                pagey_o=e.pageY;
+
+                var src= e.srcElement || e.target;
+                o_left=src.offsetLeft;
+                o_top=src.offsetTop;
+
+                v1.onmousemove= fun1_move;
+                v1.onmouseup=fun1_up;
+            }
+            v1.onmousemove=function(event){
+
+            }
+
+            v1.onmouseup=function(event){
+
+
+            }
+        }
+    </script>
+
+    <style>
+        #id01{
+            width: 100px;
+            height: 100px;
+            background-color: #ff3f17;
+            position: absolute;
+            top: 100px;
+            left: 120px;
+        }
+    </style>
+</head>
+<body>
+<div id="id01"></div>
+</body>
+</html>

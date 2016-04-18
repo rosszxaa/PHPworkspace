@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<!--
+2、字符型
+(1)单双引号都可以
+(2)字符型的转义字符
+\n 回车换行\r回车\tTab制表符 \'单引号 \"双引号 \\
+(3)字符串操作
+-->
+<script>
+//    var v1="1、\'登录\'功能模块\n" ;
+//    var v2="2、\"注册\"功能模块\n" ;
+//    var v3="3、菜单/模块\t应用\\模块\            联系\\\\模块";
+//    alert(v1+v2+v3);
+//    document.write(v1+"<br>"+v2+"<br>"+v3);
+   //(1)toLowerCase 转小写
+//        toUpperCase转大写
+//    var v1="AAAcccddd";
+//    alert(v1.toUpperCase());
+//(2)substring(arg1,arg2) 获取子串
+//(3)substr(start,length)返回从指定位置开始的指定长度的子字符串
+//(4)slice
+//slice(2)
+//slice(-2)//无效
+//slice(2,0)//无效
+//slice(2,5)
+//slice(-4,-2)
+//slice(-2,-4)//无效
+//(5)split分割 不加限定最后一个字符串末尾带","
+//var v1="ddafffakkammma";
+//var v2= v1.split("a");
+//    var v1="helloworld";
+//    var v2=v1.substring(-4,2);
+//v1.substring(2) lloworld //1如果参数2省略则直接截取到字符串为
+//v1.substring(2,2)empty//3.如果参数1等于参数2返回空
+//v1.substring(2,5)llo //2.如果参数1小于参数2则截取区间内容,但参数1为闭区间参数2为开区间
+//v1.substring(5,3)lo  //4.如果参数1大于参数2则参数2作为开始参数1作为结束
+//v1.substring(2,-4)he //5.如果参数小于0则被当做0看待 把负数当做0
+//v1.substring(-4)helloworld
+//v1.substring(-4,2)he
+//v1.substring(2,29)helloworld //7.如果参数2大于字符串长度则当做字符串长度看待
+
+//v1.substring(0)//6.如果只有1个参数为0或负数则取全部
+//(6)其他进制转十进制
+   // pareseInt("ef",16);
+    //十进制转其他进制
+//    var v1=25;
+//v1.toString(2);
+//v1.toString(8);
+//v1.toString(16);
+/**
+ *用户随意输入:rgb(23,54,255) ----#
+ *img yaodai url
+ */
+//7.charAt获取指定位置的单个字符,下标由0开始
+//           length  获取字符串长度
+//v1.charAt(2);
+//var v1= prompt("用户输入:","rgb(23,66,222)");
+//    var vv="";
+//    var v2=v1.substr(0,v1.length-1);
+//    var v3= v2.substring(4,50);
+//
+//    var v0= v3.split(',',3);
+//
+//    for(i=0;i<v0.length;i++){
+//    vv+= parseInt(v0[i]).toString(16);
+////        alert(v0[i]);
+//}
+//    document.getElementById("dddd").style.backgroundColor="green";
+//
+//
+//alert("#"+vv);
+//   8.charcodeAt() 获取指定字符的ascii码或unicode十进制
+//       fromcharcode() 获取ascii码或unicode十进制码对应的解析字符
+
+//       escape() 转换为unicode码
+//       unescape() 对unicod码进行解码
+
+//var v1="a";
+//alert(v1.charCodeAt());
+//9.concat 字符串连接 不对原字符串进行修改
+//var v1="aaa";
+//var v2=v1.concat("kkk");
+//alert(v2);
+
+
+function fun1(){
+    var v1=document.getElementById("inp01").value;
+    var v3="";
+    for(var i=0;i<v1.length;i++){
+        var v2=v1.charAt(i);
+        if(v2.charCodeAt()!=32){
+            v3+= v2;
+            document.getElementById("")
+        }
+    }
+    document.getElementById("show").innerText=v3;
+//    document.body
+    document.getElementById("body01").style.backgroundColor="rgb()";
+}
+
+
+</script>
+</body>
+<input type="text" id="inp01" value="1999 09 168" onkeyup="fun1()">
+<div style="width:500px;height:500px" id="show" onclick="fun1()">初始</div>
+</html>

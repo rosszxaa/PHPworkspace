@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <script>
+        function fun1(){
+            document.getElementById("body01").style.backgroundColor="rgb(255,0,0)";}
+        function fun2(){
+            document.getElementById("body01").style.backgroundColor="rgb(255,255,84)";}
+        function fun3(){
+            document.getElementById("body01").style.backgroundColor="rgb(9,255,28)";}
+        function fun4(){
+            document.getElementById("body01").style.backgroundImage="url(../image/101.jpg)";}
+        function fun5(){
+            document.getElementById("body01").style.backgroundImage="url(../image/201.jpg)";}
+        function fun6(){
+            var v3=document.getElementById("inp03").value;
+            var v2=document.getElementById("inp02").value;
+            var v1=document.getElementById("inp01").value;
+            if((v1>=0&&v1<=255)&&(v2>=0&&v2<=255)&&(v3>=0&&v3<=255)){
+                document.getElementById("body01").style.backgroundColor="rgb("+v1+","+v2+","+v3+")";}
+            else{alert("输入的数字请在0-255之间")}}
+    </script>
+</head>
+<body id="body01">
+r:<input type="text" id="inp01">
+g:<input type="text" id="inp02">
+b:<input type="text"  id="inp03">
+<button onclick="fun6()" >确定</button>
+<div style="width: 100px;height: 100px;background-color: red" onclick="fun1()"></div>
+<div style="width: 100px;height: 100px;background-color: #ffe154" onclick="fun2()"></div>
+<div style="width: 100px;height: 100px;background-color: #09ff1c" onclick="fun3()"></div>
+<div style="width: 100px;height: 100px;background-image:url(../image/101.jpg) " onclick="fun4()"></div>
+<div style="width: 100px;height: 100px;background-image:url(../image/201.jpg) " onclick="fun5()"></div>
+
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>鼠标事件</title>
+    <!--鼠标事件
+    onclick ondblclick
+    onmouseover onmouseout
+    onmousedown onmouseup
+    onmousemove
+    鼠标响应事件顺序:onmouseover->onmousemove->onmousedown->onmouseup->onclick->ondblclick
+1.pageX.pageY以浏览器边界为起始点的鼠标所在位置,document对象的坐标系
+2.screenX screenY以计算机屏幕左上角为起始点
+3.clientX,clientY ie浏览器低版本,目前有的高级浏览器也支持
+可视窗口的鼠标位置
+clientX
+clientY
+clientX+document.body.scrollLeft=pageX
+clientY+document.body.scrollTop=pageY
+4.在元素内部定位鼠标位置
+offsetX
+offsetY
+定位元素的偏移量
+offsetTop
+offsetLeft
+5.以绝对定位的父元素为参照物,如果没有绝对定位的父元素或本身没有定位,
+则以浏览器边界为参照物
+layerX
+layerY
+    -->
+
+    <script>
+        window.onload= function(){
+             document.getElementById("id02").addEventListener("mousemove",function(event){
+                 var e=event||window.event;
+                 var src= e.srcElement || e.target;
+                 document.getElementById("id01").innerHTML="e.pageX:"+e.pageX+"<br>"+
+                 "e.pageY:"+ e.pageY+"<br>"+
+                 "e.screenX:"+ e.screenX+"<br>"+
+                 "e.screenY:"+ e.screenY+"<br>"+
+                 "e.clientX:"+ e.clientX+"<br>"+
+                 "e.clientY:"+ e.clientY+"<br>"+
+                 "e.offsetX:"+ e.offsetX+"<br>"+
+                 "e.offsetY:"+ e.offsetY+"<br>"+
+                 "e.offsetTop:"+ src.offsetTop+"<br>"+
+                 "e.offsetLeft:"+ src.offsetLeft+"<br>"+
+                 "e.layerX:"+ e.layerX+"<br>"+
+                 "e.layerY:"+ e.layerY+"<br>";
+             },false);
+            document.getElementById("id03").addEventListener("mousemove",function(event){
+                var e=event||window.event;
+                document.getElementById("id01").innerHTML="e.pageX:"+e.pageX+"<br>"+
+                "e.pageY:"+ e.pageY+"<br>"+
+                "e.screenX:"+ e.screenX+"<br>"+
+                "e.screenY:"+ e.screenY+"<br>"+
+                "e.clientX:"+ e.clientX+"<br>"+
+                "e.clientY:"+ e.clientY+"<br>"+
+                "e.offsetX:"+ e.offsetX+"<br>"+
+                "e.offsetY:"+ e.offsetY+"<br>"+
+                "e.offsetTop:"+ e.offsetTop+"<br>"+
+                "e.offsetLeft:"+ e.offsetLeft+"<br>"+
+                "e.layerX:"+ e.layerX+"<br>"+
+                "e.layerY:"+ e.layerY+"<br>";
+            },false);
+        }
+    </script>
+</head>
+<body>
+<div id="id01">
+    test method!!!
+</div>
+<div id="id02" style="background-color: #003399;height: 300px;width: 300px;left:200px;top:100px;position: absolute">
+    <div id="id03" style="background-color: olive;height: 100px;width: 100px;left:100px;top:40px;position: absolute">
+        </div>
+</div>
+</body>
+</html>

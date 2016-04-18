@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+        <script>
+            var xmlhttp;
+            function loadXMLDoc(url){
+                xmlhttp=null;
+                if(window.XMLHttpRequest){
+                    //所有新型浏览器
+                    xmlhttp= new XMLHttpRequest();
+                }else if(window.ActiveXObject){
+                    //ie5或ie6
+                    xmlhttp= new ActiveXObject("Microsoft.XMLHTTP");
+
+                }
+                if(xmlhttp!=null){
+                    xmlhttp.onreadystatechange= state_Change;
+                    xmlhttp.open("GET",url,true);//Async=true
+                    xmlhttp.send(null);
+                }
+                else{
+                    alert("您的浏览器不支持XMLHTTP.");
+                }
+            }
+            function state_Change(){
+                if(xmlhttp.readyState==4&&xmlhttp.status==200){
+                    //在此编辑代码
+                }else{
+                    alert("未获取到XML数据");
+                }
+            }
+
+        </script>

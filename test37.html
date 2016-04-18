@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<iframe style="width: 300px;height: 180px;border:1px solid red"
+        src="http://169.254.94.239:81/cpimages/test03-24.html">
+</iframe><br>
+UserName:<input type="text" id="uname"><br><br>
+PassWord:<input type="password" id="pwd"><br><br>
+<button id="but01">OtherUserLogIn</button>
+
+</body>
+
+       <script>
+            /*1.同源策略:阻止从一个域上加载的脚本获取或操作另一个域上的文档属性
+            *          即:收到请求的URL的域必须与当前web页面的域相同
+            *          也就意味着浏览器隔离来自不同源的内容 防止他们之间的操作
+            *2.ajax异步交互的(核心--XMLHttpRequest)  与iframe 它们只能在同域内进行异步通信,
+            * 受同源策略的限制,不能使用它们进行跨域通信
+            *3.JSONP:(1)是一种可以绕过同源策略的方法,从任何服务器端直接返回可执行的JavaScript函数调用
+            *        或JavaScript对象(json格式数据).
+            *        (2)JSON with padding ,它能够通过在当前文档(客户端)中生成脚本标记(<script>标签)
+            *           来调用跨域脚本(服务器端脚本文件)时使用的约定.
+            *        (3)JSONP是一个非官方的协议
+            *Html5跨域通讯
+            *postMessage
+            * 发送数据
+            * window.postMessage(发送内容,发送目标地址)
+            * 消息接收
+            *e.origin --事件源(消息源)
+            *e.data    --远程发送过来的数据
+            *e.source  --当前事件源
+            * */
+
+           if(typeof window.postMessage== "undefined"){
+              alert("当前浏览器不支持html5 postMessage");
+          }else
+//              alert(typeof window.postMessage);
+//              alert("支持");
+          }
+           var url= "http://169.254.94.239:81/cpimages/test03-24.html";
+           var but01= document.getElementById("but01");
+            var uname= document.getElementById("uname");
+            var pwd= document.getElementById("pwd");
+           but01.addEventListener("click",fun1,false);
+           function fun1(){
+               var name= uname.value;
+               var password= pwd.value;
+//               window.frames[0].postMessage(name+"|"+password,url);
+           }
+            window.addEventListener("message",function(e){
+                alert(e.data);
+                //向对方服务器发送数据
+//                e.source.postMessage("你好,我是大娃服务器,你的地址是:"+e.origin,e.origin);
+            },false);
+         </script>
+<!--精通HTML5/CSS3、HTML、CSS等网页制作技术，熟悉页面架构和布局。-->
+<!--熟练运用Photoshop 进行页面切图、并掌握Dreamweaver等网站开发工具的使用-->
+<!--熟练运用JavaScript、DOM等前端技术，掌握面向对象编程思想，-->
+<!--3熟练运用jQuery实现网页特效和用户交互体验，对jQuery优化有深入的研究，有编写jQuery插件的经验。-->
+<!--4掌握异步交互Ajax等技术。-->
+<!--5了解 php后台开发语言，可独立进行php程序开发-->
+<!--11.熟悉SQL Server，MySQL数据库，能使用SQL语句;-->
+<!--6熟练使用Webstorm编程工具-->
+<!--9.掌握主流的浏览器兼容性，并有相关问题解决经验。-->
+<!--12.了解less、sass编程语言-->
+<!--13.了解移动端开发-->

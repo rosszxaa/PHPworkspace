@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>耀爷项目特供</title>
+    <style>
+        progress {
+            display: inline-block;
+            width: 160px;
+            height: 21px;
+            border: 0px solid #0064B4;
+            background-color:#000000;
+            color: rgb(82,198,255); /*IE10*/
+        }
+
+
+        progress::-moz-progress-bar { background: transparent; }
+        progress::-webkit-progress-bar { background: transparent; }
+        progress::-webkit-progress-value  { background: rgb(82,198,255); }
+        img{
+            float:left;
+        }
+    </style>
+    <!--html5 音频
+    属性:played  返回时间长度 当前媒体处于播放状态 当前播放的时长
+         paused 返回布尔型 媒体处于暂停状态 布尔型
+         ended 当前媒体是否处于结束状态 既有事件又有属性
+         muted  读取或修改媒体的静音状态 true 静音 false非静音
+         volume 读取或修改媒体的播放音量
+                范围0-1  0为静音1为最大
+         playbackRate 读取或修改媒体的当前播放速率
+                默认为1
+                v_au.playbackRate+=3;
+         duration媒体文件的总播放时间
+         currentTime媒体文件播放的当前时间 可赋值
+
+         autoplay true自动播放false不自动播放
+         loop true循环flase不循环
+         controls true显示媒体自带控制条
+    方法:play() 播放
+         paused()暂停
+         load()重新加载
+    事件:timeupdate 当前播放位置被改变时触发该事件
+         ended 当前媒体播放完毕  onended
+    -->
+    <script src="game/js/eventutil.js"></script>
+    <script src="game/js/szsz.js"></script>
+    <script>
+        //动态创建音频
+        var flag=true;
+        var music= ["../image/dl.mp3","../image/xsy.mp3","../image/mhh.mp3"];
+
+        var v0="";//动态加载歌单
+        var v=0;//当前歌曲数组位置
+
+        window.onload= function(){
+
+            var v_au= document.createElement("audio");
+            v_au.setAttribute("src",music[v]);
+            v_au.setAttribute("autoplay","true");
+            document.body.appendChild(v_au);
+            for(i in music){
+                 var vk=music[i].split("/");
+                 v0+= "<input type='radio' name='music' value='"+i+"' >"+music[i].split("/")[vk.length-1];
+             }
+            document.getElementById("div00").innerHTML= v0;
+            initradio("music",v);
+            var pause_img= document.getElementById("img01");
+            var shangyishou_img= document.getElementById("img00");
+            var xiayishou_img= document.getElementById("img02");
+            var div02= document.getElementById("div02");
+            var div03= document.getElementById("div03");
+            EventUtil.addHandle(pause_img,"click",fun1);
+            EventUtil.addHandle(shangyishou_img,"click",fun0);
+            EventUtil.addHandle(xiayishou_img,"click",fun2);
+
+            function fun0(){
+                if(v==0){
+                    v=music.length-1;
+                    v_au.setAttribute("src",music[v]);
+                    initradio("music",v);
+                }else{
+                    v--;
+                    v_au.setAttribute("src",music[v]);
+                    initradio("music",v);
+                }
+            }
+            function fun2(){
+                if(v==music.length-1){
+                    v=0;
+                    v_au.setAttribute("src",music[v]);
+                    initradio("music",v);
+                }else{
+                    v++;
+                    v_au.setAttribute("src",music[v]);
+                    initradio("music",v);
+                }
+            }
+            function fun1(){//图片控制音乐播放
+
+                if(!v_au.paused){
+                    v_au.pause();
+//                    alert(v_au.played);
+                    pause_img.setAttribute("src","game/image/bofang.png");
+                }else{
+                    v_au.play();
+                    pause_img.setAttribute("src","game/image/zanting.png");
+                }
+
+            }
+            var repeat_but= document.getElementById("replay");//重播
+            EventUtil.addHandle(repeat_but,"click",repeatfun);
+            function repeatfun(){
+                v_au.load();
+            }
+            var p_progress00= document.getElementById("progress00");
+            p_progress00.value= v_au.volume;
+            EventUtil.addHandle(p_progress00,"click",progress00);
+            var but_silence= document.getElementById("silence");//静音
+            EventUtil.addHandle(but_silence,"click",silence);
+            function silence(){
+                if(v_au.muted){
+                    v_au.muted=false;
+                    but_silence.style.backgroundImage="url(game/image/soundon.png)";
+                    p_progress00.value= v_au.volume;
+                }else{
+                    v_au.muted=true;
+                    but_silence.style.backgroundImage="url(game/image/soundoff.png)";
+                    p_progress00.value= 0;
+                }
+
+            }
+
+            function progress00(event){
+                var e=event||window.event;
+                var src= e.srcElement || e.target;
+                var len= e.offsetX;
+                v_au.volume=(e.offsetX/this.clientWidth);//this.clientWidth
+                p_progress00.value= v_au.volume;
+            }
+            var but_volumeUp= document.getElementById("volumeUp");//增加音量
+            EventUtil.addHandle(but_volumeUp,"click",volumeUp);
+            function volumeUp(){
+
+                if(v_au.volume>=0.75){
+                   p_progress00.value=1;
+                }else{
+                    v_au.volume+= 0.25;
+//                    div02.innerText="音量:"+v_au.volume*100;
+                    p_progress00.value+=0.25;
+                }
+            }
+            var but_volumeDown= document.getElementById("volumeDown");//减小音量
+            EventUtil.addHandle(but_volumeDown,"click",volumeDown);
+            function volumeDown(){
+
+                if(v_au.volume<=0.25){
+                    p_progress00.value=0;
+                }
+//                div02.innerText="音量:"+v_au.volume*100;
+                v_au.volume-= 0.25;
+                p_progress00.value-=0.25;
+            }
+            var but_speedUp= document.getElementById("speedUp");//快进
+            EventUtil.addHandle(but_speedUp,"click",speedUp);
+            function speedUp(){
+                v_au.playbackRate+= 3;
+                div03.innerText="当前播放速率:"+v_au.playbackRate+"x";
+            }
+            var but_speedDown= document.getElementById("speedDown");//慢放
+            EventUtil.addHandle(but_speedDown,"click",speedDown);
+            function speedDown(){
+                v_au.playbackRate-= 3;
+                div03.innerText="当前播放速率:"+v_au.playbackRate+"x";
+            }
+            v_au.addEventListener("timeupdate",funtime,false);
+            var p_progress01= document.getElementById("progress01");
+            EventUtil.addHandle(p_progress01,"click",progress01);
+            function progress01(event){
+                var e=event||window.event;
+                var src= e.srcElement || e.target;
+                var len= e.offsetX;
+                v_au.currentTime=Math.floor((e.offsetX/300)*(v_au.duration));//this.clientWidth
+
+            }
+            function funtime(){
+//                v_au.duration//总时长
+//                v_au.currentTime//当前时长
+//                document.getElementById("showcur_time").innerText=v_au.currentTime;
+
+                var v_add1= adddiv(v_au.currentTime*1000,6,"c",false);
+                document.getElementById("div04").innerHTML= v_add1;
+//                document.getElementById("dur_time").innerText= v_au.duration;
+                var v_add2= adddiv(v_au.duration*1000,6,"c",false);
+                document.getElementById("div05").innerHTML= v_add2;
+                var v1= (Math.floor(v_au.currentTime)/Math.floor(v_au.duration))*100;
+                document.getElementById("progress01").value=v1;
+            }
+            v_au.addEventListener("ended",funchange,false);//实现自动下一首
+            function funchange(){
+                if(v==music.length-1){
+                    v=0;
+                    v_au.setAttribute("src",music[v]);
+                    initradio("music",v);
+                }else{
+                    v++;
+                    v_au.setAttribute("src",music[v]);
+                    initradio("music",v);
+                }
+            }
+            var div00= document.getElementById("div00");
+            EventUtil.addHandle(div00,"click",lalala);
+             function lalala(){//点击radio切换歌曲
+                var rObj = document.getElementsByName("music");
+                var vv=0;
+                for(var i = 0;i < rObj.length;i++){
+                    if(rObj[i].checked == true){
+                        vv=i;
+                        funchange1(vv);
+                    }
+                }
+
+            }
+            function funchange1(vv){
+                    v_au.setAttribute("src",music[vv]);
+                }
+
+            function initradio(rName,rValue){//radio更改默认值
+                var rObj = document.getElementsByName(rName);
+
+                for(var i = 0;i < rObj.length;i++){
+                    if(rObj[i].value == rValue){
+                        rObj[i].checked =  'checked';
+                    }
+                }
+            }
+        }
+
+    </script>
+</head>
+<body>
+<!--<audio id= "auid" src="../image/dl.mp3" autoplay="autoplay" ></audio>-->
+<div id="div00">
+    <!--<input type="radio" name="music" value="0" checked>dl-->
+    <!--<input type="radio" name="music" value="1">mhh-->
+    <!--<input type="radio" name="music" value="2">dyjz-->
+</div>
+
+<!--<video id="auid" src="../image/0167.搜狐视频-妖精的尾巴第167集.mp4" autoplay="true" ></video>-->
+<!--<button id="pause_but">暂停</button>-->
+<button id="replay">重放</button>
+
+<button id="volumeUp">音量＋</button>
+<button id="volumeDown">音量-</button>
+<button id="speedUp">快进</button>
+<button id="speedDown">慢放</button>
+<div id="div01">
+    <span>
+    <img id="img00" src="game/image/shangyishou.png">
+        </span>
+    <span>
+    <img id="img01" src="game/image/zanting.png">
+        </span>
+
+    <span>
+    <img id="img02" src="game/image/xiayishou.png">
+        </span>
+</div>
+
+<!--<div id="div02">音量:100</div>-->
+<div id="div03">当前播放速率:1x</div>
+<!--运行中的进度条-->
+<button id="silence" style="width:25px;height:25px;background-image: url(game/image/soundon.png)"></button>
+<progress max="1" min="0" id="progress00" ></progress>
+<div><span id="showcur_time"></span><span id="dur_time"></span></div>
+<div id="div04" ></div>
+<progress max="100" min="0" id="progress01" style="width: 300px;"></progress>
+<div id="div05" style="left:380px;top:91px;position: absolute"></div>
+</body>
+</html>

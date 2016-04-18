@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<script src="game/js/eventutil.js"></script>
+<script>
+    var kk={
+
+    };
+    var vv1= ["男装","女装","童装"];
+
+    var vv2= [["男装衬衫","男装裤子"],["女装衬衫","女装裤子"],["童装上衣","童装裤子"]];
+    var vv3=[[10,20],[30,40],[50,60]];
+window.onload=function(){
+//    function fun1(){
+        var v0="";
+        for(i in vv1){
+            v0+= "<option>"+vv1[i]+"</option>";
+        }
+        document.getElementById("sel_pro").innerHTML= v0;
+//    }
+    function sea(v2){
+        for(i in vv1){
+            if(v2==vv1[i]){
+                return i;
+            }
+        }
+    }
+    var but01=document.getElementById("but01");
+    EventUtil.addHandle(but01,"click",fun2);
+    function fun2(){
+        var v2 = document.getElementById("sel_pro").value;
+        var i;
+        var v0="";
+        j=sea(v2);
+        for(i in vv2[j]){
+            v0+= "<option>"+vv2[j][i]+"</option>";
+        }
+        var win=window.open("hw101.html","新窗口","");
+        if(win==null){
+            alert("弹出窗口被拦截");
+        }
+//        win.document.getElementById("sel_city").innerHTML= v0;
+        alert(v0);
+        alert(vv3[j][0]);
+//        win.document.getElementById("money").innerText= vv3[j][0];
+//        win.document.getElementById("kk").innerHTML= j;
+    }
+
+
+    //父窗口向子窗口传递数据需要点击事件触发
+
+}
+
+
+</script>
+
+<body>
+品种:<select id="sel_pro">
+</select>
+<button id="but01" >确定</button>
+<div id="parentdiv">
+
+</div>
+</body>
+</html>

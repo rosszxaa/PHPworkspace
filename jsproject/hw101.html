@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<script>
+    var vv1= ["男装","女装","童装"];
+    var vv2= [["男装衬衫","男装裤子"],["女装衬衫","女装裤子"],["童装上衣","童装裤子"]];
+    var vv3=[["10","20"],["30","40"],["50","50"]];
+    function fun1(){
+        var v1 = window.opener.document.getElementById("sel_pro").value;
+        var i;
+        var v0="";
+        j=sea(v1);
+        var v2 = document.getElementById("sel_city").value;
+
+        var k=0;//确定物品价格
+        for(i in vv2[j]){
+            if(v2==vv2[j][i]){
+                k=i;
+            }
+        }
+//        alert(k);
+        document.getElementById("money").value= vv3[j][k];
+    }
+    function fun2(){
+        var v0= document.getElementById("number").value;
+        var v1= document.getElementById("money").value;
+        if(v0>=6){
+            document.getElementById("zhekou").value=0.6;
+            document.getElementById("total").value= v0*v1*0.6;
+        }
+        else if(v0==1){
+            document.getElementById("zhekou").value=1;
+            document.getElementById("total").value= v0*v1;
+        }
+        else if(v0>=2&&v0<=5){
+            document.getElementById("zhekou").value=0.8;
+//            alert(0);
+            document.getElementById("total").value= v0*v1*0.8;
+        }else{
+
+        }
+//alert(v1);
+    }
+    function fun3(){
+        var v0= document.getElementById("sel_city").value;
+        var v1= document.getElementById("money").value;
+        var v2= document.getElementById("number").value;
+        var v3= document.getElementById("zhekou").value;
+        var v4= document.getElementById("total").value;
+        window.opener.document.getElementById("parentdiv").innerHTML=
+                "<tr>"+"<td>"+v0+"</td>"+
+                "<td>"+v1+"元"+"</td>"+
+                "<td>"+v2+"件"+"</td>"+
+                "<td>"+v3+"折"+"</td>"+
+                "<td>"+v4+"元"+"</td>"+"</tr>";
+        window.close();
+    }
+    //子窗口向父窗口传递数据
+//    window.opener.document.getElementById("parentdiv").innerText=v1;
+    function sea(v2){
+        for(i in vv1){
+            if(v2==vv1[i]){
+                return i;
+            }
+        }
+    }
+
+    window.onload= function(){
+        var v2 = window.opener.document.getElementById("sel_pro").value;
+        var i;
+        var v0="";
+        j=sea(v2);
+        for(i in vv2[j]){
+            v0+= "<option>"+vv2[j][i]+"</option>";
+        }
+        document.getElementById("sel_city").innerHTML= v0;
+    }
+
+</script>
+<body>
+品种分类:<select id="sel_city" onchange="fun1()">
+</select>
+单价:<input type="text" id="money"><input type="hidden" id="kk">
+数量:<input type="text" id="number" onkeyup="fun2()">
+折扣:<input type="text" id="zhekou">
+总价:<input type="text" id="total">
+<button id="but01" onclick="fun3()">确定</button>
+</body>
+</html>

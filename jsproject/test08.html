@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        /*事件代理:又叫事件委派(托)
+        * 将事件处理加载到父级元素上,可避免将事件处理添加到多个子元素上
+        * 用到的特性:事件冒泡与目标元素
+        * 优点:1.提高性能
+        *      2.对于新增子元素前面的事件依然有效
+        * 缺点:
+        * */
+        function fun1(){
+            alert("hello");
+        }
+        window.onload= function(){
+//            var v_a= document.getElementsByTagName("a");
+//            for(var i=0;i<v_a.length;i++){
+//                v_a[i].onmouseover= function(){
+//                    this.style.backgroundColor='red';
+//                }
+//                v_a[i].onmouseout= function(){
+//                    this.style.backgroundColor="yellow";
+//                }
+//            }
+             //事件代理解决子元素问题
+             document.getElementById("id01").onmouseover= function(event){
+                              var e=event || window.event;
+                              var src= e.srcElement|| e.target;//当前指针移动的元素
+                          //通过事件源获取子标签
+                         if(src.nodeName.toLowerCase()=="a"){
+                              src.style.backgroundColor='red';
+                         }
+             }
+            document.getElementById("id01").onmouseout= function(event){
+                var e=event || window.event;
+                var src= e.srcElement|| e.target;
+                //通过事件源获取子标签
+                if(src.nodeName.toLowerCase()=="a"){
+                    src.style.backgroundColor='yellow';
+                }
+            }
+            document.getElementById("but01").onclick= function() {
+                //动态添加元素
+                var a= document.createElement("a");//<a></a>
+                a.innerText="链接4";  //<a href="">链接4</a>
+                //设置元素属性
+                a.setAttribute("href","hw071.html");//<a href="hw071.html">链接4</a>
+                //追加元素
+                document.getElementById("id01").appendChild(a);
+            }
+        }
+    </script>
+</head>
+<body>
+<!--<ul onclick="fun1()">-->
+    <!--<li>dawa</li>-->
+    <!--<li>erwa</li>-->
+    <!--<li>sanwa</li>-->
+
+<!--</ul>-->
+<div id="id01">
+    <a href="">a</a>
+    <a href="">b</a>
+    <a href="">c</a>
+</div>
+<button id="but01">新增元素</button>
+</body>
+</html>

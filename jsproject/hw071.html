@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>开关按钮</title>
+    <style>
+        #id01{
+            background-color: #45383e;
+            color: #f4f6f4;
+            width: 130px;
+            height: 20px;
+            position: absolute;
+            left: 10px;
+            top:10px;
+            border: 3px solid #000000;
+            border-radius: 7px;
+
+        }
+        #id02{
+            background-color: #afa296;
+            width:80px;
+            height:20px;
+            position: absolute;
+            left:0px;
+            top:0px;
+            border-radius: 7px;
+
+        }
+    </style>
+</head>
+<script>
+    window.onload= function(){
+        document.onselectstart=function(){return false;}
+        var v1= document.getElementById("id02");
+        var pageX_o,pageY_o,o_left,o_top,pageX_n,pageY_n,layerX1,layerY1,off1;
+        var flag=false;
+        v1.onmousedown=function(event){
+            var e= event||window.event;
+            pageX_o= e.pageX;
+            pageY_o= e.pageY;
+            flag= true;
+            var src= e.srcElement || e.target;
+            o_left= src.offsetLeft;
+            o_top=  src.offsetTop;
+
+        }
+        v1.onmousemove= function(event){
+            var e= event||window.event;
+            pageX_n= e.pageX;
+            pageY_n= e.pageY;
+            layerX1= e.layerX;
+            layerY1= e.layerY;
+            off1= pageX_n-(pageX_o-o_left);
+            //随鼠标移动定位元素
+            var src= e.srcElement|| e.target;
+            document.getElementById("id03").innerHTML="e.pageX:"+e.pageX+"<br>"+
+            "e.layerX:"+ e.layerX+"<br>"+
+            "div内距:"+ (off1||"未点击")+"<br>";
+
+            if(off1<50&&off1>0){
+                if(flag){
+                    src.style.left= off1+"px";
+                    if(off1>40){
+                        src.style.left= 50+"px";
+                    }else if(off1<10){
+                        src.style.left= 0+"px";
+                    }
+                }
+
+            }
+
+//            src.style.top= pageY_n-(pageY_o-o_top)+"px";
+        }
+        v1.onmouseout= function(){
+            flag= false;
+        }
+        v1.onmouseup= function () {
+//            var e= event||window.event;
+//            var src= e.srcElement|| e.target;
+//            src.onmousedown= null;
+//         src.onmousemove= "";
+            flag= false;
+        }
+    }
+</script>
+<body id="body">
+<div id="id01">&nbspON&nbsp&nbsp&nbsp&nbspOFF
+    <div id="id02"></div>
+</div>
+
+<div id="id03" style="top:100px;position: absolute"></div>
+</body>
+</html>

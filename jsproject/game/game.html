@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/css1.css">
+</head>
+<script src="js/eventutil.js"></script>
+<script src="js/szsz.js"></script>
+<script src="js/base.js"></script>
+<script src="js/jquery-1.8.2.js"></script>
+<style>
+
+</style>
+<body>
+<div id="game"><img id= "bj" class="bj" src="image/bj.png"></div>
+<div id="div01" ></div>
+<progress max="1" min="0" id="progress00" value=1 style="left:220px;top:0px;width:300px;height:15px;position: absolute"></progress>
+<div id="d1"class="dd"></div>
+<div id="d2"class="dd"></div>
+<div id="d3"class="dd"></div>
+<div id="d4"class="dd"></div>
+<div id="d5"class="dd"></div>
+<button id="silence" style="width:25px;height:25px;background-image: url(image/soundon.png)"></button>
+<progress max="1" min="0" id="progress000" ></progress>
+<div id="div03"></div>
+<!--显示背景音乐-->
+<div id="div00"></div>
+<!--显示时间-->
+<div id="time00"></div>
+</body>
+<script>
+    var arr1=new Array;
+    var arr2=new Array;
+    var str="";
+    var d0=0;
+    var timer="";//导弹定时器
+    var timer2="";//随机数定时器
+    var v0 = "rwr.png";//非触发人物图片
+    var v1 = "xrwr.png";//触发推进器图片
+    var v2 = "xexplor.png";//导弹爆炸
+    var v3= "dd.png";//导弹图片
+
+    var bj= document.getElementById("bj");//背景图片
+    var progress00= document.getElementById("progress00");//推进器
+    var v_div = document.getElementById("div01");//人物
+    var arr2= document.getElementsByClassName("dd");
+    var time0= new Date();
+
+    setInterval(fun1,3000);//推进器充能
+    function fun10(){
+//        win.close();
+        location.reload();
+    }
+    setTimeout(fun1,5000);
+    setInterval(fun10,20000);//推进器充能
+    fun2();
+    var k=0;
+    window.onload= function() {
+        var music = ["image/westcoast_old_纯音频文件_纯音频输出.MP3", "image/cartel_jump_down_纯音频文件_纯音频输出.MP3", "image/goddess_temple_boss_纯音频文件_纯音频输出.MP3"];
+        var v00 = "";//动态加载歌单
+        var v = 0;//当前歌曲数组位置
+        var v_au = document.createElement("audio");
+        v_au.setAttribute("src", music[v]);
+        v_au.setAttribute("autoplay", "true");
+        document.body.appendChild(v_au);
+        for (i in music) {
+            var vk = music[i].split("/");
+            v00 += "<input type='radio' name='music' value='" + i + "' >" + music[i].split("/")[vk.length - 1] + "</br>";
+        }
+        document.getElementById("div00").innerHTML = v00;//音乐单选按钮
+        initradio("music", v);
+        var div02 = document.getElementById("div02");
+        var div03 = document.getElementById("div03");
+        v_au.addEventListener("timeupdate",funtime,false);
+
+
+        var p_progress000 = document.getElementById("progress000");
+        p_progress000.value = v_au.volume;
+        EventUtil.addHandle(p_progress000, "click", progress000);
+        var but_silence = document.getElementById("silence");//静音
+        EventUtil.addHandle(but_silence, "click", silence);
+
+
+        v_au.addEventListener("ended", funchange, false);//实现自动下一首
+
+        var div00 = document.getElementById("div00");
+        EventUtil.addHandle(div00, "click", lalala);
+        function silence() {
+            if (v_au.muted) {
+                v_au.muted = false;
+                but_silence.style.backgroundImage = "url(image/soundon.png)";
+                p_progress000.value = v_au.volume;
+            } else {
+                v_au.muted = true;
+                but_silence.style.backgroundImage = "url(image/soundoff.png)";
+                p_progress000.value = 0;
+            }
+
+        }
+
+        function progress000(event) {
+            var e = EventUtil.getEvent(event);
+            v_au.volume = (e.offsetX / this.clientWidth);//this.clientWidth
+            p_progress000.value = v_au.volume;
+        }
+        function lalala() {//点击radio切换歌曲
+            var rObj = document.getElementsByName("music");
+            var vv = 0;
+            for (var i = 0; i < rObj.length; i++) {
+                if (rObj[i].checked == true) {
+                    vv = i;
+                    funchange1(vv);
+                }
+            }
+
+        }
+
+        function funchange1(vv) {
+            v_au.setAttribute("src", music[vv]);
+        }
+
+        function initradio(rName, rValue) {//radio更改默认值
+            var rObj = document.getElementsByName(rName);
+
+            for (var i = 0; i < rObj.length; i++) {
+                if (rObj[i].value == rValue) {
+                    rObj[i].checked = 'checked';
+                }
+            }
+        }
+        function funchange() {
+            if (v == music.length - 1) {
+                v = 0;
+                v_au.setAttribute("src", music[v]);
+                initradio("music", v);
+            } else {
+                v++;
+                v_au.setAttribute("src", music[v]);
+                initradio("music", v);
+            }
+        }
+        function funtime(){
+            var v_add1= adddiv(v_au.currentTime*1000,6,"c",false);
+            document.getElementById("time00").innerHTML= v_add1;
+        }
+    }
+        window.document.onkeydown = function (event) {
+            var e = EventUtil.getEvent(event);
+            var v_left = v_div.offsetLeft;//左上+130
+            var v_top = v_div.offsetTop;//左上+150
+            setInterval(fun4, 100);
+//            document.getElementById("div03").innerText=k;
+            if (e.keyCode == 39) {//->右
+
+                if (v_left < 620) {
+                    v_div.style.backgroundImage = "url(image/" + v0 + ")";
+                    v_div.style.left = 65 + v_left + "px";
+
+                }
+
+            }
+            else if (e.keyCode == 37) {//->左
+
+                if (v_left < 710 && v_left > 50) {
+
+                    v_div.style.backgroundImage = "url(image/" + v0 + ")";
+                    v_div.style.left = v_left - 65 + "px";
+                }
+
+            }
+
+            else if (e.keyCode == 88) {
+                if (progress00.value >= 0.1) {
+                    v_div.style.backgroundImage = "url(image/" + v1 + ")";
+                    bj.style.animation = "name1 60s infinite";
+                    progress00.value -= 0.1;
+                    setTimeout(function () {
+                        v_div.style.backgroundImage = "url(image/" + v0 + ")";
+                        bj.style.animation = "name1 40s infinite";
+                    }, 500);
+                }
+            }
+        }
+
+</script>
+</html>
